@@ -22,3 +22,5 @@
 [include]
 	path = ~/.github
 
+[credential]
+	helper = osxkeychain
