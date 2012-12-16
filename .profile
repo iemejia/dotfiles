@@ -1,14 +1,29 @@
 export CLICOLOR=1
 # export LSCOLORS=ExFxCxDxBxegedabagacad
 export TERM=xterm-256color
+export SVN_EDITOR=emacs
+export EDITOR=emacs
 
 # MacPorts Installer addition on 2010-01-16_at_02:45:27: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 # export JAVA_HOME=/Library/Java/Home
 export JAVA_HOME=`/usr/libexec/java_home`
-export SVN_EDITOR=emacs
-export EDITOR=emacs
+
+# MacPorts Installer addition on 2012-02-28_at_08:41:07: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# cuda
+export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH
+
+#
+# this should be in .bashrc but to do this we have to create
+# the .bash_profile file with
+# . ~/.profile
+# . ~/.bashrc
+#
 
 # bash completion
 if [ -f /opt/local/etc/bash_completion ]; then
@@ -25,27 +40,44 @@ complete -C /opt/local/share/java/apache-ant/bin/complete-ant-cmd.pl ant
 
 # export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
 
+# Increase the number of commands recorded
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+# Add datestamps
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
+# ignore commands from history
+export HISTIGNORE="&:ls:[bf]g:exit"
+# Avoid succesive duplicates in the bash command history.
+export HISTCONTROL=ignoredups
+# Append versus overwrite and write more often to handle multiple
+# sessions eventuall -r
+shopt -s histappend
+export PROMPT_COMMAND='history -n;history -a'
+# Handle multiple line commands
+shopt -s cmdhist
+
+# Add bash aliases.
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
+# this should be in .bash_aliases
+
 # alias for mysql
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 
-##
-# Your previous /Users/ismael/.profile file was backed up as /Users/ismael/.profile.macports-saved_2011-11-17_at_00:35:03
-##
+# Make some possibly destructive commands more interactive.
+# alias rm='rm -i'
+# alias mv='mv -i'
+# alias cp='cp -i'
+ 
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+# alias ll='ls -lF --color=auto'
+# alias la='ls -alF --color=auto'
+# alias ls='ls -F'
+ 
+# Make grep more user friendly by highlighting matches
+# and exclude grepping through .svn folders.
+alias grep='grep --color=auto' # --exclude-dir=\.svn'
 
-# MacPorts Installer addition on 2011-11-17_at_00:35:03: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-
-##
-# Your previous /Users/ismael/.profile file was backed up as /Users/ismael/.profile.macports-saved_2012-02-28_at_08:41:07
-##
-
-# MacPorts Installer addition on 2012-02-28_at_08:41:07: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-# cuda
-export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
-export PATH=/usr/local/cuda/bin:$PATH
