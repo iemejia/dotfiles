@@ -1,7 +1,15 @@
+;; Now file is specific for emacs 24
 ; Specifics for aquamacs
 (setq aquamacs-scratch-file "~/Dropbox/Documents/research-notes/scratch.txt")
+
+;; loads scratch file in normal emacs by default like in aquamacs
+(pop-to-buffer (find-file aquamacs-scratch-file))
+(kill-buffer "*scratch*")
+
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+(blink-cursor-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
 
@@ -35,9 +43,20 @@
 (package-initialize)
 
 ; color-theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-charcoal-black)
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-charcoal-black)
+
+;; set font
+(set-frame-font "Menlo-12")
+;; (set-frame-font "Monaco-12")
+
+;; set theme
+;; (load-theme 'tango) ;; or tango-dark ;; or wheatgrass
+;; (load-theme 'solarized-dark t)
+;; (load-theme 'solarized-light t)
+;; (load-theme 'zenburn t)
+(load-theme 'sanityinc-tomorrow-night t)
 
 ;perspectives
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/perspective-el")
@@ -51,6 +70,10 @@
 ;; (require 'log4j-mode)
 
 (setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq inhibit-startup-message t)
 
 ; Associate nfo file suffix with IBM codepage 437 encoding
   (setq auto-coding-alist (cons '("\\.nfo\\'" . cp437-dos) auto-coding-alist))
@@ -85,3 +108,5 @@
 
 ; markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+ 
+
