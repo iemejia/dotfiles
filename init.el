@@ -8,11 +8,65 @@
 (end-of-buffer)
 (kill-buffer "*scratch*")
 
+;; to avoid
+;; Symbol's value as variable is void: custom-theme-load-path
+(setq custom-theme-load-path '())
+
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'scrollbar-mode) (scrollbar-mode -1))
-
+(setq-default cursor-type 'box) ;; Cursor type 'box 'bar
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
+;; Window size
+(setq default-frame-alist '(
+                            (width . 80)
+                            (height . 50)
+                            ))
+
+;(require 'zoom-frm)
+
+;; use hippie-expand instead of dabbrev
+(global-set-key (kbd "M-/") 'hippie-expand)
+
+;; Mac OS X specific keybindings
+(when (eq system-type 'darwin)
+
+  ;; Mac OS X Fullscreen (requires this patch: https://gist.github.com/1012927)
+  (global-set-key (kbd "s-<return>") 'ns-toggle-fullscreen)
+
+  ;; Undo/Redo (via undo-tree)
+  (when (require 'undo-tree nil 'noerror)
+    (global-set-key (kbd "s-z") 'undo-tree-undo)
+    (global-set-key (kbd "s-Z") 'undo-tree-redo))
+
+  ;; Flyspell correct previous word
+  (when (require 'flyspell nil 'noerror)
+    (global-set-key (kbd "s-.") 'flyspell-correct-word-before-point))
+
+  ;; Move to beginning/end of buffer
+  (global-set-key (kbd "s-<up>") 'beginning-of-buffer)
+  (global-set-key (kbd "s-<down>") 'end-of-buffer)
+
+  ;; Move to beginning/end of line
+  (global-set-key (kbd "s-<left>") 'beginning-of-line)
+  (global-set-key (kbd "s-<right>") 'end-of-line)
+
+  (global-set-key (kbd "s-=") 'text-scale-increase)
+  (global-set-key (kbd "s--") 'text-scale-decrease)
+
+  (global-set-key (kbd "<M-up>") 'backward-paragraph)
+  (global-set-key (kbd "<M-down>") 'forward-paragraph))
+
+;(global-set-key (kbd "s up") 'text-scale-decrease)
+
+;; nice scrolling
+;; (setq scroll-margin 0
+;;       scroll-conservatively 100000
+;;       scroll-preserve-screen-position 1)
+
+;; windows-like scrolling
+;; (setq scroll-step 1) 
+;; (setq scroll-conservatively 50)
 
 ;; some mappings to avoid using backspace
 (global-set-key "\C-h" 'backward-kill-word)
@@ -50,10 +104,17 @@
 
 ;; set font
 (set-frame-font "Menlo-12")
+;(text-scale-increase 1)
 
 ;; set theme
-(cond ((= 24 emacs-major-version)
-  (load-theme 'sanityinc-tomorrow-night t)))
+;; (cond ((= 24 emacs-major-version)
+;;   (load-theme 'sanityinc-tomorrow-night t)))
+
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-charcoal-black)))
 
 ;perspectives
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/perspective-el")
@@ -80,7 +141,7 @@
 (define-key input-decode-map "\e[1;2A" [S-up]) ; horrible hack for S-up
 (delete-selection-mode 1) ; delete seleted text when typing
 (show-paren-mode 1) ; turn on paren match highlighting
-(global-hl-line-mode 1) ; turn on highlighting current line
+(global-hl-line-mode 0) ; turn on highlighting current line
 (column-number-mode 1) ; show the cursor's column position
 (recentf-mode 1) ; keep a list of recently opened files
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -105,7 +166,6 @@
 ;;                     :family "Inconsolata" :height 145 :weight 'normal)
 ;; (set-default-font "Inconsolata-12")
 ;; monaco
-
 
 ; switch ctrl to be in command
 ;; (setq mac-control-modifier 'meta)
