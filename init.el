@@ -27,6 +27,27 @@
 
 ;; use hippie-expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "s-.") 'dabbrev)
+
+;; Display whitespace characters globally
+;;(global-whitespace-mode t)
+
+;; Customize Whitespace Characters
+;;  - Newline: \u00AC = ¬
+;;  - Tab:     \u25B6 = ▶
+;;             \u25B8 = ▸
+;; (setq whitespace-display-mappings
+;;       (quote ((newline-mark ?\n [?\u00AC ?\n] [?$ ?\n])
+;;               (tab-mark     ?\t [?\u25B6 ?\t] [?\u00BB ?\t] [?\\ ?\t]))))
+
+;; (setq whitespace-style
+;;       (quote (face tabs trailing space-before-tab newline
+;;                    indentation space-after-tab tab-mark newline-mark
+;;                    empty)))
+
+
+(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-u") 'uncomment-region)
 
 ;; Mac OS X specific keybindings
 (when (eq system-type 'darwin)
@@ -55,7 +76,13 @@
   (global-set-key (kbd "s--") 'text-scale-decrease)
 
   (global-set-key (kbd "<M-up>") 'backward-paragraph)
-  (global-set-key (kbd "<M-down>") 'forward-paragraph))
+  (global-set-key (kbd "<M-down>") 'forward-paragraph)
+
+  (global-set-key (kbd "s-o") 'find-file)
+)
+
+;;  (global-set-key (kbd "s-<down>") 'forward-paragraph))
+
 
 ;(global-set-key (kbd "s up") 'text-scale-decrease)
 
@@ -107,14 +134,14 @@
 ;(text-scale-increase 1)
 
 ;; set theme
-;; (cond ((= 24 emacs-major-version)
-;;   (load-theme 'sanityinc-tomorrow-night t)))
+(cond ((= 24 emacs-major-version)
+       (load-theme 'sanityinc-tomorrow-night t)))
 
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-charcoal-black)))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-charcoal-black)))
 
 ;perspectives
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/perspective-el")
@@ -129,8 +156,10 @@
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
+
+(setq-default tab-width 4) ;; Default tab-width of 4 spaces
+(setq-default indent-tabs-mode nil) ;; Always indent with spaces
+
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
 (setq vc-follow-symlinks t) ; Avoid confirmation in symlinks edition
@@ -141,7 +170,7 @@
 (define-key input-decode-map "\e[1;2A" [S-up]) ; horrible hack for S-up
 (delete-selection-mode 1) ; delete seleted text when typing
 (show-paren-mode 1) ; turn on paren match highlighting
-(global-hl-line-mode 0) ; turn on highlighting current line
+(global-hl-line-mode 1) ; turn on highlighting current line
 (column-number-mode 1) ; show the cursor's column position
 (recentf-mode 1) ; keep a list of recently opened files
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
