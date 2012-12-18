@@ -5,7 +5,7 @@
 
 ;; loads scratch file in normal emacs by default like in aquamacs
 (pop-to-buffer (find-file aquamacs-scratch-file))
-(end-of-buffer)
+;(end-of-buffer)
 (kill-buffer "*scratch*")
 
 ;; to avoid
@@ -23,10 +23,11 @@
                             (height . 50)
                             ))
 
-;; ;;
-;; ;; Transparency (taken from:
-;; ;; https://github.com/jimeh/.emacs.d/blob/master/helpers.el
-;; ;;
+
+;;
+;; Transparency (taken from:
+;; https://github.com/jimeh/.emacs.d/blob/master/helpers.el
+;;
 
 ;; (defun transparency-set-initial-value ()
 ;;   "Set initial value of alpha parameter for the current frame"
@@ -70,8 +71,8 @@
 ;(require 'zoom-frm)
 
 ;; use hippie-expand instead of dabbrev
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "s-.") 'dabbrev)
+;(global-set-key (kbd "M-/") 'hippie-expand)
+;(global-set-key (kbd "s-.") 'dabbrev)
 
 ;; Display whitespace characters globally
 ;;(global-whitespace-mode t)
@@ -89,15 +90,79 @@
 ;;                    indentation space-after-tab tab-mark newline-mark
 ;;                    empty)))
 
+;;
+;; some keyboard enhancements enhancements
+;;
+(global-set-key [insert]    'overwrite-mode) ; [Ins] 
+(global-set-key [kp-insert] 'overwrite-mode) ; [Ins]
+(global-set-key [f1] 'menu-bar-mode)
 
-(global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-c C-u") 'uncomment-region)
+(require 'recentf)
+(recentf-mode 1) ; keep a list of recently opened files
+(setq recentf-max-menu-items 25)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;; remember location in buffer files
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/saveplace")
+
+;; (require 'undo-tree)
+;; (global-undo-tree-mode 1)
+;; (global-set-key (kbd "M-z") 'undo) ; 【Ctrl+z】
+;; (global-set-key (kbd "M-S-z") 'redo) ; 【Ctrl+Shift+z】
+
+(defun comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command.
+        If no region is selected and current line is not blank and we are not at the end of the line,
+        then comment current line.
+        Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+
+(global-set-key (kbd "C-c C-c") 'comment-dwim-line)
+
+(defun move-text-internal (arg)
+   (cond
+    ((and mark-active transient-mark-mode)
+     (if (> (point) (mark))
+            (exchange-point-and-mark))
+     (let ((column (current-column))
+              (text (delete-and-extract-region (point) (mark))))
+       (forward-line arg)
+       (move-to-column column t)
+       (set-mark (point))
+       (insert text)
+       (exchange-point-and-mark)
+       (setq deactivate-mark nil)))
+    (t
+     (beginning-of-line)
+     (when (or (> arg 0) (not (bobp)))
+       (forward-line)
+       (when (or (< arg 0) (not (eobp)))
+            (transpose-lines arg))
+       (forward-line -1)))))
+
+(defun move-text-down (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines down."
+   (interactive "*p")
+   (move-text-internal arg))
+
+(defun move-text-up (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines up."
+   (interactive "*p")
+   (move-text-internal (- arg)))
+
+(global-set-key [\M-\S-up] 'move-text-up)
+(global-set-key [\M-\S-down] 'move-text-down)
 
 ;; Mac OS X specific keybindings
 (when (eq system-type 'darwin)
-
-  ;; Mac OS X Fullscreen (requires this patch: https://gist.github.com/1012927)
-  (global-set-key (kbd "s-<return>") 'ns-toggle-fullscreen)
 
   ;; Undo/Redo (via undo-tree)
   (when (require 'undo-tree nil 'noerror)
@@ -107,6 +172,16 @@
   ;; Flyspell correct previous word
   (when (require 'flyspell nil 'noerror)
     (global-set-key (kbd "s-.") 'flyspell-correct-word-before-point))
+
+  ;; Mac OS X Fullscreen (requires this patch: https://gist.github.com/1012927)
+  (global-set-key (kbd "s-<return>") 'ns-toggle-fullscreen)
+
+  ;; fix the mac search to be repeated M-g
+  (global-set-key (kbd "s-f") 'isearch-forward)
+  (add-hook 'isearch-mode-hook
+            (lambda ()
+              (define-key isearch-mode-map (kbd "s-f") 'isearch-repeat-forward)
+              ))
 
   ;; Move to beginning/end of buffer
   (global-set-key (kbd "s-<up>") 'beginning-of-buffer)
@@ -127,21 +202,13 @@
   (global-set-key (kbd "s-}") 'next-buffer)
   (global-set-key (kbd "s-{") 'previous-buffer)
 
+  ;; mode specific bindings
+  (global-set-key (kbd "s-r") 'recentf-open-files)
+  (global-set-key (kbd "s-/") 'comment-dwim-line)
+
+  (global-set-key (kbd "<help>") (function overwrite-mode))
+
 )
-
-;;  (global-set-key (kbd "s-<down>") 'forward-paragraph))
-
-
-;(global-set-key (kbd "s up") 'text-scale-decrease)
-
-;; nice scrolling
-;; (setq scroll-margin 0
-;;       scroll-conservatively 100000
-;;       scroll-preserve-screen-position 1)
-
-;; windows-like scrolling
-;; (setq scroll-step 1) 
-;; (setq scroll-conservatively 50)
 
 ;; some mappings to avoid using backspace
 (global-set-key "\C-h" 'backward-kill-word)
@@ -195,9 +262,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/perspective-el")
 ;; (require 'perspective)
 
-; (global-set-key [insert]    'overwrite-mode) ; [Ins] 
-; (global-set-key [kp-insert] 'overwrite-mode) ; [Ins]
-
 ; log4j-el
 (add-to-list 'load-path "~/.emacs.d/plugins/log4j-mode")
 (require 'log4j-mode)
@@ -212,7 +276,7 @@
 (setq inhibit-startup-message t)
 (setq vc-follow-symlinks t) ; Avoid confirmation in symlinks edition
 
-(blink-cursor-mode 0) ; blinks cursor
+(blink-cursor-mode 1) ; blinks cursor
 (transient-mark-mode 1) ; highlight text selection
 (setq shift-select-mode t) ; “t” for true, “nil” for false
 (define-key input-decode-map "\e[1;2A" [S-up]) ; horrible hack for S-up
@@ -220,15 +284,8 @@
 (show-paren-mode 1) ; turn on paren match highlighting
 (global-hl-line-mode 1) ; turn on highlighting current line
 (column-number-mode 1) ; show the cursor's column position
-(recentf-mode 1) ; keep a list of recently opened files
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (size-indication-mode 1) ; indicates the percentage of the buffer
 ;; (global-linum-mode 1) ; display line numbers in margin. Emacs 23 only.
-
-(require 'undo-tree)
-(global-undo-tree-mode 1)
-(global-set-key (kbd "M-z") 'undo) ; 【Ctrl+z】
-(global-set-key (kbd "M-S-z") 'redo) ; 【Ctrl+Shift+z】
 
 ; Associate nfo file suffix with IBM codepage 437 encoding
 (setq auto-coding-alist (cons '("\\.nfo\\'" . cp437-dos) auto-coding-alist))
@@ -263,11 +320,6 @@
 ; markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
  
-;(require 'ctags-update)
-
-;;(load "folding" 'nomessage 'noerror)
-;;  (folding-mode-add-find-file-hook)
-
 (require 'auto-complete-config)
 (ac-config-default)
 ;(require 'auto-complete-yasnippet)
@@ -277,9 +329,6 @@
 ;(require 'auto-complete-extension)
 ;(require 'auto-complete-octave)
 ;(require 'auto-complete-verilog)
-
-;;(require 'eassist)
-
 
 ;; configuration for semantic
 (require 'semantic)
@@ -367,3 +416,29 @@
 ;;   (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
 ;; )
 ;; (add-hook 'c-mode-common-hook 'c-folding-hook)
+
+
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+
+;; Automatically save and restore sessions
+(setq desktop-dirname             "~/.emacs.d/desktop/"
+      desktop-base-file-name      "emacs.desktop"
+      desktop-base-lock-name      "lock"
+      desktop-path                (list desktop-dirname)
+      desktop-save                t
+      desktop-files-not-to-save   "^$" ;reload tramp paths
+      desktop-load-locked-desktop nil)
+(desktop-save-mode 1)
+
+;; Well, I actually set (desktop-save-mode 0) and then use M-x my-desktop to kick things off:
+
+;; (defun my-desktop ()
+;;   "Load the desktop and enable autosaving"
+;;   (interactive)
+;;   (let ((desktop-load-locked-desktop "ask"))
+;;     (desktop-read)
+;;     (desktop-save-mode 1)))
