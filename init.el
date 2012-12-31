@@ -4,9 +4,9 @@
 (if (fboundp 'aquamacs-autoface-mode) (aquamacs-autoface-mode -1))
 
 ;; loads scratch file in normal emacs by default like in aquamacs
-(pop-to-buffer (find-file aquamacs-scratch-file))
-;(end-of-buffer)
+(setq initial-buffer-choice aquamacs-scratch-file)
 (kill-buffer "*scratch*")
+;(kill-buffer "*Messages*")
 
 ;; to avoid
 ;; Symbol's value as variable is void: custom-theme-load-path
@@ -18,10 +18,54 @@
 (setq-default cursor-type 'box) ;; Cursor type 'box 'bar
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
 ;; Window size
-(setq default-frame-alist '(
-                            (width . 80)
-                            (height . 50)
-                            ))
+;; (setq default-frame-alist '(
+;;                             (width . 80)
+;;                             (height . 50)
+;;                             ))
+
+;; unfill-region    
+(defun unfill-region (beg end)
+  "Unfill the region, joining text paragraphs into a single
+    logical line.  This is useful, e.g., for use with
+    `visual-line-mode'."
+  (interactive "*r")
+  (let ((fill-column (point-max)))
+    (fill-region beg end)))
+
+;; Handy key definition
+(define-key global-map "\M-Q" 'unfill-region)
+
+;; sets unicode utf-8 coding system
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+
+; adds support for accents in text files
+(add-hook 'text-mode-hook 
+  (lambda () (set-input-method "latin-1-prefix")))
+
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+  (progn
+    ;; use 120 char wide window for largeish displays
+    ;; and smaller 80 column windows for smaller displays
+    ;; pick whatever numbers make sense for you
+    (if (> (x-display-pixel-width) 1280)
+        (add-to-list 'default-frame-alist 
+                     (cons 'width 80))
+;                           (/ (frame-char-width) 3)))
+;                           (/ (/ (display-pixel-width) 3) (frame-char-width))))
+      (add-to-list 'default-frame-alist (cons 'width 80)))
+    ;; for the height, subtract a couple pixels
+    ;; from the screen height (for panels, menubars and
+    ;; whatnot), then divide by the height of a char to
+    ;; get the height we want
+    (add-to-list 'default-frame-alist 
+         (cons 'height (/ (- (x-display-pixel-height) 50)
+                             (frame-char-height)))))))
+
+(set-frame-size-according-to-resolution)
 
 
 ;;
