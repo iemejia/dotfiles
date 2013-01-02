@@ -81,3 +81,9 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 # and exclude grepping through .svn folders.
 alias grep='grep --color=auto' # --exclude-dir=\.svn'
 
+# show git branch
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
