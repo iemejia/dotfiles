@@ -16,7 +16,7 @@
 	branch = auto
 	ui = auto
 [core]
-	editor = emacs
+	editor = emacsclient -t -a=\\\"\\\"
 	autocrlf = input
 	safecrlf = true
 [include]

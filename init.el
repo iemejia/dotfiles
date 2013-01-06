@@ -13,7 +13,7 @@
 (setq custom-theme-load-path '())
 
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1)) ; since menubar is not intrussive in mac or ubuntu
 (if (fboundp 'scrollbar-mode) (scrollbar-mode -1))
 (setq-default cursor-type 'box) ;; Cursor type 'box 'bar
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
@@ -250,6 +250,10 @@
   (global-set-key (kbd "s-r") 'recentf-open-files)
   (global-set-key (kbd "s-/") 'comment-dwim-line)
 
+  ;; move among windows with the arrows
+  (global-set-key (kbd "M-s-<up>") 'other-window)
+  (global-set-key (kbd "M-s-<down>") 'other-window)
+
   (global-set-key (kbd "<help>") (function overwrite-mode))
 
 )
@@ -310,6 +314,17 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/log4j-mode")
 (require 'log4j-mode)
 
+; ess
+(require 'ess-site)
+(add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
+(add-to-list 'auto-mode-alist '("\\.r\\'" . R-mode))
+; (setq ess-ask-about-transfile t)
+
+; start server
+(require 'server)
+(load "server")
+(unless (server-running-p) (server-start))
+
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
@@ -363,6 +378,7 @@
 
 ; markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
  
 (require 'auto-complete-config)
 (ac-config-default)
@@ -486,3 +502,16 @@
 ;;   (let ((desktop-load-locked-desktop "ask"))
 ;;     (desktop-read)
 ;;     (desktop-save-mode 1)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ede-project-directories (quote ("/Users/ismael/computingdataanalysis")))
+ '(safe-local-variable-values (quote ((whitespace-style face tabs spaces trailing lines space-before-tab::space newline indentation::space empty space-after-tab::space space-mark tab-mark newline-mark) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
