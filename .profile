@@ -80,10 +80,19 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .svn folders.
 alias grep='grep --color=auto' # --exclude-dir=\.svn'
-
+alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
+ 
 # show git branch
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
 #PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
+
+# Case insensitive tab completion in Bash
+bind "set completion-ignore-case on"
+
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
