@@ -15,6 +15,7 @@
 	status = auto
 	branch = auto
 	ui = auto
+	interactive = auto
 [core]
 	editor = emacsclient -t -a=\\\"\\\"
 	autocrlf = input
