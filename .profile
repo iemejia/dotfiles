@@ -18,6 +18,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
+# python 2.7
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
 #
 # this should be in .bashrc but to do this we have to create
 # the .bash_profile file with
