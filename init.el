@@ -259,15 +259,15 @@ Emacs buffers are those whose name starts with *."
   (global-set-key (kbd "s-<return>") 'ns-toggle-fullscreen)
 
   ;; fix the mac search to be repeated M-g
-  (global-set-key (kbd "s-f") 'isearch-forward)
-  (add-hook 'isearch-mode-hook
-            (lambda ()
-              (define-key isearch-mode-map (kbd "s-f") 'isearch-repeat-forward)
-              ))
+  ;; (global-set-key (kbd "s-f") 'isearch-forward)
+  ;; (add-hook 'isearch-mode-hook
+  ;;           (lambda ()
+  ;;             (define-key isearch-mode-map (kbd "s-f") 'isearch-repeat-forward)
+  ;;             ))
 
   ;; Move to beginning/end of buffer
-  (global-set-key (kbd "s-<up>") 'beginning-of-buffer)
-  (global-set-key (kbd "s-<down>") 'end-of-buffer)
+  (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
+  (global-set-key (kbd "M-<down>") 'end-of-buffer)
 
   ;; Move to beginning/end of line
   (global-set-key (kbd "s-<left>") 'beginning-of-line)
@@ -276,23 +276,84 @@ Emacs buffers are those whose name starts with *."
   (global-set-key (kbd "s-=") 'text-scale-increase)
   (global-set-key (kbd "s--") 'text-scale-decrease)
 
-  (global-set-key (kbd "<M-up>") 'backward-paragraph)
-  (global-set-key (kbd "<M-down>") 'forward-paragraph)
-
-  (global-set-key (kbd "s-o") 'find-file)
-
-  (global-set-key (kbd "s-}") 'next-user-buffer)
-  (global-set-key (kbd "s-{") 'previous-user-buffer)
+  (global-set-key (kbd "s-<up>") 'backward-paragraph)
+  (global-set-key (kbd "s-<down>") 'forward-paragraph)
 
   ;; mode specific bindings
-  (global-set-key (kbd "s-r") 'recentf-open-files)
-  (global-set-key (kbd "s-/") 'comment-dwim-line)
+;;  (global-set-key (kbd "s-r") 'recentf-open-files)
+;;  (global-set-key (kbd "s-/") 'comment-dwim-line)
 
   ;; move among windows with the arrows
   (global-set-key (kbd "M-s-<up>") 'other-window)
   (global-set-key (kbd "M-s-<down>") 'other-window)
 
   (global-set-key (kbd "<help>") (function overwrite-mode))
+
+  ;; inspired by ergomacs
+  (global-set-key (kbd "s-3") 'delete-other-windows)
+  (global-set-key (kbd "s-4") 'split-window-vertically)
+  (global-set-key (kbd "s-5") 'split-window-horizontally)
+
+  (defun delete-word (arg)
+    "Delete characters forward until encountering the end of a word.
+With argument, do this that many times."
+    (interactive "p")
+    (delete-region (point) (progn (forward-word arg) (point))))
+
+  (defun backward-delete-word (arg)
+    "Delete characters backward until encountering the end of a word.
+With argument, do this that many times."
+    (interactive "p")
+    (delete-word (- arg)))
+
+  (global-set-key (kbd "s-e") 'backward-delete-word)
+  (global-set-key (kbd "s-r") 'delete-word)
+  (global-set-key (kbd "s-d") 'delete-backward-char)
+  (global-set-key (kbd "s-f") 'delete-forward-char)
+
+  (global-set-key (kbd "s-u") 'backward-word)
+  (global-set-key (kbd "s-o") 'forward-word)
+  (global-set-key (kbd "s-U") 'backward-paragraph)
+  (global-set-key (kbd "s-O") 'forward-paragraph)
+
+  (global-set-key (kbd "s-h") 'beginning-of-line)
+;;  (global-set-key (kbd "s-H") 'end-of-line)
+  (global-set-key (kbd "s-;") 'end-of-line)
+
+  ;; define the function to kill the characters from the cursor 
+  ;; to the beginning of the current line
+  (defun backward-kill-line (arg)
+    "Kill chars backward until encountering the end of a line."
+    (interactive "p")
+    (kill-line 0))
+
+  (global-set-key (kbd "s-g") 'kill-line)
+  (global-set-key (kbd "s-G") 'backward-kill-line)
+
+  (global-set-key (kbd "s-i") 'previous-line)
+  (global-set-key (kbd "s-j") 'backward-char)
+  (global-set-key (kbd "s-k") 'next-line)
+  (global-set-key (kbd "s-l") 'forward-char)
+
+  (global-set-key (kbd "s-I") 'scroll-up-command)
+  (global-set-key (kbd "s-J") 'beginning-of-buffer)
+  (global-set-key (kbd "s-K") 'scroll-down-command)
+  (global-set-key (kbd "s-L") 'end-of-buffer)
+
+  ;; non standard with mac
+  (global-set-key (kbd "s-q") 'unfill-region)
+ ;;  (global-set-key (kbd "s-Q") 'unfill-paragraph)
+
+  ;; my own ideas
+  (global-set-key (kbd "s-1") 'kill-this-buffer)
+  (global-set-key (kbd "s-2") 'find-file)
+  (global-set-key (kbd "s-7") 'beginning-of-line)
+  (global-set-key (kbd "s-8") 'previous-user-buffer)
+  (global-set-key (kbd "s-9") 'end-of-line)
+  (global-set-key (kbd "s-0") 'next-user-buffer)
+
+  (global-set-key (kbd "s-n") 'keyboard-escape-quit)
+  (global-set-key (kbd "s-t") 'new-window-on-right)
 
 )
 
@@ -554,3 +615,6 @@ Emacs buffers are those whose name starts with *."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; some fixes and keybindings to make it more ergoemacs-like
+
