@@ -280,8 +280,7 @@ Emacs buffers are those whose name starts with *."
   (global-set-key (kbd "s-<down>") 'forward-paragraph)
 
   ;; mode specific bindings
-;;  (global-set-key (kbd "s-r") 'recentf-open-files)
-;;  (global-set-key (kbd "s-/") 'comment-dwim-line)
+  (global-set-key (kbd "s-/") 'comment-dwim-line)
 
   ;; move among windows with the arrows
   (global-set-key (kbd "M-s-<up>") 'other-window)
@@ -344,17 +343,33 @@ With argument, do this that many times."
   (global-set-key (kbd "s-q") 'unfill-region)
  ;;  (global-set-key (kbd "s-Q") 'unfill-paragraph)
 
+  (global-set-key (kbd "s-}") 'previous-user-buffer)
+  (global-set-key (kbd "s-{") 'next-user-buffer)
+  (global-set-key (kbd "s-]") 'previous-user-buffer)
+  (global-set-key (kbd "s-[") 'next-user-buffer)
+
   ;; my own ideas
   (global-set-key (kbd "s-1") 'kill-this-buffer)
   (global-set-key (kbd "s-2") 'find-file)
+
+  ;; f* keys
+  (global-set-key (kbd "<f1>") 'recentf-open-files)
+  (global-set-key (kbd "<f2>") 'find-file)
+  (global-set-key (kbd "<f3>") 'delete-other-windows)
+  (global-set-key (kbd "<f4>") 'split-window-vertically)
+  (global-set-key (kbd "s-<f4>") 'save-buffers-kill-emacs)
+  (global-set-key (kbd "<f5>") 'split-window-horizontally)
+  (global-set-key (kbd "<f6>") 'new-frame)
+  (global-set-key (kbd "<f7>") 'previous-user-buffer)
+  (global-set-key (kbd "<f9>") 'next-user-buffer)
+
   (global-set-key (kbd "s-7") 'beginning-of-line)
-  (global-set-key (kbd "s-8") 'previous-user-buffer)
   (global-set-key (kbd "s-9") 'end-of-line)
-  (global-set-key (kbd "s-0") 'next-user-buffer)
 
   (global-set-key (kbd "s-n") 'keyboard-escape-quit)
-  (global-set-key (kbd "s-t") 'new-window-on-right)
-
+  (global-set-key (kbd "s-t") 'new-frame)
+  (global-set-key (kbd "s-§") 'other-frame)
+  ;; C-<S-N>
 )
 
 ;; some mappings to avoid using backspace
