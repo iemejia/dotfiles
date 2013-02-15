@@ -340,7 +340,7 @@ With argument, do this that many times."
   (global-set-key (kbd "s-L") 'end-of-buffer)
 
   ;; non standard with mac
-  (global-set-key (kbd "s-q") 'unfill-region)
+  (global-set-key (kbd "s-q") 'unfill-paragraph)
  ;;  (global-set-key (kbd "s-Q") 'unfill-paragraph)
 
   (global-set-key (kbd "s-}") 'previous-user-buffer)
@@ -362,6 +362,9 @@ With argument, do this that many times."
   (global-set-key (kbd "<f6>") 'new-frame)
   (global-set-key (kbd "<f7>") 'previous-user-buffer)
   (global-set-key (kbd "<f9>") 'next-user-buffer)
+
+  (global-set-key (kbd "s-<f7>") 'other-window)
+  (global-set-key (kbd "s-<f9>") 'other-window)
 
   (global-set-key (kbd "s-7") 'beginning-of-line)
   (global-set-key (kbd "s-9") 'end-of-line)
@@ -631,5 +634,35 @@ With argument, do this that many times."
  ;; If there is more than one, they won't work right.
  )
 
-;; some fixes and keybindings to make it more ergoemacs-like
+;; configuration for latexmk support
 
+;; The following only works with AUCTeX loaded
+(require 'tex-site)
+
+(setenv "PATH" 
+        (concat "/usr/texbin" ":" (getenv "PATH")))
+
+;; Use PDF mode by default
+(setq-default TeX-PDF-mode t)
+;; Make emacs aware of multi-file projects
+(setq-default TeX-master "main") ; normally nil is interactive
+
+;; make latexmk available via C-c C-c
+;; Note: SyncTeX is setup via ~/.latexmkrc (see below)
+(add-hook 'LaTeX-mode-hook (lambda ()
+  (push
+    '("latexmk" "latexmk -pvc -pdf %s" TeX-run-TeX nil t ; %s
+      :help "Run latexmk on file")
+    TeX-command-list)))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+
+;; use Skim as default pdf viewer
+;; Skim's displayline is used for forward search (from .tex to .pdf)
+;; option -b highlights the current line; option -g opens Skim in the background  
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "<S-s-mouse-1>") #'TeX-view))
+          )
