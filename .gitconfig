@@ -3,10 +3,62 @@
 	ci = commit
 	st = status
 	br = branch
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    df = diff
+
 	type = cat-file -t
 	dump = cat-file -p
+
+    # log section
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    ll = log --stat --abbrev-commit
+    # see changes after the last pull
+    lc = !git oneline ORIG_HEAD.. --stat --no-merges
+    oneline = log --pretty=oneline --abbrev-commit --graph --decorate
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    # shows a version
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    # If you use shortened hashes, sometimes you may encounter a collision. The following alias prints out all commits whose hash start with given string
+    abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+    # To see the changes in a branch since it was forked from another branch, or since the last merge with the origin branch, you can add this 'forkdiff' alias
+    forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
+    # numcommits = "log -a --pretty=oneline | wc -l"
+    d = diff --color-words
+    find = !sh -c 'git ls-tree -r --name-only HEAD | grep --color $1' -
+    h = !git --no-pager log origin/master..HEAD --abbrev-commit --pretty=oneline
+
+    # subversion ones
+    spull = svn rebase
+    spush = svn dcommit
+
+    # undo section
+    undo = git reset --soft HEAD^
+    unstage = reset HEAD
+    amend = commit --amend
+    # diff section
+    changes = diff --name-status
+    dic = diff --cached
+    diffstat = diff --stat
+
+    # identifies who did something
+    who = shortlog -sne
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+
+    # reopens non commited files (to continue work)
+    #    mate = !git-ls-files -m -z | xargs -0 emacsclient -t -a=\\\"\\\"
+    #    mateall = !git-ls-files -m -o --exclude-standard -z | xargs -0 emacsclient -t -a=\\\"\\\"
+    # show all defined aliases
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+    # add arg to local .gitignore file
+#    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+
+    # github ones
+    pm = push origin master
+    cp = !git ci && git pm
+    fu = fetch upstream
+    mu = merge upstream/master
+    pu = !git fu && git mu
+
 [user]
 	name = Ismael Mejia
 	email = iemejia@gmail.com
@@ -20,8 +72,8 @@
 	editor = emacsclient -t -a=\\\"\\\"
 	autocrlf = input
 	safecrlf = true
+	pager = less -r
 [include]
 	path = ~/.github
-
 [credential]
 	helper = osxkeychain
