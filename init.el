@@ -594,6 +594,8 @@ With argument, do this that many times."
 ;; )
 ;; (add-hook 'c-mode-common-hook 'c-folding-hook)
 
+;; moving semantic.cache files out of the way
+(setq semanticdb-default-save-directory "~/.semantic")
 
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
@@ -666,3 +668,18 @@ With argument, do this that many times."
 (add-hook 'LaTeX-mode-hook
           (lambda () (local-set-key (kbd "<S-s-mouse-1>") #'TeX-view))
           )
+
+;; Python - Jedi
+;; (setenv "PATH" 
+;;         (concat "/opt/local/bin" ":" (getenv "PATH")))
+
+;; (autoload 'jedi:setup "jedi" nil t)
+;; (setq jedi:setup-keys t)
+
+;; (add-hook 'python-mode-hook
+;; (lambda ()
+;; (jedi:setup)
+;; ))
+
+;; for calibre recipes
+(add-to-list 'auto-mode-alist '("\\.recipe\\'" . python-mode))
