@@ -40,6 +40,9 @@
     dic = diff --cached
     diffstat = diff --stat
 
+    # show the diff of the last commit
+    last = log -1 -p
+
     # identifies who did something
     who = shortlog -sne
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
