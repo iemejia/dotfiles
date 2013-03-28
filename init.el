@@ -306,9 +306,22 @@ With argument, do this that many times."
     (delete-word (- arg)))
 
   (global-set-key (kbd "s-e") 'backward-delete-word)
-  (global-set-key (kbd "s-r") 'delete-word)
-  (global-set-key (kbd "s-d") 'delete-backward-char)
-  (global-set-key (kbd "s-f") 'delete-forward-char)
+  ;; (global-set-key (kbd "s-r") 'delete-word)
+  ;; (global-set-key (kbd "s-d") 'delete-backward-char)
+
+  (global-set-key (kbd "s-f") 'isearch-forward) 
+  (add-hook 'isearch-mode-hook
+	    (lambda ()
+	      (define-key isearch-mode-map (kbd "s-f") 'isearch-repeat-forward)
+	      )
+	    )
+
+  (global-set-key (kbd "s-r") 'isearch-backward) 
+  (add-hook 'isearch-mode-hook
+	    (lambda ()
+	      (define-key isearch-mode-map (kbd "s-r") 'isearch-repeat-backward)
+	      )
+	    )
 
   (global-set-key (kbd "s-u") 'backward-word)
   (global-set-key (kbd "s-o") 'forward-word)
