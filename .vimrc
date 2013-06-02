@@ -38,4 +38,28 @@ set number
 set incsearch
 set ignorecase
 set hlsearch
+set infercase
+set smartcase
+set cursorline
 
+" Theme
+colorscheme Tomorrow-Night
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Automatically leave insert mode after 'updatetime' (4s by default)
+" au CursHoldI * stopinsert
+
+" Improve tab navegation
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
+map <C-L> :tabn<CR>
+map <C-H> :tabp<CR>
