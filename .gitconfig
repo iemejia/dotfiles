@@ -39,6 +39,7 @@
     changes = diff --name-status
     dic = diff --cached
     diffstat = diff --stat
+    dl = diff HEAD@{1}
 
     # show the diff of the last commit
     last = log -1 -p
@@ -61,6 +62,7 @@
     fu = fetch upstream
     mu = merge upstream/master
     pu = !git fu && git mu
+    puf = pull upstream/master --ff-only
 
 [user]
 	name = Ismael Mejia
