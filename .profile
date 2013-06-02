@@ -94,6 +94,9 @@ PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 
 # Case insensitive tab completion in Bash
 bind "set completion-ignore-case on"
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# set show-all-if-ambiguous on
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
