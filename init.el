@@ -577,7 +577,7 @@ With argument, do this that many times."
 
 (if (boundp 'semantic-ia) (require 'semantic-ia))
 (if (boundp 'semantic-gcc) (require 'semantic-gcc))
-(semantic-gcc-setup)
+;; (semantic-gcc-setup)
 
 (setq semanticdb-default-save-directory (expand-file-name "~/.semanticdb")
       semanticdb-default-file-name "semantic.cache"
