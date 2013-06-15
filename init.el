@@ -441,8 +441,8 @@ With argument, do this that many times."
 ;; (require 'perspective)
 
 ; log4j-el
-(add-to-list 'load-path "~/.emacs.d/plugins/log4j-mode")
-(require 'log4j-mode)
+;; (add-to-list 'load-path "~/.emacs.d/plugins/log4j-mode")
+;; (require 'log4j-mode)
 
 ; ess
 (require 'ess-site)
