@@ -586,10 +586,10 @@ With argument, do this that many times."
 
 (setq semantic-load-turn-everything-on t)
 
-(global-semantic-idle-completions-mode t)
-(global-semantic-decoration-mode t)
-(global-semantic-highlight-func-mode t)
-(global-semantic-show-unmatched-syntax-mode t)
+;; (global-semantic-idle-completions-mode t)
+;; (global-semantic-decoration-mode t)
+;; (global-semantic-highlight-func-mode t)
+;; (global-semantic-show-unmatched-syntax-mode t)
 
 ;; CC-mode
 ;; (add-hook 'c-mode-hook '(lambda ()
