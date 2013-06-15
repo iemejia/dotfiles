@@ -510,21 +510,21 @@ With argument, do this that many times."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
  
-(require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 ;(require 'auto-complete-yasnippet)
 ;(require 'auto-complete-c)
-(require 'auto-complete-clang)
+;; (require 'auto-complete-clang)
 ;(require 'auto-complete-etags)
 ;(require 'auto-complete-extension)
 ;(require 'auto-complete-octave)
 ;(require 'auto-complete-verilog)
 
 ;; configuration for semantic
-(require 'semantic)
-(semantic-mode 1)
+;; (require 'semantic)
+;; (semantic-mode 1)
 
-(require 'semantic/bovine/gcc)
+;; (require 'semantic/bovine/gcc)
 ;;(semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
 
 (defun nix-setup-auto-complete-semantic ()
