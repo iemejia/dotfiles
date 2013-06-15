@@ -1,1 +1,0 @@
-/Users/ismael/repositories/dotfiles/init.el
