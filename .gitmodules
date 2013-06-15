@@ -1,3 +1,9 @@
 [submodule "bundle/SuperTab"]
 	path = bundle/SuperTab
 	url = https://github.com/vim-scripts/SuperTab.git
+[submodule "bundle/Syntastic"]
+	path = bundle/Syntastic
+	url = https://github.com/vim-scripts/Syntastic.git
+[submodule "bundle/vundle"]
+	path = bundle/vundle
+	url = https://github.com/gmarik/vundle.git
