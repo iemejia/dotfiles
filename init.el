@@ -527,15 +527,15 @@ With argument, do this that many times."
 ;; (require 'semantic/bovine/gcc)
 ;;(semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
 
-(defun nix-setup-auto-complete-semantic ()
-  "Arrange to do semantic autocompletion."
-;  (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic))
-(add-hook 'c-mode-common-hook 'nix-setup-auto-complete-semantic t)
+;; (defun nix-setup-auto-complete-semantic ()
+;;   "Arrange to do semantic autocompletion."
+;; ;  (add-to-list 'ac-sources 'ac-source-gtags)
+;;   (add-to-list 'ac-sources 'ac-source-semantic))
+;; (add-hook 'c-mode-common-hook 'nix-setup-auto-complete-semantic t)
 
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS"))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+;; (defun my-semantic-hook ()
+;;   (imenu-add-to-menubar "TAGS"))
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;; enable ctags for some languages:
 ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
