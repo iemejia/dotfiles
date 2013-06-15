@@ -106,3 +106,9 @@ export LANG=en_US.UTF-8
 # Personal ones
 alias catho="/Users/ismael/repositories/catho/catho/catho.py"
 alias subl="'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
+
+# check if terminal supports colors
+if [ “$TERM” != “dumb” ]; then
+  eval "`dircolors -b`"
+  alias ls='ls --color=auto'
+fi
