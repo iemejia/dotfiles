@@ -9,9 +9,10 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 # export JAVA_HOME=/Library/Java/Home
 export JAVA_HOME=`/usr/libexec/java_home`
+export GOPATH=$HOME/go
 
 # MacPorts Installer addition on 2012-02-28_at_08:41:07: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH:$GOPATH/bin
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 # cuda
@@ -104,11 +105,12 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Personal ones
-alias catho="/Users/ismael/repositories/catho/catho/catho.py"
+alias catho="~/repositories/catho/catho/catho.py"
 alias subl="'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
+alias youtube-dl="~/projects/youtube-dl/youtube-dl"
 
 # check if terminal supports colors
-if [ “$TERM” != “dumb” ]; then
-  eval "`dircolors -b`"
-  alias ls='ls --color=auto'
-fi
+# if [ “$TERM” != “dumb” ]; then
+#   eval "`dircolors -b`"
+#   alias ls='ls --color=auto'
+# fi
