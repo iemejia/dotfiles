@@ -409,6 +409,11 @@ With argument, do this that many times."
 (setq load-path 
       (cons "~/.emacs.d/elisp" load-path)) 
 
+;; small hack to add package.el for emacs 23 (for old systems compatibilit)
+(when (= emacs-major-version 23)
+  (add-to-list 'load-path "~/.emacs.d/elisp23/")
+  )
+
 (require 'package)
 ;; Marmalade
 ;; (add-to-list 'package-archives
@@ -697,7 +702,3 @@ With argument, do this that many times."
 ;; for calibre recipes
 (add-to-list 'auto-mode-alist '("\\.recipe\\'" . python-mode))
 
-;; small hack to add package.el for emacs 23 (for old systems compatibilit)
-(when (= emacs-major-version 23)
-  (add-to-list 'load-path "~/.emacs.d/elisp23/")
-  )
