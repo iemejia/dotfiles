@@ -8,3 +8,6 @@
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
     ignore = dirty
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git

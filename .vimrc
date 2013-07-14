@@ -103,7 +103,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
-
+" compatible copy/paste with mac
+set clipboard=unnamed
 
 set ignorecase
 set infercase
@@ -252,3 +253,5 @@ imap <right> <nop>
 " map <C-K> :bprev<CR>
 " map <C-L> :tabn<CR>
 " map <C-H> :tabp<CR>
+
+
