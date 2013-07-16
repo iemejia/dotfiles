@@ -74,7 +74,7 @@
 	ui = auto
 	interactive = auto
 [core]
-	editor = emacsclient -t -a=\\\"\\\"
+	editor = vim # emacsclient -t -a=\\\"\\\"
 	autocrlf = input
 	safecrlf = true
 	pager = less -r
