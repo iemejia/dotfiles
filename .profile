@@ -1,8 +1,8 @@
 export CLICOLOR=1
 # export LSCOLORS=ExFxCxDxBxegedabagacad
 export TERM=xterm-256color
-export SVN_EDITOR=emacs
-export EDITOR=emacs
+export SVN_EDITOR=vim
+export EDITOR=vim
 
 # MacPorts Installer addition on 2010-01-16_at_02:45:27: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
