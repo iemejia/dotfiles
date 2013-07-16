@@ -1,3 +1,6 @@
+" vim configuration file
+" vastly copied from http://amix.dk/vim/vimrc.html
+
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -14,6 +17,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/SuperTab'
 Bundle 'vim-scripts/Syntastic'
+Bundle 'vim-scripts/autocorrect.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'jcf/vim-latex'
 
@@ -249,6 +253,9 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" remap to escape faster, like C-c or C-[
+inoremap kj <Esc>
 
 " Automatically leave insert mode after 'updatetime' (4s by default)
 " au CursHoldI * stopinsert
