@@ -20,6 +20,7 @@ Bundle 'vim-scripts/Syntastic'
 Bundle 'vim-scripts/autocorrect.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'jcf/vim-latex'
+Bundle 'kien/ctrlp.vim'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -29,46 +30,46 @@ Bundle 'jcf/vim-latex'
 " Bundle 'FuzzyFinder'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
-" ...
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=1000
+set tabpagemax=50
 
 " Enable filetype plugins
-filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-syntax on
-
-" always show line numbers
-set number 
+filetype plugin on
+filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
 " With a map leader it's possible to do extra key combinations
-" " like <leader>w saves the current file
+" like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
+syntax on
+
+" always show line numbers
+set number 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set 7 lines to the cursor - when moving vertically using j/k
+set scrolloff=7
 
-set incsearch
 " Turn on the WiLd menu
 set wildmenu
 set wildmode=list:longest
+
 " Ignore compiled files
-" set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc
 
 " show current position
 set ruler
@@ -96,13 +97,14 @@ set hlsearch
 set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+" set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -115,20 +117,17 @@ set tm=500
 " compatible copy/paste with mac
 set clipboard=unnamed
 
-set ignorecase
 set infercase
 set cursorline
 
 set encoding=utf-8
-set scrolloff=3
 set autoindent
 set showmode
 set showcmd
 set visualbell
 set ttyfast
 set backspace=indent,eol,start
-set laststatus=2
-set relativenumber
+" set relativenumber
 " set undofile
 set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
@@ -193,8 +192,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \
-" Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -218,6 +216,9 @@ set noswapfile
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
+" Make Y consistent with C and D.  See :help Y.
+nnoremap Y y$
+
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -230,6 +231,9 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+
+" Always autosave everything (Ignore warnings from untitled buffers)
+:au FocusLost * silent! wa
 
 " Delete trailing white space on save, useful for Python and
 " CoffeeScript ;)
@@ -266,4 +270,16 @@ inoremap kj <Esc>
 " map <C-L> :tabn<CR>
 " map <C-H> :tabp<CR>
 
+" TeX / LaTeX related
+let g:tex_flavor = "latex"
+" unset title off
+
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
 
