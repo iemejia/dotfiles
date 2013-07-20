@@ -702,3 +702,9 @@ With argument, do this that many times."
 ;; for calibre recipes
 (add-to-list 'auto-mode-alist '("\\.recipe\\'" . python-mode))
 
+;; elpy
+;; (elpy-enable)
+
+;; evil mode
+;; (require 'evil)
+;; (evil-mode 1)
