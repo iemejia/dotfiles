@@ -705,21 +705,63 @@ With argument, do this that many times."
 ;; elpy
 ;; (elpy-enable)
 
-;; evil mode
-;; (require 'evil)
-;; (evil-mode 1)
-;; (define-key evil-normal-state-map "<SPC>" 'ace-jump-char-mode)
-;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
-;; (define-key evil-normal-state-map (kbd "SPC") 
-;; 	    (lambda ()
-;;             (interactive)
-;;             (next-line 15)
-;;             (evil-scroll-line-down 15)))
-;; (define-key evil-normal-state-map (kbd "S-SPC") 'c-end-of-defun)
+;; quiet, please! No dinging!
+(setq visible-bell t)
+;; (setq ring-bell-function `(lambda ()
+;;   (set-face-background 'default "DodgerBlue")
+;;   (set-face-background 'default "black")))
 
-;; (define-key evil-normal-state-map [backspace]
-;; 	    (lambda ()
-;;             (interactive)
-;;             (previous-line 15)
-;;             (evil-scroll-line-up 15)))
-;; (define-key evil-normal-state-map [S-backspace] 'c-beginning-of-defun)
+;; evil mode
+(require 'evil)
+(evil-mode 1)
+
+; some keymaps from ~/.vimrc
+;; (define-key evil-insert-state-map [f1] 'save-buffer) ; save
+;; (define-key evil-normal-state-map [f1] 'save-buffer) ; save
+(define-key evil-normal-state-map ",w" 'save-buffer) ; save
+(define-key evil-normal-state-map ",q" 'kill-buffer) ; quit
+(define-key evil-normal-state-map ",x" 'save-buffers-kill-emacs) ; save and quit
+(define-key evil-normal-state-map (kbd "<SPC>") 'evil-search-forward) ; search next
+(define-key evil-motion-state-map (kbd "C-SPC") 'evil-search-backward) ; search previous
+
+;; defines 'kj' combination same as <ESC> 
+(define-key evil-insert-state-map "k" #'cofi/maybe-exit)
+
+(evil-define-command cofi/maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "k")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
+               nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?j))
+    (delete-char -1)
+    (set-buffer-modified-p modified)
+    (push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+                          (list evt))))))))
+
+;; disable arrows
+;; (define-key evil-insert-state-map [left] 'undefined)
+;; (define-key evil-insert-state-map [right] 'undefined)
+;; (define-key evil-insert-state-map [up] 'undefined)
+;; (define-key evil-insert-state-map [down] 'undefined)
+
+;; (define-key evil-motion-state-map [left] 'undefined)
+;; (define-key evil-motion-state-map [right] 'undefined)
+;; (define-key evil-motion-state-map [up] 'undefined)
+;; (define-key evil-motion-state-map [down] 'undefined)
+
+;; Remap VIM 0 to first non-blank character
+(evil-redirect-digit-argument evil-motion-state-map "0" 'evil-first-non-blank)
+
+;; Make Y consistent with C and D.  See :help Y. nnoremap Y y$
+(define-key evil-normal-state-map "Y" (kbd "y$"))
+
+;; del key mapping 
+;; (define-key evil-insert-state-map (kbd "<delete>") 'evil-delete-char)
+
+;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
+;; todo c-j to move among frames
