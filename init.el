@@ -708,3 +708,18 @@ With argument, do this that many times."
 ;; evil mode
 ;; (require 'evil)
 ;; (evil-mode 1)
+;; (define-key evil-normal-state-map "<SPC>" 'ace-jump-char-mode)
+;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
+;; (define-key evil-normal-state-map (kbd "SPC") 
+;; 	    (lambda ()
+;;             (interactive)
+;;             (next-line 15)
+;;             (evil-scroll-line-down 15)))
+;; (define-key evil-normal-state-map (kbd "S-SPC") 'c-end-of-defun)
+
+;; (define-key evil-normal-state-map [backspace]
+;; 	    (lambda ()
+;;             (interactive)
+;;             (previous-line 15)
+;;             (evil-scroll-line-up 15)))
+;; (define-key evil-normal-state-map [S-backspace] 'c-beginning-of-defun)
