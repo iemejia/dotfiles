@@ -15,13 +15,15 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/SuperTab'
-Bundle 'vim-scripts/Syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'dbakker/vim-lint'
 Bundle 'vim-scripts/autocorrect.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'jcf/vim-latex'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Lokaltog/powerline'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}

@@ -1,13 +1,17 @@
-[submodule "bundle/SuperTab"]
-	path = bundle/SuperTab
-	url = https://github.com/vim-scripts/SuperTab.git
-[submodule "bundle/Syntastic"]
-	path = bundle/Syntastic
-	url = https://github.com/vim-scripts/Syntastic.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "bundle/vim-lint"]
+	path = bundle/vim-lint
+	url = https://github.com/dbakker/vim-lint.git
+	ignore = dirty
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
-    ignore = dirty
+        ignore = dirty
 [submodule "bundle/jedi-vim"]
 	path = bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
@@ -26,3 +30,7 @@
 [submodule "bundle/vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+	ignore = dirty
+[submodule "bundle/powerline"]
+	path = bundle/powerline
+	url = https://github.com/Lokaltog/powerline.git
