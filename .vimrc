@@ -14,8 +14,10 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
+Bundle 'gmarik/snipmate.vim'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'dbakker/vim-lint'
@@ -54,6 +56,8 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = '	'      " Tab as a local leader
+let g:is_posix = 1             " vim's default is archaic bourne shell, bring it up to the 90s
 
 " Fast saving
 nmap <leader>w :w!<cr>
