@@ -427,8 +427,17 @@ With argument, do this that many times."
 ;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
+;; remember to execute M-x list-packages before
+;; check if the packages is installed; if not, install it.
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+	   (package-install package))))
+ '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized auto-complete evil org))
+
 ;; set font
-(set-frame-font "Menlo-12")
+;; (set-frame-font "Menlo-12")
 ;(text-scale-increase 1)
 
 ;; set theme
@@ -450,9 +459,9 @@ With argument, do this that many times."
 ;; (require 'log4j-mode)
 
 ; ess
-(require 'ess-site)
-(add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
-(add-to-list 'auto-mode-alist '("\\.r\\'" . R-mode))
+;; (require 'ess-site)
+;; (add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
+;; (add-to-list 'auto-mode-alist '("\\.r\\'" . R-mode))
 ; (setq ess-ask-about-transfile t)
 
 ; start server
