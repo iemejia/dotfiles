@@ -427,13 +427,15 @@ With argument, do this that many times."
 ;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-;; remember to execute M-x list-packages before
+;;; refresh package list (and creates in case it doesn't exist
+(when (not package-archive-contents) (package-refresh-contents))
+
 ;; check if the packages is installed; if not, install it.
 (mapc
  (lambda (package)
    (or (package-installed-p package)
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-	   (package-install package))))
+       ;; (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+	   (package-install package)))
  '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow auto-complete evil org))
 
 ;; set font
