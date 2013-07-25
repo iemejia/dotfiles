@@ -427,7 +427,7 @@ With argument, do this that many times."
 ;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-;;; refresh package list (and creates in case it doesn't exist
+;; refresh package list (and creates in case it doesn't exist
 (when (not package-archive-contents) (package-refresh-contents))
 
 ;; check if the packages is installed; if not, install it.
@@ -437,6 +437,10 @@ With argument, do this that many times."
        ;; (if (y-or-n-p (format "Package %s is missing. Install it? " package))
 	   (package-install package)))
  '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow auto-complete evil org))
+
+;; a first trial to do auto upgrade of packages
+;; (package-menu-mark-upgrades)
+;; (package-menu-execute)
 
 ;; set font
 ;; (set-frame-font "Menlo-12")
