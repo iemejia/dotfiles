@@ -779,8 +779,10 @@ With argument, do this that many times."
 ;; Make Y consistent with C and D.  See :help Y. nnoremap Y y$
 (define-key evil-normal-state-map "Y" (kbd "y$"))
 
-;; del key mapping 
-;; (define-key evil-insert-state-map (kbd "<delete>") 'evil-delete-char)
+;; del key mapping (del apparently is mapped to C-d, and C-d to scroll down)
+(define-key evil-normal-state-map "\C-d" 'evil-delete-char)
+(define-key evil-insert-state-map "\C-d" 'evil-delete-char)
+(define-key evil-visual-state-map "\C-d" 'evil-delete-char)
 
 ;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
 ;; todo c-j to move among frames
