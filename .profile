@@ -22,6 +22,9 @@ export PATH=/usr/local/cuda/bin:$PATH
 # python 2.7
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 
+# temporary camlistore path
+export PATH=~/projects/camlistore/bin:$PATH
+
 #
 # this should be in .bashrc but to do this we have to create
 # the .bash_profile file with
@@ -114,3 +117,21 @@ alias youtube-dl="~/projects/youtube-dl/youtube-dl"
 #   eval "`dircolors -b`"
 #   alias ls='ls --color=auto'
 # fi
+
+# Script for ensuring only one instance of gpg-agent is running
+# and if there is not one, start an instance of gpg-agent.
+if test -f $HOME/.gpg-agent-info && kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null; then
+	GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info`
+	SSH_AUTH_SOCK=`cat $HOME/.ssh-auth-sock`
+	SSH_AGENT_PID=`cat $HOME/.ssh-agent-pid`
+	export GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID
+else
+	eval `gpg-agent --daemon`
+	echo $GPG_AGENT_INFO >$HOME/.gpg-agent-info
+	echo $SSH_AUTH_SOCK > $HOME/.ssh-auth-sock
+	echo $SSH_AGENT_PID > $HOME/.ssh-agent-pid
+fi
+# Imperative that this environment variable always reflects the output
+# of the tty command.
+GPG_TTY=`tty`
+export GPG_TTY
