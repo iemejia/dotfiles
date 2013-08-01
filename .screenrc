@@ -1,4 +1,9 @@
 # Disable the startup message
-
 startup_message off
+
+# Use utf-8 by default
 defutf8 on
+
+# config 256 color term
+term "screen-256color"
+
