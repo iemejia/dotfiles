@@ -111,6 +111,7 @@ export LANG=en_US.UTF-8
 alias catho="~/repositories/catho/catho/catho.py"
 alias subl="'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
 alias youtube-dl="~/projects/youtube-dl/youtube-dl"
+alias coursera-dl="~/projects/coursera/coursera-dl"
 
 # check if terminal supports colors
 # if [ “$TERM” != “dumb” ]; then
