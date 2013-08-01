@@ -150,5 +150,5 @@ else
 fi
 # Imperative that this environment variable always reflects the output
 # of the tty command.
-GPG_TTY=`tty`
-export GPG_TTY
+export GPG_TTY=`tty`
+
