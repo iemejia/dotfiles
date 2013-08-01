@@ -85,14 +85,12 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 # alias mv='mv -i'
 # alias cp='cp -i'
  
-# which version of ls should we use?
-    if [ -x /usr/local/bin/gls ]; then
-	    alias ls='/usr/local/bin/gls -F --color --human-readable'
-#    else
-#	    if [ -x /usr/local/bin/colorls ]; then
-#	        alias ls='/usr/local/bin/colorls -G -F'
-#	    fi
-    fi
+# use gnu ls if available (hacky solution to the color problem)
+if [ -x /usr/local/bin/gls ]; then
+    alias ls='/usr/local/bin/gls -F --color --human-readable'
+else
+    alias ls='ls -F --color --human-readable'
+fi
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ls='ls -GF'
