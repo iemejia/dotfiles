@@ -292,3 +292,7 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
 };
+ignores = (
+  { level = "JOINS QUITS"; channels = ( "##aws" ); },
+  { level = "JOINS QUITS"; channels = ( "#go-nuts" ); }
+);
