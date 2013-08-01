@@ -1,4 +1,5 @@
 export CLICOLOR=1
+export LS_COLORS='di=01;33'
 # export LSCOLORS=ExFxCxDxBxegedabagacad
 export TERM=xterm-256color
 export SVN_EDITOR=vim
