@@ -8,9 +8,12 @@ export EDITOR=vim
 
 # MacPorts Installer addition on 2010-01-16_at_02:45:27: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
 # Finished adapting your PATH environment variable for use with MacPorts.
-# export JAVA_HOME=/Library/Java/Home
-export JAVA_HOME=`/usr/libexec/java_home`
+if [ -f /usr/libexec/java_home ]; then
+    export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
 export GOPATH=$HOME/go
 
 # MacPorts Installer addition on 2012-02-28_at_08:41:07: adding an appropriate PATH variable for use with MacPorts.
