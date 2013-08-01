@@ -87,13 +87,12 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
  
 # use gnu ls if available (hacky solution to the color problem)
 if [ -x /usr/local/bin/gls ]; then
-    alias ls='/usr/local/bin/gls -F --color --human-readable'
+    alias ls='/usr/local/bin/gls -GF --color --human-readable'
 else
-    alias ls='ls -F --color --human-readable'
+    alias ls='ls -GF --color --human-readable'
 fi
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
-alias ls='ls -GF'
 alias ll='ls -lF'
 alias la='ls -alF'
 
@@ -106,7 +105,6 @@ alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
-#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 
 # Case insensitive tab completion in Bash
