@@ -1,9 +1,36 @@
 # Disable the startup message
 startup_message off
 
+# if loose connection, autodetatch
+autodetach      on
+
+# If a window goes unresponsive, don't block the whole session waiting for it.
+defnonblock on
+
 # Use utf-8 by default
 defutf8 on
 
 # config 256 color term
 term "screen-256color"
+
+# informative status bar
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+
+# Use x scrolling mechanism
+termcapinfo xterm* it@:te@
+
+# Shows active process as screen title
+# this grabs the app name used.  need to modify the bash prompt
+shelltitle "$ |bash"
+
+# keep the last 5000 lines of output
+defscrollback 5000
+
+# fixes it so the window can scroll
+termcapinfo xterm* it@:te@
+
+# Sets the screen shell to be the same as the current one
+shell -$SHELL
 
