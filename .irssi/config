@@ -30,6 +30,16 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_cert = "~/.irssi/iemejia.pem";
+    ssl_verify = "yes";
+    ssl_cafile = "~/.irssi/UTN-USERFirst-Hardware.pem";
+    autoconnect = "yes";
   }
 );
 
@@ -96,7 +106,13 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
-  Freenode = { type = "IRC"; };
+  Freenode = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "4";
+    max_modes = "4";
+    max_whois = "1";
+  };
 };
 
 channels = (
