@@ -1,9 +1,26 @@
 [alias]
+    # commit
 	co = checkout
 	ci = commit
+    cm = commit -m
+    cma = commit -a -m
 	st = status
 	br = branch
+
+    # diff section
     df = diff
+    d = diff --color-words
+    dc = diff --cached
+    #list modified files in last commit
+    #dl = "!git ll -1"
+    #diff last commit
+    dlc = diff --cached HEAD^
+    changes = diff --name-status
+    diffstat = diff --stat
+    ds = diff --stat
+    dl = diff HEAD@{1}
+    # show the diff of the last commit
+    last = log -1 -p
 
 	type = cat-file -t
 	dump = cat-file -p
@@ -23,26 +40,21 @@
     # To see the changes in a branch since it was forked from another branch, or since the last merge with the origin branch, you can add this 'forkdiff' alias
     forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
     # numcommits = "log -a --pretty=oneline | wc -l"
-    d = diff --color-words
+
     find = !sh -c 'git ls-tree -r --name-only HEAD | grep --color $1' -
     h = !git --no-pager log origin/master..HEAD --abbrev-commit --pretty=oneline
 
     # subversion ones
     spull = svn rebase
     spush = svn dcommit
+    svnr = svn rebase
+    svnd = svn dcommit
+    svnl = svn log --oneline --show-commit
 
     # undo section
     undo = git reset --soft HEAD^
     unstage = reset HEAD
     amend = commit --amend
-    # diff section
-    changes = diff --name-status
-    dic = diff --cached
-    diffstat = diff --stat
-    dl = diff HEAD@{1}
-
-    # show the diff of the last commit
-    last = log -1 -p
 
     # identifies who did something
     who = shortlog -sne
@@ -63,6 +75,21 @@
     mu = merge upstream/master
     pu = !git fu && git mu
     puf = pull upstream/master --ff-only
+
+    ai = add --interactive
+
+    # stash
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+    sc = stash clear
+    # tags
+    lasttag = describe --tags --abbrev=0
+    lt = describe --tags --abbrev=0
+
+    # merges
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
 [user]
 	name = Ismael Mejia
