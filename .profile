@@ -86,8 +86,8 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 # alias cp='cp -i'
  
 # use gnu ls if available (hacky solution to the color problem)
-if [ -x /usr/local/bin/gls ]; then
-    alias ls='/usr/local/bin/gls -GF --color --human-readable'
+if [ -x /opt/local/bin/gls ]; then
+    alias ls='gls -GF --color --human-readable'
 else
     alias ls='ls -GF --color --human-readable'
 fi
