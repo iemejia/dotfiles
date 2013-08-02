@@ -1,1 +1,1 @@
-screen_away.pl
+../screen_away.pl
