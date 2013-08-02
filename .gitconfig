@@ -43,6 +43,16 @@
 
     find = !sh -c 'git ls-tree -r --name-only HEAD | grep --color $1' -
     h = !git --no-pager log origin/master..HEAD --abbrev-commit --pretty=oneline
+    #grep on filename
+    f = "!git ls-files | grep -i"
+
+    #reset commands
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
 
     # subversion ones
     spull = svn rebase
@@ -91,6 +101,15 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
+    #list remotes
+    rem="!git config -l | grep remote.*url | tail -n +2"
+
+    #apply patch from other local repo
+#    lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
+
+    #subtree add
+#    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
+#
 [user]
 	name = Ismael Mejia
 	email = iemejia@gmail.com
