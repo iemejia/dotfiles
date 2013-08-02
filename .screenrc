@@ -13,6 +13,9 @@ defutf8 on
 # config 256 color term
 term "screen-256color"
 
+# Instead of Control-a, make the escape/command character be Control-b
+escape ^Bb 
+
 # informative status bar
 hardstatus off
 hardstatus alwayslastline
