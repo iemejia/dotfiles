@@ -295,8 +295,10 @@ settings = {
     autolog = "yes";
     autolog_path = "~/irclogs/%Y/$tag/$0.%m-%d.log";
   };
+  "perl/core/scripts" = { screen_away_active = "yes"; };
 };
 ignores = (
   { level = "JOINS QUITS"; channels = ( "##aws" ); },
   { level = "JOINS QUITS"; channels = ( "#go-nuts" ); }
 );
+logs = { };
