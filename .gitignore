@@ -1,4 +1,5 @@
 .DS_Store
 *.github
 .irssi/iemejia.pem
+.irssi/away.log
 
