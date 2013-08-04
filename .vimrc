@@ -244,7 +244,7 @@ if has("mac") || has("macunix")
 endif
 
 " Always autosave everything (Ignore warnings from untitled buffers)
-:au FocusLost * silent! wa
+au FocusLost * silent! wa
 
 " Delete trailing white space on save, useful for Python and
 " CoffeeScript ;)
@@ -299,4 +299,9 @@ endif
 " years:
 " nmap ; :
 " vmap ; :
+
+" shortcuts for new lines without the annoying change to insert mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+nmap oo o<Esc>k
 
