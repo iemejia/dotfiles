@@ -294,14 +294,15 @@ if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
-" In my ~/.vimrc I have had the following two keybindings to make
-" getting into command mode easier for myself over the past fifteen
-" years:
-" nmap ; :
-" vmap ; :
+" getting into command mode easier 
+nnoremap ; :
 
 " shortcuts for new lines without the annoying change to insert mode
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 nmap oo o<Esc>k
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
 
