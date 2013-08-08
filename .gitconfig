@@ -139,3 +139,5 @@
 	prompt = false
 [difftool]
 	prompt = false
+[push]
+	default = simple
