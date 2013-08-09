@@ -101,12 +101,18 @@ alias la='ls -alF'
 # and exclude grepping through .svn folders.
 alias grep='grep --color=auto' # --exclude-dir=\.svn'
 alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
+
+# alias for git
+alias g='git'
+# Autocomplete for 'g' as well
+complete -o default -o nospace -F _git g
  
 # show git branch
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
+# export PS1="\u@\h \w> "
 
 # Case insensitive tab completion in Bash
 bind "set completion-ignore-case on"
