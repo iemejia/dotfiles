@@ -143,6 +143,7 @@ channels = (
   { name = "#polymath"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "##c"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#youtube-dl"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; }
 );
 
