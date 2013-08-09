@@ -127,17 +127,28 @@
 	autocrlf = input
 	safecrlf = true
 	pager = less -r
+	whitespace = trailing-space,space-before-tab
 [include]
 	path = ~/.github
 [credential]
 	helper = osxkeychain
 [merge]
 	tool = vimdiff
+	stat = true
 [diff]
 	tool = vimdiff
+	renames = copies
+	mnemonicprefix = true
 [mergetool]
 	prompt = false
 [difftool]
 	prompt = false
 [push]
 	default = simple
+[advice]
+	statusHints = false
+#	pushNonFastForward = false
+[branch]
+	autosetupmerge = true
+[rerere]
+	enabled = true
