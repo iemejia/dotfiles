@@ -27,8 +27,11 @@
 
     # log section
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgf = log --pretty=format:'%Cred%h%Creset%d - %C(yellow)%s%C(bold blue) <%cn>' --decorate --numstat
+    lp = !git lg -p
     ll = log --stat --abbrev-commit
+    lt = log --graph --oneline --decorate --all
     # see changes after the last pull
     lc = !git oneline ORIG_HEAD.. --stat --no-merges
     oneline = log --pretty=oneline --abbrev-commit --graph --decorate
@@ -136,3 +139,5 @@
 	prompt = false
 [difftool]
 	prompt = false
+[push]
+	default = simple
