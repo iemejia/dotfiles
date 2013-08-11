@@ -12,6 +12,8 @@ export EDITOR=vim
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # added gnu path as default
 export PATH=/opt/local/libexec/gnubin:$PATH
+# added the /usr/local/bin
+export PATH=/usr/local/bin:$PATH
 
 # Finished adapting your PATH environment variable for use with MacPorts.
 if [ -f /usr/libexec/java_home ]; then
@@ -82,11 +84,6 @@ fi
 # alias for mysql
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
-
-# Make some possibly destructive commands more interactive.
-# alias rm='rm -i'
-# alias mv='mv -i'
-# alias cp='cp -i'
  
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ls='ls -GF --color --human-readable'
@@ -106,10 +103,6 @@ complete -o default -o nospace -F _git g
 # show git branch
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
-
-# mvim alias
-#alias vim='~/bin/mvim -v'
-#alias vi=vim
 
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 # export PS1="\u@\h \w> "
