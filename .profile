@@ -10,6 +10,8 @@ export EDITOR=vim
 
 # MacPorts Installer addition on 2010-01-16_at_02:45:27: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# added gnu path as default
+export PATH=/opt/local/libexec/gnubin:$PATH
 
 # Finished adapting your PATH environment variable for use with MacPorts.
 if [ -f /usr/libexec/java_home ]; then
@@ -86,14 +88,8 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 # alias mv='mv -i'
 # alias cp='cp -i'
  
-# use gnu ls if available (hacky solution to the color problem)
-if [ -x /opt/local/bin/gls ]; then
-    alias ls='gls -GF --color --human-readable'
-else
-    alias ls='ls -GF --color --human-readable'
-fi
-
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ls='ls -GF --color --human-readable'
 alias ll='ls -lF'
 alias la='ls -alF'
 
@@ -110,6 +106,10 @@ complete -o default -o nospace -F _git g
 # show git branch
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
+
+# mvim alias
+#alias vim='~/bin/mvim -v'
+#alias vi=vim
 
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 # export PS1="\u@\h \w> "
