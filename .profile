@@ -94,6 +94,8 @@ alias la='ls -alF'
 # and exclude grepping through .svn folders.
 alias grep='grep --color=auto' # --exclude-dir=\.svn'
 alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
+alias v='vim'
+alias vi='vim'
 
 # alias for git
 alias g='git'
