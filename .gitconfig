@@ -144,7 +144,7 @@
 [difftool]
 	prompt = false
 [push]
-	default = simple
+	#default = simple
 [advice]
 	statusHints = false
 #	pushNonFastForward = false
