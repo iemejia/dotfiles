@@ -14,6 +14,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/opt/local/libexec/gnubin:$PATH
 # added the /usr/local/bin
 export PATH=/usr/local/bin:$PATH
+# added the home binaries directory
+export PATH=~/bin:$PATH
 
 # Finished adapting your PATH environment variable for use with MacPorts.
 if [ -f /usr/libexec/java_home ]; then
@@ -86,7 +88,7 @@ alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
  
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
-alias ls='ls -GF --color --human-readable'
+alias ls='ls -GF --color=always --human-readable'
 alias ll='ls -lF'
 alias la='ls -alF'
 
