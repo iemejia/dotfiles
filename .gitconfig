@@ -65,7 +65,7 @@
     svnl = svn log --oneline --show-commit
 
     # undo section
-    undo = git reset --soft HEAD^
+    undo = !git reset --soft HEAD^
     unstage = reset HEAD
     amend = commit --amend
 
