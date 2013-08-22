@@ -127,7 +127,7 @@
 	autocrlf = input
 	safecrlf = true
 	pager = less -r
-	whitespace = trailing-space,space-before-tab
+	whitespace = trailing-space,space-before-tab,blank-at-eol
 [include]
 	path = ~/.github
 [credential]
@@ -154,3 +154,5 @@
 	enabled = true
 [help]
 	autocorrect = 1
+[color "diff"]
+	whitespace = red reverse
