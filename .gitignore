@@ -2,4 +2,4 @@
 *.github
 .irssi/iemejia.pem
 .irssi/away.log
-
+.emacs.d/auto-save-list/
