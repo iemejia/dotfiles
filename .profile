@@ -86,7 +86,10 @@ fi
 # alias for mysql
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
- 
+
+# alias for remote irssi
+alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
+
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ls='ls -GF --color=always --human-readable'
 alias ll='ls -lF'
