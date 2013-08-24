@@ -306,3 +306,7 @@ nmap oo o<Esc>k
 vmap Q gq
 nmap Q gqap
 
+" Automatically change the colorscheme for diff
+if &diff
+    colorscheme shine
+endif
