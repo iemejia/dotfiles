@@ -111,6 +111,9 @@ complete -o default -o nospace -F _git g
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
+# complete for the aws-cli tool
+complete -C aws_completer aws
+
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 # export PS1="\u@\h \w> "
 
