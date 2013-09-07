@@ -29,6 +29,8 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'Lokaltog/powerline'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'chriskempson/base16-vim'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -257,7 +259,9 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
-colorscheme Tomorrow-Night
+set background=dark
+" let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow
 
 " disable arrow keys
 map <up> <nop>
