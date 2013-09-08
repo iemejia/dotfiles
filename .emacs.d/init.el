@@ -436,7 +436,7 @@ With argument, do this that many times."
    (or (package-installed-p package)
        ;; (if (y-or-n-p (format "Package %s is missing. Install it? " package))
 	   (package-install package)))
- '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow base16-theme bash-completion auto-complete evil org))
+ '(auctex markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow base16-theme bash-completion auto-complete popup undo-tree evil org))
 
 ;; a first trial to do auto upgrade of packages
 ;; (package-menu-mark-upgrades)
