@@ -436,7 +436,7 @@ With argument, do this that many times."
    (or (package-installed-p package)
        ;; (if (y-or-n-p (format "Package %s is missing. Install it? " package))
 	   (package-install package)))
- '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow auto-complete evil org))
+ '(auctex evil markdown-mode color-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow base16-theme bash-completion auto-complete evil org))
 
 ;; a first trial to do auto upgrade of packages
 ;; (package-menu-mark-upgrades)
@@ -449,6 +449,7 @@ With argument, do this that many times."
 ;; set theme
 (require 'color-theme)
 (require 'color-theme-sanityinc-tomorrow)
+;;(require 'base16-tomorrow-theme)
 
 (if (= 24 emacs-major-version)
     (load-theme 'sanityinc-tomorrow-night t)
