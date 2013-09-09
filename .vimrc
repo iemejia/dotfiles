@@ -31,6 +31,7 @@ Bundle 'vim-scripts/closetag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'chriskempson/base16-vim'
+Bundle 'Lokaltog/vim-easymotion'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
