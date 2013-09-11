@@ -83,10 +83,6 @@ fi
 
 # this should be in .bash_aliases
 
-# alias for mysql
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
-
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 
