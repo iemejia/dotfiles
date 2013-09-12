@@ -262,7 +262,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
-set background=dark
+"set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 
@@ -317,3 +317,13 @@ nmap Q gqap
 if &diff
     colorscheme shine
 endif
+
+" vim-airline configuration
+let g:airline_theme = 'powerlineish'
+" let g:airline_powerline_fonts = 1
+set noshowmode
+
+" avoid delay after escape mode
+set timeoutlen=1000 ttimeoutlen=0
+
+
