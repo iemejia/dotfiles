@@ -40,8 +40,54 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras github mysql python screen tmux vagrant mercurial macports golang scala sbt go ruby gem svn osx rails)
+plugins=(git git-extras github mysql python screen vagrant mercurial macports golang scala sbt go ruby gem svn osx rails)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export EDITOR=vim
+
+# added macports path
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# added gnu path as default
+export PATH=/opt/local/libexec/gnubin:$PATH
+# added the /usr/local/bin
+export PATH=/usr/local/bin:$PATH
+# home binaries directory
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# java path
+if [ -f /usr/libexec/java_home ]; then
+    export JAVA_HOME=`/usr/libexec/java_home`
+fi
+# go path
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+# cuda
+export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH
+
+# python 2.7
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
+# alias for remote irssi
+alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
+
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ls='ls -GF --color=always --human-readable'
+alias ll='ls -lF'
+alias la='ls -alF'
+
+# Make grep more user friendly by highlighting matches
+# and exclude grepping through .svn folders.
+alias grep='grep --color=auto' # --exclude-dir=\.svn'
+alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
+alias v='vim'
+alias vi='vim'
+
+# alias for git
+alias g='git'
+
