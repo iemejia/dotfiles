@@ -8,29 +8,24 @@ export TERM=xterm-256color
 export SVN_EDITOR=vim
 export EDITOR=vim
 
-# MacPorts Installer addition on 2010-01-16_at_02:45:27: adding an appropriate PATH variable for use with MacPorts.
+# added macports path
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # added gnu path as default
 export PATH=/opt/local/libexec/gnubin:$PATH
 # added the /usr/local/bin
 export PATH=/usr/local/bin:$PATH
-# added the home binaries directory
-export PATH=~/bin:$PATH
 # home binaries directory
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Finished adapting your PATH environment variable for use with MacPorts.
+# java path
 if [ -f /usr/libexec/java_home ]; then
     export JAVA_HOME=`/usr/libexec/java_home`
 fi
-
+# go path
 export GOPATH=$HOME/go
-
-# MacPorts Installer addition on 2012-02-28_at_08:41:07: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH:$GOPATH/bin
-# Finished adapting your PATH environment variable for use with MacPorts.
+export PATH=$GOPATH/bin:$PATH
 
 # cuda
 export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
@@ -104,6 +99,7 @@ alias vi='vim'
 
 # alias for git
 alias g='git'
+
 # Autocomplete for 'g' as well
 complete -o default -o nospace -F _git g
  
