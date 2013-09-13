@@ -22,12 +22,12 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'dbakker/vim-lint'
 Bundle 'vim-scripts/autocorrect.vim'
-" Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'jcf/vim-latex'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'Lokaltog/powerline'
-Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/powerline'
+"Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chriskempson/vim-tomorrow-theme'
@@ -321,11 +321,21 @@ endif
 
 " vim-airline configuration
 let g:airline_theme = 'powerlineish'
-" let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 set noshowmode
-set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256
+" colours)
+" set t_Co=256
 
 " avoid delay after escape mode
 set timeoutlen=1000 ttimeoutlen=0
 
+" powerline configuration
+let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'compatible'
+let g:Powerline_cache_enabled = 1
+set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
+" For powerline font in MacVim
+set guifont=Menlo\ For\ Powerline
 
