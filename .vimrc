@@ -332,9 +332,9 @@ set noshowmode
 set timeoutlen=1000 ttimeoutlen=0
 
 " powerline configuration
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
-set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
+"let g:Powerline_symbols = 'fancy'
+"let g:Powerline_cache_enabled = 1
+"set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
 " For powerline font in MacVim
-set guifont=Menlo\ For\ Powerline
+"set guifont=Menlo\ For\ Powerline
 
