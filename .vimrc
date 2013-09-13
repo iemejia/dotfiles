@@ -22,12 +22,15 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'dbakker/vim-lint'
 Bundle 'vim-scripts/autocorrect.vim'
-"Bundle 'davidhalter/jedi-vim'
 Bundle 'jcf/vim-latex'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
-"Bundle 'Lokaltog/powerline'
-Bundle 'bling/vim-airline'
+if has('mac')
+  Bundle 'Lokaltog/powerline'
+  Bundle 'davidhalter/jedi-vim'
+else
+  Bundle 'bling/vim-airline'
+endif
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chriskempson/vim-tomorrow-theme'
@@ -332,9 +335,11 @@ set noshowmode
 set timeoutlen=1000 ttimeoutlen=0
 
 " powerline configuration
-"let g:Powerline_symbols = 'fancy'
-"let g:Powerline_cache_enabled = 1
-"set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
-"" For powerline font in MacVim
-"set guifont=Menlo\ For\ Powerline
+If has("mac")
+  let g:Powerline_symbols = 'fancy'
+  let g:Powerline_cache_enabled = 1
+  set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
+  " For powerline font in MacVim
+  set guifont=Menlo\ For\ Powerline
+endif
 
