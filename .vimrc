@@ -34,6 +34,7 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'jelera/vim-gummybears-colorscheme'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -262,7 +263,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
-"set background=dark
+set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 
@@ -322,6 +323,7 @@ endif
 let g:airline_theme = 'powerlineish'
 " let g:airline_powerline_fonts = 1
 set noshowmode
+set laststatus=2
 
 " avoid delay after escape mode
 set timeoutlen=1000 ttimeoutlen=0
