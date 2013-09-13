@@ -1,3 +1,5 @@
+alias ls='ls -GF --color=always --human-readable'
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -5,8 +7,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="sorin"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 # sh ~/.zsh-base16/base16-tomorrow.dark.sh
 
 # Example aliases
@@ -42,7 +44,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras github mysql python screen vagrant mercurial macports golang scala sbt go ruby gem svn osx rails)
+plugins=(cp git github mysql python screen vagrant mercurial macports golang scala sbt go ruby gem svn osx rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,8 +82,6 @@ alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ls='ls -GF --color=always --human-readable'
-alias ll='ls -lF'
-alias la='ls -alF'
 
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .svn folders.
