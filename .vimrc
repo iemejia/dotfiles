@@ -335,7 +335,7 @@ set noshowmode
 set timeoutlen=1000 ttimeoutlen=0
 
 " powerline configuration
-If has("mac")
+if has("mac")
   let g:Powerline_symbols = 'fancy'
   let g:Powerline_cache_enabled = 1
   set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
