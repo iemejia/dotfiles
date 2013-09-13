@@ -16,6 +16,10 @@ export PATH=/opt/local/libexec/gnubin:$PATH
 export PATH=/usr/local/bin:$PATH
 # added the home binaries directory
 export PATH=~/bin:$PATH
+# home binaries directory
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Finished adapting your PATH environment variable for use with MacPorts.
 if [ -f /usr/libexec/java_home ]; then
@@ -152,4 +156,9 @@ alias coursera-dl="~/projects/coursera/coursera-dl"
 # Imperative that this environment variable always reflects the output
 # of the tty command.
 export GPG_TTY=`tty`
+
+# configuration for powerline in bash
+#if [ -f $HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh ]; then
+#    source $HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
+#fi
 
