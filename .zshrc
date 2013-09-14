@@ -49,6 +49,9 @@ plugins=(cp git github mysql python screen vagrant mercurial macports golang sca
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export TZ=Europe/Paris
+export TERM=xterm-256color
+export SVN_EDITOR=vim
 export EDITOR=vim
 
 # added macports path
