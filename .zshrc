@@ -104,4 +104,7 @@ alias subl="'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
 alias youtube-dl="~/projects/youtube-dl/youtube-dl"
 alias coursera-dl="~/projects/coursera/coursera-dl"
 
+# improve history search
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
 
