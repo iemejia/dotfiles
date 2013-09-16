@@ -18,4 +18,5 @@ ln -s ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -s ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
 ln -s ~/repositories/dotfiles/.zsh-base16 ~/.zsh-base16
 ln -s ~/repositories/dotfiles/.fonts ~/.fonts
+ln -s ~/repositories/dotfiles/s3.exclude ~/s3.exclude
 
