@@ -14,3 +14,7 @@ s3.exclude
 .git/
 .Icon*
 .dropbox
+.sublime-project
+.sublime-workspace
+.gitignore
+sigal.conf.py
