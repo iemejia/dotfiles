@@ -11,6 +11,6 @@ Thumbs.db*
 ehthumbs.db
 Icon?
 s3.exclude
-.git
+.git/
 .Icon*
 .dropbox
