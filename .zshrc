@@ -54,12 +54,12 @@ export TERM=xterm-256color
 export SVN_EDITOR=vim
 export EDITOR=vim
 
+# added the /usr/local/bin
+export PATH=/usr/local/bin:$PATH
 # added macports path
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # added gnu path as default
 export PATH=/opt/local/libexec/gnubin:$PATH
-# added the /usr/local/bin
-export PATH=/usr/local/bin:$PATH
 # home binaries directory
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
@@ -74,7 +74,7 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 # cuda
-export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+#export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
 # python 2.7
