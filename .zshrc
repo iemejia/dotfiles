@@ -101,12 +101,6 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Personal ones
-alias catho="~/repositories/catho/catho/catho.py"
-alias subl="'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl'"
-alias youtube-dl="~/projects/youtube-dl/youtube-dl"
-alias coursera-dl="~/projects/coursera/coursera-dl"
-
 # improve history search
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
