@@ -77,9 +77,6 @@ export PATH=$GOPATH/bin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
-# python 2.7
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
-
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 
