@@ -77,6 +77,10 @@ export PATH=$GOPATH/bin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
+# python pip configuration 
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin:$PATH
+export WORKON_HOME=~/.virtualenvs
+
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 
