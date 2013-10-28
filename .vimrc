@@ -30,6 +30,7 @@ if has('mac')
   Bundle 'davidhalter/jedi-vim'
 else
   Bundle 'bling/vim-airline'
+" Bundle 'itchyny/lightline.vim'
 endif
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -38,6 +39,7 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'jelera/vim-gummybears-colorscheme'
+Bundle 'michaeljsmith/vim-indent-object'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
