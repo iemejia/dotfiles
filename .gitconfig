@@ -114,7 +114,7 @@
 #    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
 #
 [user]
-	name = Ismael Mejia
+	name = Ismaël Mejía
 	email = iemejia@gmail.com
 [color]
 	diff = auto
