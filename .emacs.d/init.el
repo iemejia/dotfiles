@@ -1,6 +1,6 @@
 ;; Now file is specific for emacs 24
 ; Specifics for aquamacs
-(setq aquamacs-scratch-file "~/Dropbox/Documents/research-notes/scratch.txt")
+(setq aquamacs-scratch-file "~/Dropbox/Documents/research-notes/scratch.md")
 (if (fboundp 'aquamacs-autoface-mode) (aquamacs-autoface-mode -1))
 
 ;; loads scratch file in normal emacs by default like in aquamacs
