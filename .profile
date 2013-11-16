@@ -26,6 +26,8 @@ fi
 # go path
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+# temp fix to use the dev version of go
+export PATH=~/projects/go/bin:$PATH
 
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
