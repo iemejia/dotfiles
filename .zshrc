@@ -83,6 +83,9 @@ export PATH=/usr/local/cuda/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin:$PATH
 export WORKON_HOME=~/.virtualenvs
 
+# node modules binary path
+export PATH=~/node_modules/.bin:$PATH
+
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 
