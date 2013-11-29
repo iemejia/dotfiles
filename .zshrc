@@ -80,6 +80,7 @@ export PATH=~/projects/go/bin:$PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
 # python pip configuration 
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin:$PATH
 export WORKON_HOME=~/.virtualenvs
 
