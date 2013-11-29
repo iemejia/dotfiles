@@ -40,6 +40,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'jelera/vim-gummybears-colorscheme'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'mattn/emmet-vim'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -344,4 +345,7 @@ if has("mac")
   " For powerline font in MacVim
   set guifont=Menlo\ For\ Powerline
 endif
+
+" MacVim settings
+:set guifont=Monaco:h14
 
