@@ -36,7 +36,10 @@ export PATH=/usr/local/cuda/bin:$PATH
 # python pip configuration 
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin:$PATH
+# virtualenv config
 export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
+source /opt/local/bin/virtualenvwrapper.sh-2.7
 
 # node modules binary path
 export PATH=~/node_modules/.bin:$PATH
