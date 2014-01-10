@@ -284,7 +284,11 @@ imap <left> <nop>
 imap <right> <nop>
 
 " remap to escape faster, like C-c or C-[
-inoremap kj <Esc>
+inoremap ;; :
+inoremap ;w <Esc>
+inoremap ;d <Esc>:update<Cr>
+inoremap ;f <C-O>:update<Cr>
+nnoremap ;f :update<CR>
 
 " Automatically leave insert mode after 'updatetime' (4s by default)
 " au CursHoldI * stopinsert
@@ -307,9 +311,6 @@ endif
 if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
-
-" getting into command mode easier 
-nnoremap ; :
 
 " shortcuts for new lines without the annoying change to insert mode
 nmap <S-Enter> O<Esc>
