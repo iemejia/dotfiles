@@ -56,7 +56,7 @@ if [ -f /opt/local/etc/bash_completion ]; then
 fi
 
 # bash completion - ant
-complete -C /opt/local/share/java/apache-ant/bin/complete-ant-cmd.pl ant
+# complete -C /opt/local/share/java/apache-ant/bin/complete-ant-cmd.pl ant
 # bash completion - git
 # export PS1='\h:\W$(__git_ps1 "(%s)") \u\$ '
 # export GIT_PS1_SHOWDIRTYSTATE=1 #... untagged(*) and staged(+) changes
@@ -76,10 +76,10 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTCONTROL=ignoredups
 # Append versus overwrite and write more often to handle multiple
 # sessions eventuall -r
-shopt -s histappend
+# shopt -s histappend
 export PROMPT_COMMAND='history -n;history -a'
 # Handle multiple line commands
-shopt -s cmdhist
+# shopt -s cmdhist
 
 # Add bash aliases.
 if [ -f ~/.bash_aliases ]; then
@@ -106,21 +106,15 @@ alias vi='vim'
 # alias for git
 alias g='git'
 
-# Autocomplete for 'g' as well
-complete -o default -o nospace -F _git g
- 
 # show git branch
-source ~/.git-completion.bash
-source ~/.git-prompt.sh
-
-# complete for the aws-cli tool
-complete -C aws_completer aws
+#source ~/.git-completion.bash
+#source ~/.git-prompt.sh
 
 PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 # export PS1="\u@\h \w> "
 
 # Case insensitive tab completion in Bash
-bind "set completion-ignore-case on"
+# bind "set completion-ignore-case on"
 # "\e[A": history-search-backward
 # "\e[B": history-search-forward
 # set show-all-if-ambiguous on
