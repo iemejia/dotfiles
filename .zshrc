@@ -106,6 +106,11 @@ alias vi='vim'
 # alias for git
 alias g='git'
 
+# alias for octave
+if [ -f /usr/local/octave/3.8.0/bin/octave ]; then
+    alias octave='/usr/local/octave/3.8.0/bin/octave'
+fi
+
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

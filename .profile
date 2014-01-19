@@ -106,6 +106,11 @@ alias vi='vim'
 # alias for git
 alias g='git'
 
+# alias for octave
+if [ -f /usr/local/octave/3.8.0/bin/octave ]; then
+    alias octave='/usr/local/octave/3.8.0/bin/octave'
+fi
+
 # show git branch
 #source ~/.git-completion.bash
 #source ~/.git-prompt.sh
