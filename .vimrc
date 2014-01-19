@@ -38,7 +38,6 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'jelera/vim-gummybears-colorscheme'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'mattn/emmet-vim'
 
@@ -74,7 +73,6 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
 syntax on
 
 " always show line numbers
@@ -283,12 +281,9 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" remap to escape faster, like C-c or C-[
-inoremap ;; :
-inoremap ;w <Esc>
-inoremap ;d <Esc>:update<Cr>
-inoremap ;f <C-O>:update<Cr>
-nnoremap ;f :update<CR>
+" Better esc in insert mode
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " Automatically leave insert mode after 'updatetime' (4s by default)
 " au CursHoldI * stopinsert
