@@ -9,7 +9,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
-# sh ~/.zsh-base16/base16-tomorrow.dark.sh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -83,9 +82,11 @@ export PATH=/usr/local/cuda/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin:$PATH
 # virtualenv config
-export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
-source /opt/local/bin/virtualenvwrapper.sh-2.7
+if [ -f /opt/local/bin/virtualenvwrapper.sh-2.7 ]; then
+    export WORKON_HOME=~/.virtualenvs
+    export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
+    source /opt/local/bin/virtualenvwrapper.sh-2.7
+fi
 
 # node modules binary path
 export PATH=~/node_modules/.bin:$PATH
