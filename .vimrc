@@ -40,6 +40,8 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'mattn/emmet-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'klen/python-mode'
 
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -280,6 +282,7 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+"imap <esc> <nop>
 
 " Better esc in insert mode
 inoremap jk <Esc>
@@ -344,4 +347,8 @@ endif
 
 " MacVim settings
 :set guifont=Monaco:h14
+
+" Enable move line up/down
+"inoremap <C-s-k> ddkkp
+"inoremap <C-s-j> ddp
 
