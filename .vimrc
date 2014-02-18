@@ -352,3 +352,6 @@ endif
 "inoremap <C-s-k> ddkkp
 "inoremap <C-s-j> ddp
 
+" paste in new line (notice that if you yank a line you can do yyp
+nmap <leader>p o<ESC>p
+
