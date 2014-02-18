@@ -120,4 +120,7 @@ export LANG=en_US.UTF-8
 # improve history search
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
+# extra codes for the mapping in ubuntu linux
+bindkey '\O[A' history-beginning-search-backward
+bindkey '\O[B' history-beginning-search-forward
 
