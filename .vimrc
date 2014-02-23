@@ -11,9 +11,7 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
+Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
@@ -55,17 +53,6 @@ Bundle 'klen/python-mode'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=1000
-set tabpagemax=50
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -75,7 +62,6 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 
 " Fast saving
 nmap <leader>w :w!<cr>
-syntax on
 
 " always show line numbers
 set number 
@@ -87,14 +73,10 @@ set number
 set scrolloff=7
 
 " Turn on the WiLd menu
-set wildmenu
 set wildmode=list:longest
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-
-" show current position
-set ruler
 
 " Height of the command bar
 set cmdheight=2
@@ -114,12 +96,6 @@ set smartcase
 
 " Highlight search results
 set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
-" set lazyredraw
 
 " For regular expressions turn magic on
 set magic
@@ -144,16 +120,10 @@ set infercase
 set cursorline
 
 set encoding=utf-8
-set autoindent
 set showmode
-set showcmd
 set visualbell
 set ttyfast
 set backspace=indent,eol,start
-" set relativenumber
-" set undofile
-set smarttab      " insert tabs on the start of a line according to
-                  "    shiftwidth, not tabstop
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,15 +177,6 @@ autocmd BufReadPost *
      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -305,11 +266,6 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
-
 " shortcuts for new lines without the annoying change to insert mode
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
@@ -328,13 +284,6 @@ endif
 let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 set noshowmode
-
-" Use 256 colours (Use this setting only if your terminal supports 256
-" colours)
-" set t_Co=256
-
-" avoid delay after escape mode
-set timeoutlen=1000 ttimeoutlen=0
 
 " powerline configuration
 if has("mac")
