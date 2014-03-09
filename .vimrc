@@ -153,6 +153,7 @@ map <leader>bd :Bclose<cr>
 map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
+"
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -305,4 +306,16 @@ endif
 
 " paste in new line (notice that if you yank a line you can do yyp
 nmap <leader>p o<ESC>p
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace guibg=red
+autocmd BufEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+" rewrite enter behavior to have it different from o and O
+" nmap <S-Enter> O<Esc>
+" nmap <CR> o<Esc>
 
