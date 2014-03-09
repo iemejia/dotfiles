@@ -40,3 +40,8 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
+# vi-mode for readline
+#set editing-mode vi
+#set keymap vi
+#set blink-matching-paren on
+

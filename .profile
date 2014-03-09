@@ -159,3 +159,6 @@ export GPG_TTY=`tty`
 #    source $HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 #fi
 
+# vi-mode
+#set -o vi
+
