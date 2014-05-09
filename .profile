@@ -162,3 +162,6 @@ export GPG_TTY=`tty`
 # vi-mode
 #set -o vi
 
+# docker export
+export DOCKER_HOST=tcp://localhost:4243
+

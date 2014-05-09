@@ -118,8 +118,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # improve history search
+bindkey '\eOA' history-beginning-search-backward
 bindkey '\e[A' history-beginning-search-backward
+bindkey '\eOB' history-beginning-search-forward
 bindkey '\e[B' history-beginning-search-forward
+# bindkey -s '\eOA' '\e[A'
 # extra codes for the mapping in ubuntu linux
 bindkey '\O[A' history-beginning-search-backward
 bindkey '\O[B' history-beginning-search-forward
@@ -143,4 +146,7 @@ bindkey '\O[B' history-beginning-search-forward
 # zle -N zle-keymap-select
 #export KEYTIMEOUT=1
 #
+
+# docker export
+export DOCKER_HOST=tcp://localhost:4243
 
