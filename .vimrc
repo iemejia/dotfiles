@@ -8,7 +8,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-sensible'
@@ -66,7 +66,7 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 nmap <leader>w :w!<cr>
 
 " always show line numbers
-set number 
+set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -93,7 +93,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -166,7 +166,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -235,7 +235,8 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " Theme
 set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-tomorrow
+" colorscheme base16-tomorrow
+colorscheme Tomorrow-Night
 
 " disable arrow keys
 map <up> <nop>
@@ -311,6 +312,7 @@ nmap <leader>p o<ESC>p
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd ColorScheme * highlight ExtraWhitespace guibg=red
+ln -s ~/repositories/dotfiles/.fonts ~/.fonts
 autocmd BufEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
