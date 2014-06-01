@@ -131,7 +131,7 @@
 [include]
 	path = ~/.github
 [credential]
-	helper = osxkeychain
+#	helper = osxkeychain
 [merge]
 	tool = vimdiff
 	stat = true

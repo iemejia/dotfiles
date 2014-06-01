@@ -22,3 +22,5 @@ ln -s ~/repositories/dotfiles/.fonts ~/.fonts
 ln -s ~/repositories/dotfiles/.fonts.conf.d  ~/.fonts.conf.d
 ln -s ~/repositories/dotfiles/s3.exclude ~/s3.exclude
 
+ln -s ~/Dropbox/Documents/research-notes ~/research-notes
+
