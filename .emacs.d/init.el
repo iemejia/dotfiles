@@ -514,161 +514,7 @@ With argument, do this that many times."
 
 ;; (set-face-attribute 'default nil
 ;;                     :family "Inconsolata" :height 145 :weight 'normal)
-;; (set-default-font "Inconsolata-12")
-;; monaco
-
-; switch ctrl to be in command
-;; (setq mac-control-modifier 'meta)
-;; (setq mac-command-modifier 'ctrl)
-
-;; (setq mac-command-modifier 'meta)
-;; (setq mac-command-modifier 'ctrl)
-
-;; (setq mac-option-modifier 'meta) - Sets the option key as Meta (this is default)
-;; (setq mac-command-modifier 'meta) - Sets the command (Apple) key as Meta
-;; (setq mac-control-modifier 'meta) - Sets the control key as Meta
-;; (setq mac-function-modifier 'meta) - Sets the function key as Meta (limitations on non-Eng
-;; 'meta, ‘alt, ‘hyper, ‘ctrl
-
-; cuda
-(add-to-list 'auto-mode-alist '("\\.cu\\'" . c-mode))
-
-; markdown
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
- 
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-;(require 'auto-complete-yasnippet)
-;(require 'auto-complete-c)
-;; (require 'auto-complete-clang)
-;(require 'auto-complete-etags)
-;(require 'auto-complete-extension)
-;(require 'auto-complete-octave)
-;(require 'auto-complete-verilog)
-
-;; configuration for semantic
-;; (require 'semantic)
-;; (semantic-mode 1)
-
-;; (require 'semantic/bovine/gcc)
-;;(semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
-
-;; (defun nix-setup-auto-complete-semantic ()
-;;   "Arrange to do semantic autocompletion."
-;; ;  (add-to-list 'ac-sources 'ac-source-gtags)
-;;   (add-to-list 'ac-sources 'ac-source-semantic))
-;; (add-hook 'c-mode-common-hook 'nix-setup-auto-complete-semantic t)
-
-;; (defun my-semantic-hook ()
-;;   (imenu-add-to-menubar "TAGS"))
-;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-;; enable ctags for some languages:
-;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-;;(when (cedet-ectag-version-check)
-;;  (semantic-load-enable-primary-exuberent-ctags-support))
-
-(global-ede-mode t)
-;;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
-;;(global-srecode-minor-mode 1)            ; Enable template insertion menu
-
-;; Class suggest improvement
-(defun my-cedet-hook () 
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
-  (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-  (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
-  (local-set-key "\C-c+" 'semantic-tag-folding-show-block)
-  (local-set-key "\C-c-" 'semantic-tag-folding-fold-block)
-  (local-set-key ">" 'semantic-complete-self-insert)
-  (local-set-key "." 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'my-cedet-hook)
-
-(if (boundp 'semantic-load-enable-excessive-code-helpers)
-    ; Add-on CEDET
-    (progn
-      (semantic-load-enable-excessive-code-helpers)
-      ; TODO: should already be enabled by previous line
-      (global-semantic-idle-completions-mode)
-      (global-semantic-tag-folding-mode))
-;;    ; Integrated CEDET
-  (setq semantic-default-submodes
-        '(global-semanticdb-minor-mode
-          global-semantic-idle-scheduler-mode
-          global-semantic-idle-summary-mode
-          global-semantic-idle-completions-mode
-          global-semantic-decoration-mode
-          global-semantic-highlight-func-mode
-          global-semantic-stickyfunc-mode)))
-
-(if (boundp 'semantic-ia) (require 'semantic-ia))
-(if (boundp 'semantic-gcc) (require 'semantic-gcc))
-;; (semantic-gcc-setup)
-
-(setq semanticdb-default-save-directory (expand-file-name "~/.semanticdb")
-      semanticdb-default-file-name "semantic.cache"
-      semanticdb-default-system-save-directory nil
-     semanticdb-default-save-directory nil)
-
-(setq semantic-load-turn-everything-on t)
-
-;; (global-semantic-idle-completions-mode t)
-;; (global-semantic-decoration-mode t)
-;; (global-semantic-highlight-func-mode t)
-;; (global-semantic-show-unmatched-syntax-mode t)
-
-;; CC-mode
-;; (add-hook 'c-mode-hook '(lambda ()
-;;         (setq ac-sources (append '(ac-source-semantic) ac-sources))
-;;         (local-set-key (kbd "RET") 'newline-and-indent)
-;;         (linum-mode t)
-;;         (semantic-mode t)))
-
-;;(require 'semantic-tag-folding)
-;;(global-semantic-tag-folding-mode 1)
-
-;; (defun c-folding-hook ()
-;;   (local-set-key (kbd "C-c <left>") 'semantic-tag-folding-fold-block)
-;;   (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
-;; )
-;; (add-hook 'c-mode-common-hook 'c-folding-hook)
-
-;; moving semantic.cache files out of the way
-(setq semanticdb-default-save-directory "~/.semantic")
-
-(autoload 'glsl-mode "glsl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
-
-;; Automatically save and restore sessions
-(setq desktop-dirname             "~/.emacs.d/desktop/"
-      desktop-base-file-name      "emacs.desktop"
-      desktop-base-lock-name      "lock"
-      desktop-path                (list desktop-dirname)
-      desktop-save                t
-      desktop-files-not-to-save   "^$" ;reload tramp paths
-      desktop-load-locked-desktop nil)
-(desktop-save-mode 1)
-
-;; Well, I actually set (desktop-save-mode 0) and then use M-x my-desktop to kick things off:
-
-;; (defun my-desktop ()
-;;   "Load the desktop and enable autosaving"
-;;   (interactive)
-;;   (let ((desktop-load-locked-desktop "ask"))
-;;     (desktop-read)
-;;     (desktop-save-mode 1)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ede-project-directories (quote ("/Users/ismael/computingdataanalysis")))
- '(markdown-command "/opt/local/bin/multimarkdown")
- '(safe-local-variable-values (quote ((whitespace-style face tabs spaces trailing lines space-before-tab::space newline indentation::space empty space-after-tab::space space-mark tab-mark newline-mark) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
+;; (set-default-)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -789,3 +635,12 @@ With argument, do this that many times."
 
 ;; (define-key key-translation-map (kbd "ch") (kbd "C-h"))
 ;; todo c-j to move among frames
+
+;; support copy paste in ubuntu
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+;; ido-mode
+(require 'ido)
+(ido-mode t)
+
