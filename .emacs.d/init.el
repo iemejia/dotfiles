@@ -81,6 +81,7 @@ Emacs buffers are those whose name starts with *."
 ; adds support for accents in text files
 (add-hook 'text-mode-hook 
   (lambda () (set-input-method "latin-1-prefix")))
+(require 'iso-transl)
 
 (defun set-frame-size-according-to-resolution ()
   (interactive)
