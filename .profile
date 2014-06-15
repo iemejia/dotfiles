@@ -20,20 +20,27 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # java path
-if [ -f /usr/libexec/java_home ]; then
-    export JAVA_HOME=`/usr/libexec/java_home`
+if [ -d /usr/lib/jvm/default-java ]; then
+    export JAVA_HOME='/usr/lib/jvm/default-java'
 fi
+export PATH=$JAVA_HOME/bin:$PATH
+
 # go path
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 # temp fix to use the dev version of go
 export PATH=~/projects/go/bin:$PATH
 
+# haskell cabal path
+if [ -d "$HOME/.cabal/bin" ]; then
+    PATH="$HOME/.cabal/bin:$PATH"
+fi
+
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
-# python pip configuration 
+# python pip configuration
 #export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.4/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # virtualenv config
@@ -164,4 +171,8 @@ export GPG_TTY=`tty`
 
 # docker export
 export DOCKER_HOST=tcp://localhost:4243
+
+# TV aliases
+alias caracol="livestreamer \"hds://http://acaooyalahd2-lh.akamaihd.net/z/caracol01_delivery@187698/manifest.f4m?hdcore=2.10.3&g=PEWEWKTRRUJM\" best"
+alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_test06@180219/manifest.f4m?hdcore=2.10.3&g=PEKPFNBGBTUV\" best"
 
