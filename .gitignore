@@ -4,4 +4,5 @@
 .irssi/away.log
 .emacs.d/auto-save-list/
 .emacs.d/ido.last
+.emacs.d/session.*
 .fonts/
