@@ -4,53 +4,56 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'gmarik/snipmate.vim'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'dbakker/vim-lint'
-Bundle 'vim-scripts/autocorrect.vim'
-Bundle 'jcf/vim-latex'
-Bundle 'kien/ctrlp.vim'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'gmarik/snipmate.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'dbakker/vim-lint'
+Plugin 'vim-scripts/autocorrect.vim'
+Plugin 'jcf/vim-latex'
+Plugin 'kien/ctrlp.vim'
+Plugin 'terryma/vim-multiple-cursors'
 if has('mac')
-  Bundle 'Lokaltog/powerline'
-  Bundle 'davidhalter/jedi-vim'
+  Plugin 'Lokaltog/powerline'
+  Plugin 'davidhalter/jedi-vim'
 else
-  Bundle 'bling/vim-airline'
-" Bundle 'itchyny/lightline.vim'
+  Plugin 'bling/vim-airline'
+" Plugin 'itchyny/lightline.vim'
 endif
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'chriskempson/base16-vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'mattn/emmet-vim'
-Bundle 'klen/python-mode'
-Bundle 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/base16-vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mattn/emmet-vim'
+Plugin 'klen/python-mode'
+Plugin 'tomtom/tcomment_vim'
 
-" Bundle 'honza/vim-snippets'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Bundle 'tpope/vim-rails.git'
+" Plugin 'honza/vim-snippets'
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'tpope/vim-rails.git'
 " vim-scripts repos
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
+" Plugin 'L9'
+" Plugin 'FuzzyFinder'
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
