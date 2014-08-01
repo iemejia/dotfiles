@@ -42,6 +42,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mattn/emmet-vim'
 Plugin 'klen/python-mode'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'cazador481/vim-nfo'
 
 " Plugin 'honza/vim-snippets'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -275,8 +276,8 @@ if !empty(&viminfo)
 endif
 
 " shortcuts for new lines without the annoying change to insert mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
 nmap oo o<Esc>k
 
 " Use Q for formatting the current paragraph (or selection)
