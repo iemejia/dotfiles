@@ -22,6 +22,7 @@ cp ~/repositories/dotfiles/.fonts/* ~/.fonts/
 ln -s ~/repositories/dotfiles/.fonts.conf.d  ~/.fonts.conf.d
 ln -s ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -s ~/repositories/dotfiles/s3.exclude ~/s3.exclude
+ln -s ~/repositories/dotfiles/.mplayer ~/.mplayer
 
 ln -s ~/Dropbox/Documents/research-notes ~/research-notes
 
