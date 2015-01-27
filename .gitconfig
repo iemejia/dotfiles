@@ -1,11 +1,13 @@
 [alias]
     # commit
-	co = checkout
-	ci = commit
+    co = checkout
+    ci = commit
     cm = commit -m
     cma = commit -a -m
-	st = status
-	br = branch
+    st = status
+    br = branch
+
+    ec = config --global -e
 
     # diff section
     df = diff
@@ -22,8 +24,8 @@
     # show the diff of the last commit
     last = log -1 -p
 
-	type = cat-file -t
-	dump = cat-file -p
+    type = cat-file -t
+    dump = cat-file -p
 
     # log section
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -113,12 +115,28 @@
     #subtree add
 #    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
 #
+
+    # some alias from github flow
+    # pulls changes and rebase local commits to come after the commits I pulled down, it also removes remote tracking branches that dont exist
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    # All new work starts in a branch
+    cob = checkout -b
+    # I commit regularly
+    cm = !git add -A && git commit -m
+
+    # git save or git wip. The first one adds all changes including untracked files and creates a commit. The second one only commits tracked changes. I generally use the first one.
+
+    save = !git add -A && git commit -m 'SAVEPOINT'
+    wip = !git add -u && git commit -m "WIP"
+    undo2 = reset HEAD~1 --mixed
+
 [user]
 	name = Ismaël Mejía
 	email = iemejia@gmail.com
 [color]
 	diff = auto
 	status = auto
+
 	branch = auto
 	ui = auto
 	interactive = auto
