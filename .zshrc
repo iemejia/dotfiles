@@ -89,10 +89,10 @@ export PATH=/usr/local/cuda/bin:$PATH
 #export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.4/bin:$PATH
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # virtualenv config
-if [ -f /opt/local/bin/virtualenvwrapper.sh-2.7 ]; then
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=~/.virtualenvs
-    export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
-    source /opt/local/bin/virtualenvwrapper.sh-2.7
+    # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # node modules binary path
