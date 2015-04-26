@@ -120,7 +120,8 @@ set t_vb=
 set tm=500
 
 " compatible copy/paste with mac
-set clipboard=unnamed
+"set clipboard=unnamed
+set clipboard=unnamedplus
 
 " set textwidth=80
 set infercase
