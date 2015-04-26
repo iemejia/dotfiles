@@ -451,8 +451,8 @@ With argument, do this that many times."
 (require 'color-theme)
 (require 'color-theme-sanityinc-tomorrow)
 ;;(require 'base16-tomorrow-theme)
-(require 'powerline)
-(powerline-default-theme)
+;;(require 'powerline)
+;;(powerline-default-theme)
 
 (if (= 24 emacs-major-version)
     (load-theme 'sanityinc-tomorrow-night t)
