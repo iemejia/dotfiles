@@ -18,7 +18,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'gmarik/snipmate.vim'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dbakker/vim-lint'
@@ -71,7 +71,7 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 nmap <leader>w :w!<cr>
 
 " always show line numbers
-set number
+"set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -122,8 +122,19 @@ set tm=500
 " compatible copy/paste with mac
 "set clipboard=unnamed
 set clipboard=unnamedplus
+if has("mac")
+    set clipboard=unnamed
+endif
 
-" set textwidth=80
+" configure auto wrapping at 80 chars
+set wrap
+set textwidth=80
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
 set infercase
 set cursorline
 
@@ -300,12 +311,7 @@ if has("mac")
   let g:Powerline_symbols = 'fancy'
   let g:Powerline_cache_enabled = 1
   set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
-  " For powerline font in MacVim
-  set guifont=Menlo\ For\ Powerline
 endif
-
-" MacVim settings
-:set guifont=Monaco:h14
 
 " Enable move line up/down
 "inoremap <C-s-k> ddkkp
@@ -335,3 +341,6 @@ vnoremap <leader>d "_d
 " without yanking it
 vnoremap <leader>p "_dP
 
+" save on insert mode
+inoremap <c-o> <c-o>:w<cr>
+"inoremap <F2> <c-o>:w<cr>

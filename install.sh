@@ -14,6 +14,7 @@ ln -s ~/repositories/dotfiles/.screenrc ~/.screenrc
 ln -s ~/repositories/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/repositories/dotfiles/.vim ~/.vim
 ln -s ~/repositories/dotfiles/.vimrc ~/.vimrc
+ln -s ~/repositories/dotfiles/.gvimrc ~/.gvimrc
 ln -s ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -s ~/repositories/dotfiles/.zshenv ~/.zshenv
 ln -s ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
