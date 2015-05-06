@@ -29,7 +29,9 @@
 
     # log section
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = !"git lg1"
     lgf = log --pretty=format:'%Cred%h%Creset%d - %C(yellow)%s%C(bold blue) <%cn>' --decorate --numstat
     lp = !git lg -p
     ll = log --stat --abbrev-commit
@@ -144,7 +146,7 @@
 	editor = vim # emacsclient -t -a=\\\"\\\"
 	autocrlf = input
 	safecrlf = true
-	pager = less -r
+	pager = less -R
 	whitespace = trailing-space,space-before-tab,blank-at-eol
 [include]
 	path = ~/.github
