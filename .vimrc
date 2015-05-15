@@ -29,7 +29,8 @@ Plugin 'terryma/vim-multiple-cursors'
 if has('mac')
   Plugin 'davidhalter/jedi-vim'
 endif
-"  Plugin 'bling/vim-airline'
+" vim-airline to be activated by hand in lo-resources machines
+Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chriskempson/base16-vim'
