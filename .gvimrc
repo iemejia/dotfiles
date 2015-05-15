@@ -6,7 +6,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guioptions-=e  "text based tab line
 
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+set anti guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 
 " MacVim settings
 " if has("mac")
