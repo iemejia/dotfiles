@@ -15,12 +15,10 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'tpope/vim-markdown'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'gmarik/snipmate.vim'
-"Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dbakker/vim-lint'
@@ -29,12 +27,9 @@ Plugin 'jcf/vim-latex'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 if has('mac')
-  Plugin 'Lokaltog/powerline'
   Plugin 'davidhalter/jedi-vim'
-else
-  Plugin 'bling/vim-airline'
-" Plugin 'itchyny/lightline.vim'
 endif
+"  Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chriskempson/base16-vim'
@@ -45,15 +40,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'klen/python-mode'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'cazador481/vim-nfo'
-
-" Plugin 'honza/vim-snippets'
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Plugin 'tpope/vim-rails.git'
-" vim-scripts repos
-" Plugin 'L9'
-" Plugin 'FuzzyFinder'
-" non github repos
-" Plugin 'git://git.wincent.com/command-t.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -304,16 +290,17 @@ if &diff
 endif
 
 " vim-airline configuration
-let g:airline_theme = 'powerlineish'
-let g:airline_powerline_fonts = 1
-set noshowmode
+" let g:airline_theme = 'powerlineish'
+" let g:airline_powerline_fonts = 1
+" set noshowmode
 
-" powerline configuration
-if has("mac")
-  let g:Powerline_symbols = 'fancy'
-  let g:Powerline_cache_enabled = 1
-  set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
-endif
+" powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
 
 " Enable move line up/down
 "inoremap <C-s-k> ddkkp

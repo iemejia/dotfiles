@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+pip install --user powerline-status
+
 ln -s ~/repositories/dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/repositories/dotfiles/.emacs.d ~/.emacs.d
 ln -s ~/repositories/dotfiles/.gdbinit ~/.gdbinit
@@ -24,6 +26,6 @@ ln -s ~/repositories/dotfiles/.fonts.conf.d  ~/.fonts.conf.d
 ln -s ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -s ~/repositories/dotfiles/s3.exclude ~/s3.exclude
 ln -s ~/repositories/dotfiles/.mplayer ~/.mplayer
-
 ln -s ~/Dropbox/Documents/research-notes ~/research-notes
 
+fc-cache -vf ~/.fonts
