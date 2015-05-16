@@ -20,6 +20,9 @@ ZSH_THEME="agnoster"
 # Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
+# This is like replying yes and automatically update
+DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
 
