@@ -2,7 +2,7 @@
 .cache
 [tT]rash
 metafiles
-.thumbnails
+#.thumbnails
 .gvfs
 lost+found
 tmp
@@ -17,4 +17,8 @@ s3.exclude
 .sublime-project
 .sublime-workspace
 .gitignore
-sigal.conf.py
+#sigal.conf.py
+
+# project specific
+dev/
+
