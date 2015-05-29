@@ -103,7 +103,9 @@
     sa = stash apply
     ss = stash save
     sc = stash clear
-    sc = stash pop
+    sp = stash pop
+    sd = stash drop
+    su = stash unapply
 
     # tags
     lasttag = describe --tags --abbrev=0
