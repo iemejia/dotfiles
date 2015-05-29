@@ -311,9 +311,9 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Ismael Mejia";
-    user_name = "ismael";
-    nick = "iemejia";
+    real_name = "tr1p";
+    user_name = "tr1p";
+    nick = "tr1p";
     timestamp_format = "%H:%M:%S";
   };
   "fe-text" = { actlist_sort = "refnum"; };

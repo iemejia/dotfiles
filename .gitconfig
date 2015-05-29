@@ -69,7 +69,7 @@
     svnl = svn log --oneline --show-commit
 
     # undo section
-    undo = !git reset --soft HEAD^
+    undo = reset --soft HEAD^
     unstage = reset HEAD
     amend = commit --amend
 
@@ -100,6 +100,8 @@
     sa = stash apply
     ss = stash save
     sc = stash clear
+    sc = stash pop
+
     # tags
     lasttag = describe --tags --abbrev=0
     lt = describe --tags --abbrev=0

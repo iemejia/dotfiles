@@ -2,3 +2,4 @@
 
 # Scales audio tempo without altering pitch.
 af=scaletempo
+#subfont-osd-scale=0.5

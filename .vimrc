@@ -26,9 +26,8 @@ Plugin 'vim-scripts/autocorrect.vim'
 Plugin 'jcf/vim-latex'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
-if has('mac')
-  Plugin 'davidhalter/jedi-vim'
-endif
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
 " vim-airline to be activated by hand in lo-resources machines
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/closetag.vim'
