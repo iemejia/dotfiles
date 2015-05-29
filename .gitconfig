@@ -16,11 +16,11 @@
     #list modified files in last commit
     #dl = "!git ll -1"
     #diff last commit
-    dlc = diff --cached HEAD~
+    dlc = diff --cached HEAD^
     changes = diff --name-status
     diffstat = diff --stat
     ds = diff --stat
-    dl = diff HEAD~
+    dl = diff HEAD@{1}
     # show the diff of the last commit
     last = log -1 -p
 
@@ -55,11 +55,11 @@
 
     #reset commands
     r = reset
-    r1 = reset HEAD~
-    r2 = reset HEAD~2
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
     rh = reset --hard
-    rh1 = reset HEAD~ --hard
-    rh2 = reset HEAD~2 --hard
+    rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
 
     # subversion ones
     spull = svn rebase
@@ -69,7 +69,7 @@
     svnl = svn log --oneline --show-commit
 
     # undo section
-    undo = reset --soft HEAD~
+    undo = reset --soft HEAD^
     unstage = reset HEAD
     amend = commit --amend
     ## this onew should be done after a reset via undo
@@ -186,3 +186,5 @@
 	autocorrect = 1
 [color "diff"]
 	whitespace = red reverse
+[hub]
+	protocol = https
