@@ -90,6 +90,7 @@
 
     # github ones
     pm = push origin master
+    pIm = push iemejia master
     cp = !git ci && git pm
     fu = fetch upstream
     mu = merge upstream/master
