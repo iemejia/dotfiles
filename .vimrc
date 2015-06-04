@@ -286,7 +286,7 @@ nmap Q gqap
 
 " Automatically change the colorscheme for diff
 if &diff
-    colorscheme shine
+    colorscheme jellybeans
 endif
 
 " vim-airline configuration
@@ -333,3 +333,14 @@ vnoremap <leader>p "_dP
 " save on insert mode
 inoremap <c-o> <c-o>:w<cr>
 "inoremap <F2> <c-o>:w<cr>
+
+" decent mappings for vimdiff
+
+" rebind C=j from vim-latex to C-g
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
+nnoremap <expr> <C-H> &diff ? ':diffget 3<CR> :diffupdate<CR>' : '<C-W>h'
+nnoremap <expr> <C-J> &diff ? ']c' : '<C-W>j'
+nnoremap <expr> <C-K> &diff ? '[c' : '<C-W>k'
+nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
+
