@@ -164,6 +164,7 @@
 [merge]
 	tool = vimdiff
 	stat = true
+    conflictstyle = diff3
 [diff]
 	tool = vimdiff
 	renames = copies
