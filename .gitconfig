@@ -90,14 +90,19 @@
 
     # github ones
     pm = push origin master
-    pIm = push iemejia master
+    po = push origin
     cp = !git ci && git pm
     fu = fetch upstream
     mu = merge upstream/master
     pu = !git fu && git mu
     puf = pull upstream/master --ff-only
+    pum = push upstream master
 
     ai = add --interactive
+
+    # github iemejia based ones
+    pi = push iemejia
+    pim = push iemejia master
 
     # stash
     sl = stash list
