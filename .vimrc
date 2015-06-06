@@ -344,3 +344,6 @@ nnoremap <expr> <C-J> &diff ? ']c' : '<C-W>j'
 nnoremap <expr> <C-K> &diff ? '[c' : '<C-W>k'
 nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
 
+" close buffer but not split window
+nmap ,d :b#<bar>bd#<CR>
+
