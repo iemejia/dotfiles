@@ -5,6 +5,8 @@
     cm = commit -m
     cma = commit -a -m
     cam = commit -a -m
+    caa = commit --all --amend --no-edit
+
     st = status
     br = branch
 
@@ -181,7 +183,8 @@
 [difftool]
 	prompt = false
 [push]
-	#default = simple
+    default = current
+    # default = simple
 [advice]
 	statusHints = false
 #	pushNonFastForward = false
