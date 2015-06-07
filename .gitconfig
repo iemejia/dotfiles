@@ -2,6 +2,7 @@
     # commit
     co = checkout
     ci = commit
+    ca = commit -a
     cm = commit -m
     cma = commit -a -m
     cam = commit -a -m
