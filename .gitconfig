@@ -7,6 +7,7 @@
     cma = commit -a -m
     cam = commit -a -m
     caa = commit --all --amend --no-edit
+    cis = commit -S
 
     st = status
     br = branch
@@ -40,6 +41,11 @@
     lp = !git lg -p
     ll = log --stat --abbrev-commit
     lt = log --graph --oneline --decorate --all
+
+    # log signatures
+    lgs = log --pretty=format:'%h %G? %aN  %s'
+    lgls = log --show-signature -1
+
     # see changes after the last pull
     lc = !git oneline ORIG_HEAD.. --stat --no-merges
     oneline = log --pretty=oneline --abbrev-commit --graph --decorate
