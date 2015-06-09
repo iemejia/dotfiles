@@ -152,6 +152,7 @@
 [user]
 	name = Ismaël Mejía
 	email = iemejia@gmail.com
+	signingkey = 0x78A1FFB82B6E3E69
 [color]
 	diff = auto
 	status = auto
@@ -165,6 +166,8 @@
 	safecrlf = true
 	pager = less -R
 	whitespace = trailing-space,space-before-tab,blank-at-eol
+    # preserve file metadata
+    #filemode = true
 [include]
 	path = ~/.github
 [credential]
@@ -185,6 +188,7 @@
 	prompt = false
 [push]
     default = current
+    # use simple if you only use git 2.0 (not yet my case)
     # default = simple
 [advice]
 	statusHints = false
@@ -200,3 +204,9 @@
 	whitespace = red reverse
 [hub]
 	protocol = https
+[pull]
+    # make pull preserve merges on rebase
+    #rebase = preserve
+[commit]
+    # always sign commits with gpg
+    #gpgsign = true
