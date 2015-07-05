@@ -219,3 +219,9 @@
 [commit]
     # always sign commits with gpg
     #gpgsign = true
+[sendemail]
+    smtpserver = smtp.gmail.com
+    smtpserverport = 587
+    smtpencryption = tls
+    smtpuser = iemejia@gmail.com
+    # smtppass = your_password
