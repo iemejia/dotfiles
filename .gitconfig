@@ -224,4 +224,6 @@
     smtpserverport = 587
     smtpencryption = tls
     smtpuser = iemejia@gmail.com
+    confirm = auto
+    chainreplyto = false
     # smtppass = your_password
