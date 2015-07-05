@@ -1,4 +1,7 @@
 [alias]
+    # clone
+    shallow = clone --depth 1
+
     # commit
     co = checkout
     ci = commit
