@@ -24,6 +24,7 @@ ln -sfv ~/repositories/dotfiles/.zsh-base16 ~/.zsh-base16
 #cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
 #ln -sfv ~/Dropbox/static-resources/fonts/ .fonts
 ln -sfv ~/repositories/dotfiles/.fonts ~/.fonts
+ln -sfv ~/repositories/dotfiles/.fonts.conf  ~/.fonts.conf
 ln -sfv ~/repositories/dotfiles/.fonts.conf.d  ~/.fonts.conf.d
 ln -sfv ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -sfv ~/repositories/dotfiles/s3.exclude ~/s3.exclude
