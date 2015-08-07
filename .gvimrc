@@ -24,4 +24,6 @@ set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 "     set guifont=Consolas:h11:cANSI
 "   endif
 " endif
-"
+
+set lines=70
+set columns=157
