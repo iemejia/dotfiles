@@ -117,11 +117,6 @@ alias vi='vim'
 # alias for git
 alias g='git'
 
-# alias for octave
-if [ -f /usr/local/octave/3.8.0/bin/octave ]; then
-    alias octave='/usr/local/octave/3.8.0/bin/octave'
-fi
-
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -168,4 +163,14 @@ alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_tes
 if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
+
+
+# ssh-agent
+if ! pgrep ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval $(<~/.ssh-agent-thing)
+fi
+ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias ssh; ssh'
 
