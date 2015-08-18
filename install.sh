@@ -20,7 +20,7 @@ ln -sfv ~/repositories/dotfiles/.gvimrc ~/.gvimrc
 ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/repositories/dotfiles/.zshenv ~/.zshenv
 ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
-ln -sfv ~/repositories/dotfiles/.zsh-base16 ~/.zsh-base16
+ln -sfv ~/repositories/dotfiles/.xinitrc ~/.xinitrc
 #cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
 #ln -sfv ~/Dropbox/static-resources/fonts/ .fonts
 ln -sfv ~/repositories/dotfiles/.fonts ~/.fonts
