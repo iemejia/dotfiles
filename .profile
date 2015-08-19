@@ -25,9 +25,13 @@ if [ -d /usr/lib/jvm/default-java ]; then
 fi
 export PATH=$JAVA_HOME/bin:$PATH
 
-# go path
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+# golang-go local path if available
+if [ -d "$HOME/go" ]; then
+    export GOROOT=$HOME/go
+    export PATH=$PATH:$GOROOT/bin
+fi
+export GOPATH=$HOME/gowork
+
 # temp fix to use the dev version of go
 export PATH=~/projects/go/bin:$PATH
 
