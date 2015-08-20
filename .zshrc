@@ -76,7 +76,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 # golang-go local path if available
 if [ -d "$HOME/go" ]; then
     export GOROOT=$HOME/go
-    export PATH=$PATH:$GOROOT/bin
+    export PATH=$GOROOT/bin:$PATH
 fi
 export GOPATH=$HOME/gowork
 
