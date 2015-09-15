@@ -73,6 +73,12 @@ if [ -d /usr/lib/jvm/default-java ]; then
 fi
 export PATH=$JAVA_HOME/bin:$PATH
 
+# hadoop path
+if [ -d "$HOME/jprograms/hadoop" ]; then
+    export HADOOP_HOME="$HOME/jprograms/hadoop"
+    export PATH=$HADOOP_HOME/bin:$PATH
+fi
+
 # golang-go local path if available
 if [ -d "$HOME/go" ]; then
     export GOROOT=$HOME/go
