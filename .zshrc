@@ -70,8 +70,8 @@ fi
 # java path
 if [ -d /usr/lib/jvm/default-java ]; then
     export JAVA_HOME='/usr/lib/jvm/default-java'
+    export PATH=$JAVA_HOME/bin:$PATH
 fi
-export PATH=$JAVA_HOME/bin:$PATH
 
 # hadoop path
 if [ -d "$HOME/jprograms/hadoop" ]; then
@@ -158,9 +158,6 @@ bindkey '\O[B' history-beginning-search-forward
 # zle -N zle-keymap-select
 #export KEYTIMEOUT=1
 #
-
-# docker export
-export DOCKER_HOST=tcp://localhost:4243
 
 # TV aliases
 alias caracol="livestreamer \"hds://http://acaooyalahd2-lh.akamaihd.net/z/caracol01_delivery@187698/manifest.f4m?hdcore=2.10.3&g=PEWEWKTRRUJM\" best"
