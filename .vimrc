@@ -40,6 +40,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'klen/python-mode'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'cazador481/vim-nfo'
+Plugin 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
