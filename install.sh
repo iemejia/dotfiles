@@ -30,5 +30,6 @@ ln -sfv ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -sfv ~/repositories/dotfiles/s3.exclude ~/s3.exclude
 ln -sfv ~/repositories/dotfiles/.mplayer ~/.mplayer
 ln -sfv ~/Dropbox/Documents/research-notes ~/research-notes
+ln -s ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 
 fc-cache -vf ~/.fonts
