@@ -41,6 +41,7 @@ Plugin 'klen/python-mode'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'cazador481/vim-nfo'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -51,8 +52,8 @@ filetype plugin indent on    " required
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 let maplocalleader = '	'      " Tab as a local leader
 let g:is_posix = 1             " vim's default is archaic bourne shell, bring it up to the 90s
 
@@ -347,4 +348,11 @@ nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
 
 " close buffer but not split window
 nmap ,d :b#<bar>bd#<CR>
+
+" Fix spelling with <leader>f
+nnoremap <leader>f 1z=
+" Toggle spelling visuals with <leader>s
+nnoremap <leader>s :set spell!
+" enable repetition in normal mode (e.g. for prepending)
+vnoremap . :norm.<CR>
 
