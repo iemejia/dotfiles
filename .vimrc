@@ -52,7 +52,6 @@ filetype plugin indent on    " required
 " => General
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 let maplocalleader = '	'      " Tab as a local leader
@@ -160,6 +159,7 @@ map <C-l> <C-W>l
 
 " New vertical split
 nnoremap <leader>wv <c-w>v<c-w>l
+nnoremap <leader>wh <c-w>s<c-w>l
 
 map <leader>bo :only<cr>
 map <leader>o :only<cr>
@@ -175,6 +175,12 @@ nmap <leader>bd :b#<bar>bd#<>
 " move fast around buffers
 nmap bt :bn<cr>
 nmap bT :bp<cr>
+nmap <leader>l :bn<cr>
+nmap <leader>h :bp<cr>
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -312,8 +318,11 @@ if !empty(&viminfo)
 endif
 
 " shortcuts for new lines without the annoying change to insert mode
-nmap <S-Enter> O<Esc>j
-nmap <CR> o<Esc>k
+nnoremap <CR> o<Esc>k
+nnoremap <S-CR> O<Esc>j
+"nnoremap ^M O<Esc>j "makes it work in CLI
+" notice that impaired mode allows [<CR> and ]<CR>
+
 nmap oo o<Esc>k
 
 " Use Q for formatting the current paragraph (or selection)
