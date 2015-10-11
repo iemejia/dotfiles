@@ -335,17 +335,14 @@ if &diff
 endif
 
 " vim-airline configuration
-" let g:airline_theme = 'powerlineish'
-" let g:airline_powerline_fonts = 1
-" set noshowmode
+let g:airline_theme = 'powerlineish'
+let g:airline_powerline_fonts = 1
+set noshowmode
 
-" powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-" Always show statusline
-set laststatus=2
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " paste in new line (notice that if you yank a line you can do yyp
 nmap <leader>p o<ESC>p
