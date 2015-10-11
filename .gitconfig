@@ -86,7 +86,7 @@
     unstage = reset HEAD
     amend = commit --amend
     ## this onew should be done after a reset via undo
-    redo = commit -a -e -c ORIG_HEAD
+    redo = commit -e -c ORIG_HEAD
     #redo = commit -a -e -F .git/COMMIT_EDITMSG
 
     # identifies who did something
