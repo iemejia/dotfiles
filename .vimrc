@@ -345,7 +345,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " paste in new line (notice that if you yank a line you can do yyp
-nmap <leader>p o<ESC>p
+"nmap <leader>p o<ESC>p
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -441,7 +441,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_working_path_mode = 'r'
 
 " Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
+"nmap <leader>p :CtrlP<cr>
 
 " Easy bindings for its various modes
 "nmap <leader>bb :CtrlPBuffer<cr>
