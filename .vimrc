@@ -42,6 +42,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'cazador481/vim-nfo'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-surround'
+Plugin 'rbgrouleff/bclose.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,6 +60,10 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 
 " Fast saving
 nmap <leader>w :w!<cr>
+"inoremap <leader>w <C-c>:w<cr>
+
+" Quit Files with Leader + q
+noremap <leader>q :q<cr>
 
 " always show line numbers
 "set number
@@ -141,8 +146,8 @@ map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -153,18 +158,47 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+" New vertical split
+nnoremap <leader>wv <c-w>v<c-w>l
 
+map <leader>bo :only<cr>
+map <leader>o :only<cr>
+" Close the current buffer
+" notice that this requires the Bclose command from
+" http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
+map <leader>bc :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
+" close buffer but not split window
+nmap <leader>bd :b#<bar>bd#<>
+
+" move fast around buffers
+nmap bt :bn<cr>
+nmap bT :bp<cr>
 
 " Useful mappings for managing tabs
-"
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+" Change tab
+noremap <S-l> gt
+noremap <S-h> gT
+
+" for linux and windows users (using the control key)
+map <C-S-]> gt
+map <C-S-[> gT
+map <C-1> 1gt
+map <C-2> 2gt
+map <C-3> 3gt
+map <C-4> 4gt
+map <C-5> 5gt
+map <C-6> 6gt
+map <C-7> 7gt
+map <C-8> 8gt
+map <C-9> 9gt
+map <C-0> :tablast<CR>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -304,10 +338,6 @@ set laststatus=2
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
 
-" Enable move line up/down
-"inoremap <C-s-k> ddkkp
-"inoremap <C-s-j> ddp
-
 " paste in new line (notice that if you yank a line you can do yyp
 nmap <leader>p o<ESC>p
 
@@ -346,13 +376,50 @@ nnoremap <expr> <C-J> &diff ? ']c' : '<C-W>j'
 nnoremap <expr> <C-K> &diff ? '[c' : '<C-W>k'
 nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
 
-" close buffer but not split window
-nmap ,d :b#<bar>bd#<CR>
-
 " Fix spelling with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spelling visuals with <leader>s
 nnoremap <leader>s :set spell!
 " enable repetition in normal mode (e.g. for prepending)
 vnoremap . :norm.<CR>
+
+" Apply Macros with Q remember you record with qq and stop with d
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+
+" align current paragraph
+noremap <leader>a =ip
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv vnoremap=""> >gv
+
+" re-indent whole file
+map <leader>= mzgg=G`z
+
+" switch to previous file
+nnoremap <leader><leader> <c-^>
+
+" Edit files in same directory as current file
+cnoremap %% <c-r>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>E :Explore<cr>
+
+" Bubble single lines, betteth [er
+"nmap <C-Up> ddkP
+"nmap <C-Down> ddp
+
+" Bubble multiple lines
+"vmap <C-Up> xkP`[V`]
+"vmap <C-Down> xp`[V`]
+
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" Visually select the text that was last edited/pasted
+" remember that gv re selects the last edit
+nmap gV `[v`]
 
