@@ -14,7 +14,8 @@ set guioptions-=e  "text based tab line
 "     set guifont=Menlo\ For\ Powerline
 " endif
 "
-" if has("gui_running")
+if has("gui_running")
+    set guifont=Meslo\ LG\ S\ for\ Powerline\ Regular\ 9
 "   if has("gui_gtk2")
 " "    set guifont=Inconsolata\ 12
 "   elseif has("gui_macvim")
@@ -24,7 +25,7 @@ set guioptions-=e  "text based tab line
 "   elseif has("gui_win32")
 "     set guifont=Consolas:h11:cANSI
 "   endif
-" endif
+endif
 
 set lines=70
 set columns=157
