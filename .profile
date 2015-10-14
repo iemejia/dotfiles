@@ -46,6 +46,11 @@ if [ -d "$HOME/.cabal/bin" ]; then
     PATH="$HOME/.cabal/bin:$PATH"
 fi
 
+# node.js
+export NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
+export PATH="$HOME/.node/bin:$PATH"
+export MANPATH="$HOME/.node/share/man:$MANPATH"
+
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
@@ -59,9 +64,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
     source /usr/local/bin/virtualenvwrapper.sh
 fi
-
-# node modules binary path
-export PATH=~/node_modules/.bin:$PATH
 
 # this should be in .bashrc but to do this we have to create
 # the .bash_profile file with
