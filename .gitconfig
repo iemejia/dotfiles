@@ -110,8 +110,12 @@
     mu = merge upstream/master
     pu = !git fu && git mu
     puf = pull upstream/master --ff-only
+    pur = pull --rebase upstream master
+    pum = push upstream master
 
+    a = add
     ai = add --interactive
+    ap = add -p
 
     # github iemejia based ones
     pi = push iemejia
