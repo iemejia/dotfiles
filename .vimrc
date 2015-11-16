@@ -44,6 +44,7 @@ Plugin 'cazador481/vim-nfo'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-surround'
 Plugin 'rbgrouleff/bclose.vim'
+Plugin 'tommcdo/vim-exchange'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
