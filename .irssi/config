@@ -118,9 +118,9 @@ chatnets = {
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "emn-info"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##aws"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#haskell"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#scheme"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "##aws"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#haskell"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#scheme"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "#scala"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "##linux"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "#python"; chatnet = "Freenode"; autojoin = "No"; },
@@ -143,8 +143,8 @@ channels = (
   { name = "#algorithms"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "#polymath"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "##c"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#youtube-dl"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#youtube-dl"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; }
 );
 

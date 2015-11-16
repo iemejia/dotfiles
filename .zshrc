@@ -46,7 +46,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp git github mysql python screen vagrant mercurial macports golang scala sbt go ruby gem svn osx rails)
+plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd aws bower cabal docker gradle mvn grunt gulp node npm pip pylint python scala sbt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,13 +96,17 @@ export NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export MANPATH="$HOME/.node/share/man:$MANPATH"
 
+# ruby
+export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
+
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
 # python pip configuration
 #export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.4/bin:$PATH
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+#export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # virtualenv config
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=~/.virtualenvs

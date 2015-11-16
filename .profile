@@ -51,6 +51,10 @@ export NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export MANPATH="$HOME/.node/share/man:$MANPATH"
 
+# ruby
+export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
+
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
