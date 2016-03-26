@@ -25,6 +25,18 @@ if [ -d /usr/lib/jvm/default-java ]; then
     export PATH=$JAVA_HOME/bin:$PATH
 fi
 
+# maven path
+if [ -d "$HOME/jprograms/maven" ]; then
+    export MAVEN_HOME="$HOME/jprograms/maven"
+    export PATH=$MAVEN_HOME/bin:$PATH
+fi
+
+# gradle path
+if [ -d "$HOME/jprograms/gradle" ]; then
+    export GRADLE_HOME="$HOME/jprograms/gradle"
+    export PATH=$GRADLE_HOME/bin:$PATH
+fi
+
 # hadoop path
 if [ -d "$HOME/jprograms/hadoop" ]; then
     export HADOOP_HOME="$HOME/jprograms/hadoop"
