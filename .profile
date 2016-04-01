@@ -92,37 +92,6 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# check if terminal supports colors
-# if [ “$TERM” != “dumb” ]; then
-#   eval "`dircolors -b`"
-#   alias ls='ls --color=auto'
-# fi
-
-# Script for ensuring only one instance of gpg-agent is running
-# and if there is not one, start an instance of gpg-agent.
-# if test -f $HOME/.gpg-agent-info && kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null; then
-# 	GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info`
-# 	SSH_AUTH_SOCK=`cat $HOME/.ssh-auth-sock`
-# 	SSH_AGENT_PID=`cat $HOME/.ssh-agent-pid`
-# 	export GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID
-# else
-# 	eval `gpg-agent --daemon`
-# 	echo $GPG_AGENT_INFO >$HOME/.gpg-agent-info
-# 	echo $SSH_AUTH_SOCK > $HOME/.ssh-auth-sock
-# 	echo $SSH_AGENT_PID > $HOME/.ssh-agent-pid
-# fi
-# Imperative that this environment variable always reflects the output
-# of the tty command.
-export GPG_TTY=`tty`
-
-# configuration for powerline in bash
-#if [ -f $HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh ]; then
-#    source $HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
-#fi
-
-# vi-mode
-#set -o vi
-
 # TV aliases
 alias caracol="livestreamer \"hds://http://acaooyalahd2-lh.akamaihd.net/z/caracol01_delivery@187698/manifest.f4m?hdcore=2.10.3&g=PEWEWKTRRUJM\" best"
 alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_test06@180219/manifest.f4m?hdcore=2.10.3&g=PEKPFNBGBTUV\" best"
