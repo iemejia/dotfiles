@@ -140,9 +140,6 @@ alias v='vim'
 alias vi='vim'
 alias vit='vim.tiny -u NONE'
 
-# alias for git
-alias g='git'
-
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
