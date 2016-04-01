@@ -3,6 +3,7 @@
 #pip install --user powerline-status
 
 ln -sfv ~/repositories/dotfiles/.bash_profile ~/.bash_profile
+ln -sfv ~/repositories/dotfiles/.bash_logout ~/.bash_logout
 ln -sfv ~/repositories/dotfiles/.bashrc ~/.bashrc
 ln -sfv ~/repositories/dotfiles/.emacs.d ~/.emacs.d
 ln -sfv ~/repositories/dotfiles/.gdbinit ~/.gdbinit
@@ -37,3 +38,5 @@ ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 
 fc-cache -vf ~/.fonts
+~/.bash_it/install.sh
+
