@@ -3,6 +3,7 @@
 #pip install --user powerline-status
 
 ln -sfv ~/repositories/dotfiles/.bash_profile ~/.bash_profile
+ln -sfv ~/repositories/dotfiles/.bashrc ~/.bashrc
 ln -sfv ~/repositories/dotfiles/.emacs.d ~/.emacs.d
 ln -sfv ~/repositories/dotfiles/.gdbinit ~/.gdbinit
 ln -sfv ~/repositories/dotfiles/.git-completion.bash ~/.git-completion.bash
@@ -20,6 +21,7 @@ ln -sfv ~/repositories/dotfiles/.gvimrc ~/.gvimrc
 ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/repositories/dotfiles/.zshenv ~/.zshenv
 ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
+ln -sfv ~/repositories/dotfiles/.bash_it ~/.bash_it
 ln -sfv ~/repositories/dotfiles/.xinitrc ~/.xinitrc
 #cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
 #ln -sfv ~/Dropbox/static-resources/fonts/ .fonts

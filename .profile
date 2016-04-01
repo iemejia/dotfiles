@@ -1,8 +1,3 @@
-export CLICOLOR=1
-# export LS_COLORS='di=01;33'
-export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
-export LSCOLORS="exfxcxdxbxegedabagacad"
-
 export TZ=Europe/Paris
 export TERM=xterm-256color
 export SVN_EDITOR=vim
@@ -50,9 +45,6 @@ if [ -d "$HOME/go" ]; then
 fi
 export GOPATH=$HOME/gowork
 
-# temp fix to use the dev version of go
-export PATH=~/projects/go/bin:$PATH
-
 # haskell cabal path
 if [ -d "$HOME/.cabal/bin" ]; then
     PATH="$HOME/.cabal/bin:$PATH"
@@ -72,58 +64,12 @@ export PATH="$HOME/.gem/bin:$PATH"
 export PATH=/usr/local/cuda/bin:$PATH
 
 # python pip configuration
-#export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/3.4/bin:$PATH
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # virtualenv config
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=~/.virtualenvs
     # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
     source /usr/local/bin/virtualenvwrapper.sh
 fi
-
-# this should be in .bashrc but to do this we have to create
-# the .bash_profile file with
-# . ~/.profile
-# . ~/.bashrc
-#
-
-# bash completion
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
-fi
-
-# bash completion - ant
-# complete -C /opt/local/share/java/apache-ant/bin/complete-ant-cmd.pl ant
-# bash completion - git
-# export PS1='\h:\W$(__git_ps1 "(%s)") \u\$ '
-# export GIT_PS1_SHOWDIRTYSTATE=1 #... untagged(*) and staged(+) changes
-# export GIT_PS1_SHOWSTASHSTATE=1 #... if something is stashed($)
-# export GIT_PS1_SHOWUNTRACKEDFILES=1 #... untracked files(%)
-
-# export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
-
-# Increase the number of commands recorded
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-# Add datestamps
-export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
-# ignore commands from history
-export HISTIGNORE="&:ls:[bf]g:exit"
-# Avoid succesive duplicates in the bash command history.
-export HISTCONTROL=ignoredups
-# Append versus overwrite and write more often to handle multiple
-# sessions eventuall -r
-# shopt -s histappend
-export PROMPT_COMMAND='history -n;history -a'
-# Handle multiple line commands
-# shopt -s cmdhist
-
-# Add bash aliases.
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
-
-# this should be in .bash_aliases
 
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
@@ -140,27 +86,6 @@ alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
 alias v='vim'
 alias vi='vim'
 alias vit='vim.tiny -u NONE'
-
-# alias for git
-alias g='git'
-
-# alias for octave
-if [ -f /usr/local/octave/3.8.0/bin/octave ]; then
-    alias octave='/usr/local/octave/3.8.0/bin/octave'
-fi
-
-# show git branch
-#source ~/.git-completion.bash
-#source ~/.git-prompt.sh
-
-PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
-# export PS1="\u@\h \w> "
-
-# Case insensitive tab completion in Bash
-# bind "set completion-ignore-case on"
-# "\e[A": history-search-backward
-# "\e[B": history-search-forward
-# set show-all-if-ambiguous on
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
