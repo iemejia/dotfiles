@@ -233,3 +233,7 @@
     # smtppass = your_password
 [commit]
 	template = ~/.git_commit_msg.txt
+[rebase]
+	autostash = true
+[pull]
+	rebase = true
