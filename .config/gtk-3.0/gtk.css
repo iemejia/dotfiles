@@ -1,0 +1,16 @@
+.header-bar.default-decoration {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.header-bar.default-decoration .button.titlebutton {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+
+TerminalWindow .notebook {
+    border: 0;
+    padding: 0;
+}
+
