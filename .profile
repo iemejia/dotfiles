@@ -38,6 +38,12 @@ if [ -d "$HOME/jprograms/hadoop" ]; then
     export PATH=$HADOOP_HOME/bin:$PATH
 fi
 
+# leiningen path
+if [ -d "$HOME/jprograms/leiningen" ]; then
+    export LEIN_HOME="$HOME/jprograms/leiningen"
+    export PATH=$LEIN_HOME/bin:$PATH
+fi
+
 # golang-go local path if available
 if [ -d "$HOME/go" ]; then
     export GOROOT=$HOME/go
@@ -65,10 +71,8 @@ export PATH=/usr/local/cuda/bin:$PATH
 
 # python pip configuration
 # virtualenv config
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=~/.virtualenvs
-    # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
-    source /usr/local/bin/virtualenvwrapper.sh
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
 fi
 
 # alias for remote irssi
@@ -86,6 +90,12 @@ alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
 alias v='vim'
 alias vi='vim'
 alias vit='vim.tiny -u NONE'
+
+# some missing git alias
+alias gau='git add -u'
+alias gdc='git diff --cached'
+alias gwl='git worktree list'
+alias gwp='git worktree prune'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
