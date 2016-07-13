@@ -366,6 +366,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+nnoremap <leader>d "_D
+vnoremap <leader>d "_D
 
 " replace currently selected text with default register
 " without yanking it
