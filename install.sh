@@ -19,6 +19,7 @@ ln -sfv ~/repositories/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sfv ~/repositories/dotfiles/.vim ~/.vim
 ln -sfv ~/repositories/dotfiles/.vimrc ~/.vimrc
 ln -sfv ~/repositories/dotfiles/.gvimrc ~/.gvimrc
+ln -sfv ~/repositories/dotfiles/.zprofile ~/.zprofile
 ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/repositories/dotfiles/.zshenv ~/.zshenv
 ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
