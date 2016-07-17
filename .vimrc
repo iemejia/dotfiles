@@ -302,6 +302,7 @@ imap <right> <nop>
 " Better esc in insert mode
 inoremap jk <Esc>
 inoremap kj <Esc>
+inoremap <Esc> <NOP>
 
 " Automatically leave insert mode after 'updatetime' (4s by default)
 " au CursHoldI * stopinsert
