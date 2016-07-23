@@ -62,10 +62,12 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 
 " Fast saving
 nmap <leader>w :w!<cr>
-"inoremap <leader>w <C-c>:w<cr>
 
 " Quit Files with Leader + q
 noremap <leader>q :q<cr>
+
+" save and exit
+nmap <leader>x :wq!<cr>
 
 " always show line numbers
 "set number
@@ -299,10 +301,18 @@ imap <left> <nop>
 imap <right> <nop>
 "imap <esc> <nop>
 
-" Better esc in insert mode
+" Insert mode mappings
+" better escape
 inoremap jk <Esc>
 inoremap kj <Esc>
 inoremap <Esc> <NOP>
+
+" save on insert mode
+inoremap <c-o> <c-o>:w<cr>
+"inoremap <F2> <c-o>:w<cr>
+
+" paste on insert mode
+:inoremap kk <C-r><C-o>+
 
 " Automatically leave insert mode after 'updatetime' (4s by default)
 " au CursHoldI * stopinsert
@@ -348,9 +358,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" paste in new line (notice that if you yank a line you can do yyp
-"nmap <leader>p o<ESC>p
-
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -374,9 +381,6 @@ vnoremap <leader>d "_D
 " without yanking it
 vnoremap <leader>p "_dP
 
-" save on insert mode
-inoremap <c-o> <c-o>:w<cr>
-"inoremap <F2> <c-o>:w<cr>
 
 " decent mappings for vimdiff
 
@@ -391,7 +395,7 @@ nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
 " Fix spelling with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spelling visuals with <leader>s
-nnoremap <leader>s :set spell!
+nnoremap <leader>s :s spell!<cr>
 " enable repetition in normal mode (e.g. for prepending)
 vnoremap . :norm.<CR>
 
@@ -447,10 +451,10 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_working_path_mode = 'r'
 
 " Use a leader instead of the actual named binding
-"nmap <leader>p :CtrlP<cr>
+nmap <leader>p :CtrlP<cr>
 
 " Easy bindings for its various modes
-"nmap <leader>bb :CtrlPBuffer<cr>
-"nmap <leader>bm :CtrlPMixed<cr>
-"nmap <leader>bs :CtrlPMRU<cr>
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
 
