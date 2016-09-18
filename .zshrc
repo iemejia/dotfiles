@@ -87,6 +87,9 @@ if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 
+# OPAM configuration
+. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+eval `opam config env`
 
 # ssh-agent
 if ! pgrep ssh-agent > /dev/null; then

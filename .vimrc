@@ -175,7 +175,7 @@ map <leader>bc :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 " close buffer but not split window
-nmap <leader>bd :b#<bar>bd#<>
+nmap <leader>bd :b#<bar>bd#<cr>
 
 " move fast around buffers
 nmap bt :bn<cr>
