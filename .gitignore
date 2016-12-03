@@ -7,3 +7,4 @@
 .emacs.d/session.*
 .fonts/
 oh-my-zsh/
+.tpm/

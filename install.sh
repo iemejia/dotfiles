@@ -39,6 +39,9 @@ ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
 ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
+mkdir -p ~/.tmux/plugins
+ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
+ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
