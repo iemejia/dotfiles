@@ -22,7 +22,6 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'dbakker/vim-lint'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'jcf/vim-latex'
 Plugin 'klen/python-mode'
@@ -84,9 +83,6 @@ set wildmode=list:longest
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-
-" Height of the command bar
-set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
 set hidden
@@ -156,12 +152,6 @@ map k gk
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " New vertical split
 nnoremap <leader>wv <c-w>v<c-w>l
