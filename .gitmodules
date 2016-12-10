@@ -1,15 +1,20 @@
 [submodule ".fonts/powerline-fonts"]
 	path = .fonts/powerline-fonts
 	url = https://github.com/powerline/fonts.git
+	branch = master
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+	branch = master
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+	branch = master
 [submodule ".bash_it"]
 	path = .bash_it
 	url = https://github.com/Bash-it/bash-it.git
+	branch = master
 [submodule ".tpm"]
 	path = .tpm
 	url = https://github.com/tmux-plugins/tpm
+	branch = master
