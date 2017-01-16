@@ -16,3 +16,6 @@ for d in ~/upstream/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
 done
 
+npm outdated -g --depth=0
+npm update -g
+
