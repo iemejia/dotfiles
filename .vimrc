@@ -129,7 +129,6 @@ set textwidth=80
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
 
 set infercase
 set cursorline
@@ -138,7 +137,6 @@ set encoding=utf-8
 set showmode
 set visualbell
 set ttyfast
-set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,6 +408,7 @@ nnoremap <leader><leader> <c-^>
 cnoremap %% <c-r>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>E :Explore<cr>
+map <leader>d :bd<cr>
 
 " Bubble single lines, betteth [er
 "nmap <C-Up> ddkP
