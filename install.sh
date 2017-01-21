@@ -45,6 +45,7 @@ ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
 ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 # note you must run tmux and then do C-a I
 
+ln -sfv ~/repositories/dotfiles/.pip ~/.pip
 ln -sfv ~/repositories/dotfiles/.theanorc ~/theanorc
 ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 
