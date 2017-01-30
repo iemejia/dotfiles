@@ -23,7 +23,7 @@ fi
 # maven path
 if [ -d "$HOME/jprograms/maven" ]; then
     export MAVEN_HOME="$HOME/jprograms/maven"
-    export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+    export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
     export PATH=$MAVEN_HOME/bin:$PATH
 fi
 
