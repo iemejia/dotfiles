@@ -45,7 +45,9 @@ ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
 ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 # note you must run tmux and then do C-a I
 
-ln -sfv ~/repositories/dotfiles/gradle.properties ~/gradle.properties
+mkdir -p ~/.gradle
+ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties
+~/.gradle/gradle.properties
 
 ln -sfv ~/repositories/dotfiles/.pip ~/.pip
 ln -sfv ~/repositories/dotfiles/.theanorc ~/.theanorc
