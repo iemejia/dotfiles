@@ -49,7 +49,8 @@ mkdir -p ~/.gradle
 ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties
 ~/.gradle/gradle.properties
 
-ln -sfv ~/repositories/dotfiles/.pip ~/.pip
+mkdir -p ~/.pip
+ln -sfv ~/repositories/dotfiles/.pip/pip.conf ~/.pip/pip.conf
 ln -sfv ~/repositories/dotfiles/.theanorc ~/.theanorc
 ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 
