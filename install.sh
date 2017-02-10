@@ -46,13 +46,14 @@ ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 # note you must run tmux and then do C-a I
 
 mkdir -p ~/.gradle
-ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties
-~/.gradle/gradle.properties
+ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.properties
 
 mkdir -p ~/.pip
 ln -sfv ~/repositories/dotfiles/.pip/pip.conf ~/.pip/pip.conf
 ln -sfv ~/repositories/dotfiles/.theanorc ~/.theanorc
 ln -sfv ~/repositories/dotfiles/.keras ~/.keras
+
+/usr/bin/yarn config set prefix ~/.node --global
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
