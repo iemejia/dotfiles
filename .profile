@@ -83,6 +83,7 @@ alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
 alias ls='ls -GF --color=always --human-readable'
 alias ll='ls -lF'
 alias la='ls -alF'
+alias x='exit'
 
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .svn folders.
