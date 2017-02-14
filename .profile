@@ -20,6 +20,12 @@ if [ -d /usr/lib/jvm/default-java ]; then
     export PATH=$JAVA_HOME/bin:$PATH
 fi
 
+# ant path
+if [ -d "$HOME/jprograms/ant" ]; then
+    export ANT_HOME="$HOME/jprograms/ant"
+    export PATH=$ANT_HOME/bin:$PATH
+fi
+
 # maven path
 if [ -d "$HOME/jprograms/maven" ]; then
     export MAVEN_HOME="$HOME/jprograms/maven"
