@@ -70,6 +70,12 @@ export PATH="$HOME/.gem/bin:$PATH"
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
+# GOOGLE_SDK_HOME
+if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
+    export GOOGLE_SDK_HOME=~/jprograms/google-cloud-sdk
+    export PATH="$GOOGLE_SDK_HOME/bin:$PATH"
+fi
+
 # python pip configuration
 # virtualenv config
 if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
