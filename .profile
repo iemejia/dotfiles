@@ -57,7 +57,11 @@ if [ -d "$HOME/go" ]; then
     export GOROOT=$HOME/go
     export PATH=$GOROOT/bin:$PATH
 fi
-export GOPATH=$HOME/gowork
+
+if [ -d "$HOME/gowork" ]; then
+    export GOPATH=$HOME/gowork
+    export PATH=$GOPATH/bin:$PATH
+fi
 
 # haskell cabal path
 if [ -d "$HOME/.cabal/bin" ]; then
