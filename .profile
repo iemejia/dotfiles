@@ -60,7 +60,8 @@ fi
 
 if [ -d "$HOME/gowork" ]; then
     export GOPATH=$HOME/gowork
-    export PATH=$GOPATH/bin:$PATH
+    export GOBIN=$GOPATH/bin
+    export PATH=$GOBIN:$PATH
 fi
 
 # haskell cabal path
