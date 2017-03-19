@@ -137,6 +137,13 @@ set encoding=utf-8
 set showmode
 set visualbell
 set ttyfast
+
+set lazyredraw
+"set foldenable
+"set foldlevelstart=10   " open most folds by default
+"set foldnestmax=10      " 10 nested fold max
+"set foldmethod=indent   " fold based on indent level
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
