@@ -46,6 +46,12 @@ if [ -d "$HOME/jprograms/hadoop" ]; then
     export PATH=$HADOOP_HOME/bin:$PATH
 fi
 
+# protobuf path
+if [ -d "$HOME/jprograms/protoc" ]; then
+    export PROTOC_HOME="$HOME/jprograms/protoc"
+    export PATH=$PROTOC_HOME/bin:$PATH
+fi
+
 # leiningen path
 if [ -d "$HOME/jprograms/leiningen" ]; then
     export LEIN_HOME="$HOME/jprograms/leiningen"
