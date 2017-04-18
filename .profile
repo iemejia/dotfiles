@@ -133,5 +133,5 @@ alias caracol="livestreamer \"hds://http://acaooyalahd2-lh.akamaihd.net/z/caraco
 alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_test06@180219/manifest.f4m?hdcore=2.10.3&g=PEKPFNBGBTUV\" best"
 
 # alias use threads by default
-alias mvn='mvn --threads 1C'
+alias qmvn='mvn --threads 1C --offline'
 
