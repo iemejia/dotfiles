@@ -97,10 +97,6 @@ if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
     export PATH="$GOOGLE_SDK_HOME/bin:$PATH"
 fi
 
-if [ -f "$HOME/jprograms/google-cloud-sdk/bin/kubectl" ]; then
-    source <(kubectl completion zsh)
-fi
-
 # python pip configuration
 # virtualenv config
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then

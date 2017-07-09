@@ -46,7 +46,8 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd aws bower cabal gradle mvn grunt gulp node npm pip pylint python yarn gnu-utils rsync cargo bundler docker-compose kubectl zsh-autosuggestions)
+plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils kubectl rsync cargo bundler docker-compose yarn zsh-autosuggestions)
+# Removed aws
 
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
