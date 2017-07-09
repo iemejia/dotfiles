@@ -80,6 +80,9 @@ export NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export MANPATH="$HOME/.node/share/man:$MANPATH"
 
+# yarn
+export PATH="$PATH:`/usr/bin/yarn global bin`"
+
 # ruby
 export GEM_HOME="$HOME/.gem"
 export PATH="$HOME/.gem/bin:$PATH"
@@ -94,11 +97,19 @@ if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
     export PATH="$GOOGLE_SDK_HOME/bin:$PATH"
 fi
 
+if [ -f "$HOME/jprograms/google-cloud-sdk/bin/kubectl" ]; then
+    source <(kubectl completion zsh)
+fi
+
 # python pip configuration
 # virtualenv config
-if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
-    source ~/.local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
+#if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    #source ~/.local/bin/virtualenvwrapper.sh
+#fi
 
 # alias for remote irssi
 alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
