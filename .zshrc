@@ -49,6 +49,7 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd aws bower cabal gradle mvn grunt gulp node npm pip pylint python yarn gnu-utils rsync cargo bundler docker-compose kubectl zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 # Customize to your needs...
 
