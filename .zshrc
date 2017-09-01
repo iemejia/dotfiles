@@ -18,7 +18,7 @@ ZSH_THEME="agnoster"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # This is like replying yes and automatically update
 DISABLE_UPDATE_PROMPT="true"
@@ -46,7 +46,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils kubectl rsync cargo bundler docker-compose yarn zsh-autosuggestions)
+plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils kubectl rsync cargo bundler docker-compose yarn zsh-autosuggestions zsh-syntax-highlighting)
 # Removed aws
 
 source $ZSH/oh-my-zsh.sh
