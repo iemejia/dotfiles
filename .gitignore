@@ -8,3 +8,6 @@
 .fonts/
 oh-my-zsh/
 .tpm/
+.mpv/watch_later
+.vim/.netrwhist
+
