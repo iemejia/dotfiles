@@ -91,6 +91,11 @@ export PATH="$HOME/.gem/bin:$PATH"
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
+# rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # GOOGLE_SDK_HOME
 if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
     export GOOGLE_SDK_HOME=~/jprograms/google-cloud-sdk
