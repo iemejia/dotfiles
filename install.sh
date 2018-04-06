@@ -39,6 +39,7 @@ ln -s ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
+ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
 ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
 mkdir -p ~/.tmux/plugins
 ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
