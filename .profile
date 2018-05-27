@@ -105,6 +105,12 @@ if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
     export PATH="$GOOGLE_SDK_HOME/bin:$PATH"
 fi
 
+# base16-shell
+if [ -d "$HOME/.base16-shell" ]; then
+    export BASE16_SHELL=$HOME/.config/base16-shell/
+    [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+fi
+
 # python pip configuration
 # virtualenv config
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then

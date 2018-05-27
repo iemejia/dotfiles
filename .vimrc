@@ -15,7 +15,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'cazador481/vim-nfo'
 Plugin 'chriskempson/base16-vim'
-Plugin 'chriskempson/vim-tomorrow-theme'
 Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
@@ -282,10 +281,8 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
-set background=dark
-" let base16colorspace=256  " Access colors present in 256 colorspace
-" colorscheme base16-tomorrow
-colorscheme Tomorrow-Night
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow-night
 
 " disable arrow keys
 map <up> <nop>
