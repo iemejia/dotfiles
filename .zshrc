@@ -64,6 +64,9 @@ bindkey '\e[B' history-beginning-search-forward
 bindkey '\O[A' history-beginning-search-backward
 bindkey '\O[B' history-beginning-search-forward
 
+# Fix C-u like in bash
+bindkey \^U backward-kill-line
+
 # use vi-mode
 # bindkey -v
 # bindkey '^P' up-history
@@ -90,8 +93,8 @@ if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 fi
 
 # OPAM configuration
-. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-eval `opam config env`
+#@. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+#eval `opam config env`
 
 # ssh-agent
 if ! pgrep ssh-agent > /dev/null; then
