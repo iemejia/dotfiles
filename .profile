@@ -2,6 +2,9 @@ export TZ=Europe/Paris
 export TERM=xterm-256color
 export SVN_EDITOR=vim
 export EDITOR=vim
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS='-C -M -I -j 10 -# 4 -R'
+export PAGER=less
 
 # added the /usr/local/bin
 export PATH=/usr/local/bin:$PATH

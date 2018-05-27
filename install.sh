@@ -46,6 +46,9 @@ ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
 ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 # note you must run tmux and then do C-a I
 
+# system aliases
+ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
+
 mkdir -p ~/.gradle
 ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.properties
 
