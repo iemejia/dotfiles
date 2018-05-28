@@ -283,6 +283,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " Theme
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-tomorrow-night
+set termguicolors
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
