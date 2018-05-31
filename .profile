@@ -144,6 +144,9 @@ alias gdc='git diff --cached'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
 
+alias ip='ip --color'
+alias ipb='ip --color --brief'
+
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
