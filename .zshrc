@@ -176,3 +176,5 @@ export WASMER_DIR="$HOME/.wasmer"
 # enable to profile zsh
 #zprof
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
