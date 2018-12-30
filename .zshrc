@@ -48,43 +48,68 @@ DISABLE_UPDATE_PROMPT="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
+    ant
+    autopep8
+    aws
     bower
     bundler
     cabal
     cargo
     cp
     docker-compose
+    docker
+    fzf
     gem
     git
     github
     gnu-utils
-    go
     golang
     gradle
     grunt
     gulp
+    helm
+    history
+    jira
+    kops
     kubectl
+    lein
     macports
     mercurial
+    minikube
+    mosh
     mvn
     mysql
     node
     npm
     osx
+    pep8
     pip
+    postgres
     pylint
     python
-    python
     rails
+    rake
+    redis-cli
     rsync
     ruby
+    rust
     sbt
     scala
+    screen
+    ssh-agent
+    stack
+    sudo
+    supervisor
     svn
     systemd
+    terraform
     tmux
+    ubuntu
+    vault
     vagrant
+    virtualenv
     yarn
+    z
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
