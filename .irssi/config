@@ -320,9 +320,9 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "tr1p";
-    user_name = "tr1p";
-    nick = "tr1p";
+    real_name = "iemejia";
+    user_name = "iemejia";
+    nick = "iemejia";
     timestamp_format = "%H:%M:%S";
   };
   "fe-text" = { actlist_sort = "refnum"; };

@@ -1,3 +1,6 @@
+# enable to profile
+#zmodload zsh/zprof
+
 alias ls='ls -GF --color=always --human-readable'
 
 # Path to your oh-my-zsh configuration.
@@ -46,7 +49,8 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils kubectl rsync cargo bundler docker-compose yarn zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils rsync cargo bundler docker-compose yarn zsh-autosuggestions zsh-syntax-highlighting)
+# autojump
 # Removed aws
 
 source $ZSH/oh-my-zsh.sh
@@ -112,4 +116,14 @@ ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias 
 #source '/home/ismael/talend/Downloads/google-cloud-sdk/completion.zsh.inc'
 
 source ~/.profile
+
+
+export PATH=/home/ismael/.local/bin/luna-studio:$PATH
+
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
+#
+# enable to profile
+#zprof
 
