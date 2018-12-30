@@ -37,12 +37,6 @@ if [ -d "$HOME/jprograms/maven" ]; then
     export PATH=$MAVEN_HOME/bin:$PATH
 fi
 
-# gradle path
-if [ -d "$HOME/jprograms/gradle" ]; then
-    export GRADLE_HOME="$HOME/jprograms/gradle"
-    export PATH=$GRADLE_HOME/bin:$PATH
-fi
-
 # hadoop path
 if [ -d "$HOME/jprograms/hadoop" ]; then
     export HADOOP_HOME="$HOME/jprograms/hadoop"
@@ -111,18 +105,8 @@ if [ -d "$HOME/.config/base16-shell" ]; then
     [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 fi
 
-# python pip configuration
-# virtualenv config
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=~/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-#if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
-    #source ~/.local/bin/virtualenvwrapper.sh
-#fi
-
 # alias for remote irssi
-alias rirssi='ssh -Y iemejia@wezen.dreamhost.com -t .irssi/screen'
+alias rirssi='ssh -Y vividores -t .irssi/screen'
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ls='ls -GF --color=always --human-readable'
@@ -158,4 +142,3 @@ alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_tes
 
 # alias use threads by default
 alias qmvn='mvn --threads 1C --offline'
-
