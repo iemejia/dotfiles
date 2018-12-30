@@ -1,7 +1,5 @@
-# enable to profile
+# enable to profile zsh
 #zmodload zsh/zprof
-
-alias ls='ls -GF --color=always --human-readable'
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -49,9 +47,47 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp git github mysql python vagrant mercurial macports golang scala sbt go ruby gem svn osx rails tmux systemd bower cabal gradle mvn grunt gulp node npm pip pylint python gnu-utils rsync cargo bundler docker-compose yarn zsh-autosuggestions zsh-syntax-highlighting)
-# autojump
-# Removed aws
+plugins=(
+    bower
+    bundler
+    cabal
+    cargo
+    cp
+    docker-compose
+    gem
+    git
+    github
+    gnu-utils
+    go
+    golang
+    gradle
+    grunt
+    gulp
+    kubectl
+    macports
+    mercurial
+    mvn
+    mysql
+    node
+    npm
+    osx
+    pip
+    pylint
+    python
+    python
+    rails
+    rsync
+    ruby
+    sbt
+    scala
+    svn
+    systemd
+    tmux
+    vagrant
+    yarn
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
@@ -100,15 +136,6 @@ fi
 #@. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 #eval `opam config env`
 
-# ssh-agent
-if ! pgrep ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval $(<~/.ssh-agent-thing)
-fi
-ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias ssh; ssh'
-
 # The next line updates PATH for the Google Cloud SDK.
 #source '/home/ismael/talend/Downloads/google-cloud-sdk/path.zsh.inc'
 
@@ -117,13 +144,10 @@ ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias 
 
 source ~/.profile
 
-
-export PATH=/home/ismael/.local/bin/luna-studio:$PATH
-
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
 #
-# enable to profile
+# enable to profile zsh
 #zprof
 
