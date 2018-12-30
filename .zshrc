@@ -1,5 +1,5 @@
 # enable to profile zsh
-#zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -59,7 +59,7 @@ plugins=(
     docker-compose
     docker
     fzf
-    gem
+    # gem
     git
     github
     gnu-utils
@@ -91,7 +91,7 @@ plugins=(
     # rake
     # redis-cli
     rsync
-    ruby
+    # ruby
     rust
     sbt
     scala
@@ -107,7 +107,7 @@ plugins=(
     # ubuntu
     # vault
     # vagrant
-    virtualenv
+    # virtualenv
     yarn
     z
     zsh-autosuggestions
@@ -161,20 +161,20 @@ fi
 #@. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 #eval `opam config env`
 
-# The next line updates PATH for the Google Cloud SDK.
-#source '/home/ismael/talend/Downloads/google-cloud-sdk/path.zsh.inc'
+if [ -d "$GOOGLE_SDK_HOME" ]; then
+    # The next line updates PATH for the Google Cloud SDK.
+    source "$GOOGLE_SDK_HOME/path.zsh.inc"
+    # The next line enables shell command completion for gcloud.
+    source "$GOOGLE_SDK_HOME/completion.zsh.inc"
+fi
 
-# The next line enables shell command completion for gcloud.
-#source '/home/ismael/talend/Downloads/google-cloud-sdk/completion.zsh.inc'
-
-source ~/.profile
+source "$HOME/.profile"
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
-#
-# enable to profile zsh
-#zprof
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# enable to profile zsh
+# zprof
