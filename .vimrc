@@ -25,6 +25,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'mengelbrecht/lightline-bufferline'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'msanders/snipmate.vim'
@@ -452,7 +453,6 @@ nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 
-
 imap <C-x><C-f> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 
@@ -464,25 +464,19 @@ let g:lightline = {
   \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
   \     ]
   \   },
-	\   'component': {
-	\     'lineinfo': ' %3l:%-2v',
-	\   },
+  \   'component': {
+  \     'lineinfo': ' %3l:%-2v',
+  \   },
   \   'component_function': {
   \     'gitbranch': 'fugitive#head',
-  \   }
+  \   },
   \ }
-let g:lightline.separator = {
-	\   'left': '', 'right': ''
-  \}
-let g:lightline.subseparator = {
-	\   'left': '', 'right': ''
-  \}
 
-"set showtabline=2  " Show tabline
-"set guioptions-=e  " Don't use GUI tabline
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " wrapping and indenting code
-
 nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
