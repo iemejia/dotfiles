@@ -47,6 +47,7 @@ ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
 # note you must run tmux and then do C-a I
 ln -sfv ~/repositories/dotfiles/.config/base16-shell ~/.config/base16-shell
 ln -sfv ~/repositories/dotfiles/.fzf ~/.fzf
+ln -sfv ~/repositories/dotfiles/.gradle-completion ~/.gradle-completion
 # system aliases
 ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
 

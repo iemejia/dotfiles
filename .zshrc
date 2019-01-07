@@ -64,7 +64,7 @@ plugins=(
     github
     gnu-utils
     golang
-    gradle
+    # gradle
     # grunt
     # gulp
     # helm
@@ -174,7 +174,14 @@ source "$HOME/.profile"
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
 
+# Use ripgrep
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+# Gradle completion
+fpath=($HOME/.gradle-completion $fpath)
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # enable to profile zsh
 # zprof
+
