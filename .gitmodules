@@ -26,7 +26,8 @@
 	path = .fzf
 	url = https://github.com/junegunn/fzf
 	branch = master
-
 [submodule ".gradle-completion"]
 	path = .gradle-completion
 	url = https://github.com/gradle/gradle-completion
+	branch = master
+

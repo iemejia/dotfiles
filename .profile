@@ -127,6 +127,7 @@ alias gau='git add -u'
 alias gdc='git diff --cached'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
+alias gcd='cd $(git rev-parse --show-cdup)'
 
 alias ip='ip --color'
 alias ipb='ip --color --brief'
@@ -142,3 +143,4 @@ alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_tes
 
 # alias use threads by default
 alias qmvn='mvn --threads 1C --offline'
+
