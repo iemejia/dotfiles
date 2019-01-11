@@ -124,10 +124,23 @@ alias vit='vim.tiny -u NONE'
 
 # some missing git alias
 alias gau='git add -u'
+alias gcd='cd $(git rev-parse --show-cdup)'
 alias gdc='git diff --cached'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
-alias gcd='cd $(git rev-parse --show-cdup)'
+
+# interactive aliases, need fxf
+# git add interactive
+alias gai='git add $(git diff --name-only | fzf --multi | tr "\n" " ")'
+# git reset file interactive
+alias gui='git reset $(git diff --name-only | fzf --multi | tr "\n" " ")'
+# git reset HEAD file interactive (unstage file)
+alias guci='git reset HEAD $(git diff --name-only --cached | fzf --multi | tr "\n" " ")'
+# git switch branch interactive
+alias gsb='git checkout $(git branch | fzf)'
+# git find interactive
+alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
+
 
 alias ip='ip --color'
 alias ipb='ip --color --brief'
