@@ -438,7 +438,8 @@ nmap gV `[v`]
 
 "Use a leader instead of the actual named binding
 " mostly from https://github.com/zenbro/dotfiles/blob/master/.nvimrc#L151-L187
-nnoremap <leader>t :Files ~/talend/notes<CR>
+nnoremap <leader>; :Files ~/talend/notes<CR>
+nnoremap <leader>t :Files<CR>
 " nnoremap <leader>t :Files<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>b :Buffers<CR>
