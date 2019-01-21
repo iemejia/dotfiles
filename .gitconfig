@@ -35,24 +35,7 @@
     type = cat-file -t
     dump = cat-file -p
 
-    # log section
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    hist2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    lg = !"git lg1"
-    lgf = log --pretty=format:'%Cred%h%Creset%d - %C(yellow)%s%C(bold blue) <%cn>' --decorate --numstat
-    lp = !git lg -p
-    ll = log --stat --abbrev-commit
-    lt = log --graph --oneline --decorate --all
-
-    # log signatures
-    lgs = log --pretty=format:'%h %G? %aN  %s'
-    lgls = log --show-signature -1
-
     # see changes after the last pull
-    lc = !git oneline ORIG_HEAD.. --stat --no-merges
-    oneline = log --pretty=oneline --abbrev-commit --graph --decorate
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
     # shows a version
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
@@ -67,28 +50,12 @@
     #grep on filename
     f = "!git ls-files | grep -i"
 
-    #reset commands
-    r = reset
-    r1 = reset HEAD^
-    r2 = reset HEAD^^
-    rh = reset --hard
-    rh1 = reset HEAD^ --hard
-    rh2 = reset HEAD^^ --hard
-
     # subversion ones
     spull = svn rebase
     spush = svn dcommit
     svnr = svn rebase
     svnd = svn dcommit
     svnl = svn log --oneline --show-commit
-
-    # undo section
-    undo = reset --soft HEAD^
-    unstage = reset HEAD
-    amend = commit --amend
-    ## this onew should be done after a reset via undo
-    redo = commit -e -c ORIG_HEAD
-    #redo = commit -a -e -F .git/COMMIT_EDITMSG
 
     # identifies who did something
     who = shortlog -sne
@@ -101,18 +68,6 @@
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
     # add arg to local .gitignore file
 #    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
-
-    # github ones
-    pm = push origin master
-    po = push origin
-    cp = !git ci && git pm
-
-    fu = fetch upstream
-    mu = merge upstream/master
-    pu = !git fu && git mu
-    puf = pull upstream/master --ff-only
-    pur = pull --rebase upstream master
-    pum = push upstream master
 
     a = add
     ai = add --interactive
@@ -147,23 +102,11 @@
 #    lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
 
     #subtree add
-#    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
-#
+#    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
 
     # some alias from github flow
     # pulls changes and rebase local commits to come after the commits I pulled down, it also removes remote tracking branches that dont exist
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-    # All new work starts in a branch
-    cob = checkout -b
-    # I commit regularly
-    cm = !git add -A && git commit -m
-
-    # git save or git wip. The first one adds all changes including untracked files and creates a commit. The second one only commits tracked changes. I generally use the first one.
-
-    save = !git add -A && git commit -m 'SAVEPOINT'
-    wip = !git add -u && git commit -m "WIP"
-    undo2 = reset HEAD~1 --mixed
-
 [user]
 	name = Ismaël Mejía
 	email = iemejia@gmail.com
