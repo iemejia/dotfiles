@@ -24,5 +24,6 @@ deactivate
 #npm outdated -g --depth=0
 npm update -g
 
-gcloud components update -q
+# this is now done via the deb package
+#gcloud components update -q
 
