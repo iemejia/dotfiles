@@ -78,7 +78,9 @@ export PATH="$HOME/.node/bin:$PATH"
 export MANPATH="$HOME/.node/share/man:$MANPATH"
 
 # yarn
-export PATH="$PATH:`/usr/bin/yarn global bin`"
+if [ -f "/usr/bin/yarn" ]; then
+    export PATH="$PATH:`/usr/bin/yarn global bin`"
+fi
 
 # ruby
 export GEM_HOME="$HOME/.gem"
