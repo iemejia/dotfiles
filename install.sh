@@ -51,6 +51,9 @@ ln -sfv ~/repositories/dotfiles/.gradle-completion ~/.gradle-completion
 # system aliases
 ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
 
+mkdir -p ~/.m2
+ln -sfv ~/repositories/dotfiles/.m2/settings.xml ~/.m2/settings.xml
+
 mkdir -p ~/.gradle
 ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.properties
 
