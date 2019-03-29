@@ -31,3 +31,9 @@
 	url = https://github.com/gradle/gradle-completion
 	branch = master
 
+[submodule ".zsh-autosuggestions"]
+	path = .zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh-syntax-highlighting"]
+	path = .zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

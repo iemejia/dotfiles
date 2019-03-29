@@ -23,6 +23,8 @@ ln -sfv ~/repositories/dotfiles/.zprofile ~/.zprofile
 ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/repositories/dotfiles/.zshenv ~/.zshenv
 ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
+ln -sfv ~/repositories/dotfiles/.zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+ln -sfv ~/repositories/dotfiles/.zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 ln -sfv ~/repositories/dotfiles/.bash_it ~/.bash_it
 ln -sfv ~/repositories/dotfiles/.xinitrc ~/.xinitrc
 #cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
