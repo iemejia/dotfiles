@@ -132,42 +132,6 @@ bindkey '\O[B' history-beginning-search-forward
 # Fix C-u like in bash
 bindkey \^U backward-kill-line
 
-# use vi-mode
-# bindkey -v
-# bindkey '^P' up-history
-# bindkey '^N' down-history
-# bindkey '^?' backward-delete-char
-# bindkey '^h' backward-delete-char
-# bindkey '^w' backward-kill-word
-# bindkey '^r' history-incremental-search-backward
-#
-# function zle-line-init zle-keymap-select {
-#     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
-#     zle reset-prompt
-# }
-#
-# zle -N zle-line-init
-# zle -N zle-keymap-select
-#export KEYTIMEOUT=1
-#
-
-# powerline support
-if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-fi
-
-# OPAM configuration
-#@. /home/ismael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-#eval `opam config env`
-
-if [ -d "$GOOGLE_SDK_HOME" ]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    source "$GOOGLE_SDK_HOME/path.zsh.inc"
-    # The next line enables shell command completion for gcloud.
-    source "$GOOGLE_SDK_HOME/completion.zsh.inc"
-fi
-
 source "$HOME/.profile"
 
 # Wasmer

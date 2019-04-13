@@ -95,12 +95,6 @@ if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# GOOGLE_SDK_HOME
-if [ -d "$HOME/jprograms/google-cloud-sdk" ]; then
-    export GOOGLE_SDK_HOME=~/jprograms/google-cloud-sdk
-    export PATH="$GOOGLE_SDK_HOME/bin:$PATH"
-fi
-
 # base16-shell
 if [ -d "$HOME/.config/base16-shell" ]; then
     export BASE16_SHELL=$HOME/.config/base16-shell/
