@@ -107,6 +107,8 @@
     # some alias from github flow
     # pulls changes and rebase local commits to come after the commits I pulled down, it also removes remote tracking branches that dont exist
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    update-branch = "!f() { git update-ref refs/heads/$1 refs/remotes/origin/$1; }; f"
+
 [user]
 	name = Ismaël Mejía
 	email = iemejia@gmail.com

@@ -153,3 +153,6 @@ alias rcn="livestreamer \"hds://http://ooyalahd2-f.akamaihd.net/z/saleslatam_tes
 # alias use threads by default
 alias qmvn='mvn --threads 1C --offline'
 
+# modern utils configuration
+export BAT_THEME="DarkNeon"
+
