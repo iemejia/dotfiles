@@ -13,11 +13,17 @@ for d in ~/upstream/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
 done
 
+for d in ~/upstream-talend/* ; do
+  echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
+done
+
 . ~/.virtualenvs/python3/personal/bin/activate
+pip install --upgrade pip setuptools wheel
 pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
 deactivate
 
 . ~/.virtualenvs/python3/work/bin/activate
+pip install --upgrade pip setuptools wheel
 pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
 deactivate
 
