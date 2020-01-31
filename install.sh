@@ -41,6 +41,7 @@ ln -s ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
+ln -sfv ~/repositories/dotfiles/update-all-projects.sh ~/.local/bin/update-all-projects.sh
 ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
 ln -sfv ~/repositories/dotfiles/update-env.sh ~/.local/bin/update-env.sh
 ln -sfv ~/repositories/dotfiles/update-projects.sh ~/.local/bin/update-projects.sh
