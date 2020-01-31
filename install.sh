@@ -42,6 +42,7 @@ ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
 ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
+ln -sfv ~/repositories/dotfiles/update-env.sh ~/.local/bin/update-env.sh
 ln -sfv ~/repositories/dotfiles/update-projects.sh ~/.local/bin/update-projects.sh
 ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
 mkdir -p ~/.tmux/plugins
