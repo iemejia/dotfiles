@@ -146,6 +146,7 @@ alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 
 alias ip='ip --color'
 alias ipb='ip --color --brief'
+alias scd='cd $(svn info . | grep -F "Working Copy Root Path:" | cut -c25-)'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
