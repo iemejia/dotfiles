@@ -17,31 +17,12 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# java path
-if [ -d /usr/lib/jvm/default-java ]; then
-    export JAVA_HOME='/usr/lib/jvm/default-java'
-    export JDK_HOME=$JAVA_HOME
-    export PATH=$JAVA_HOME/bin:$PATH
+# load sdkman ressources if available
+if [ -d "$HOME/.sdkman" ]; then
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
-# ant path
-if [ -d "$HOME/jprograms/ant" ]; then
-    export ANT_HOME="$HOME/jprograms/ant"
-    export PATH=$ANT_HOME/bin:$PATH
-fi
-
-# maven path
-if [ -d "$HOME/jprograms/maven" ]; then
-    export MAVEN_HOME="$HOME/jprograms/maven"
-    export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
-    export PATH=$MAVEN_HOME/bin:$PATH
-fi
-
-# gradle path
-if [ -d "$HOME/jprograms/gradle" ]; then
-    export GRADLE_HOME="$HOME/jprograms/gradle"
-    export PATH=$GRADLE_HOME/bin:$PATH
-fi
+export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
 
 # hadoop path
 if [ -d "$HOME/jprograms/hadoop" ]; then

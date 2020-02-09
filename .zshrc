@@ -95,6 +95,7 @@ plugins=(
     rust
     sbt
     scala
+    sdk
     # screen
     # ssh-agent
     # stack
@@ -174,4 +175,9 @@ build_prompt() {
 
 # enable to profile zsh
 # zprof
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
