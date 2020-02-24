@@ -123,7 +123,8 @@ alias guci='git reset HEAD $(git diff --name-only --cached | fzf --multi | tr "\
 alias gsb='git checkout $(git branch | fzf)'
 # git find interactive
 alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
-
+# checkout pr
+alias ghco=gh pr checkout $(gh pr list -L 300 | fzf --multi | awk '{print $1}')
 
 alias ip='ip --color'
 alias ipb='ip --color --brief'
