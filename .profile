@@ -66,7 +66,7 @@ export MANPATH="$HOME/.node/share/man:$MANPATH"
 
 # yarn
 if [ -f "/usr/bin/yarn" ]; then
-    export PATH="$PATH:`/usr/bin/yarn global bin`"
+    export PATH="$PATH:`/usr/bin/yarn global bin --offline`"
 fi
 
 # ruby
