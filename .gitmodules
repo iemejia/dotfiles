@@ -30,7 +30,6 @@
 	path = .gradle-completion
 	url = https://github.com/gradle/gradle-completion
 	branch = master
-
 [submodule ".zsh-autosuggestions"]
 	path = .zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
