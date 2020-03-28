@@ -110,60 +110,61 @@
     update-branch = "!f() { git update-ref refs/heads/$1 refs/remotes/origin/$1; }; f"
 
 [user]
-	name = Ismaël Mejía
-	email = iemejia@gmail.com
-	signingkey = 0x78A1FFB82B6E3E69
+    name = Ismaël Mejía
+    email = iemejia@gmail.com
+    # email = iemejia@apache.org
+    signingkey = 0A9DAF6713B86349
 [color]
-	diff = auto
-	status = auto
+    diff = auto
+    status = auto
 
-	branch = auto
-	ui = auto
-	interactive = auto
+    branch = auto
+    ui = auto
+    interactive = auto
 [core]
-	editor = vim # emacsclient -t -a=\\\"\\\"
-	autocrlf = input
-	safecrlf = true
-	pager = less -R
-	whitespace = trailing-space,space-before-tab,blank-at-eol
+    editor = vim # emacsclient -t -a=\\\"\\\"
+    autocrlf = input
+    safecrlf = true
+    pager = less -R
+    whitespace = trailing-space,space-before-tab,blank-at-eol
     # preserve file metadata
     #filemode = true
 [include]
-	path = ~/.github
+    path = ~/.github
 [credential]
     helper = cache --timeout=604800
-#	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
-#	helper = osxkeychain
+    # helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+    # helper = osxkeychain
 [merge]
-	tool = vimdiff
-	stat = true
+    tool = vimdiff
+    stat = true
     conflictstyle = diff3
 [diff]
-	tool = vimdiff
-	renames = copies
-	mnemonicprefix = true
+    tool = vimdiff
+    renames = copies
+    mnemonicprefix = true
 [mergetool]
-	prompt = false
+    prompt = false
 [difftool]
-	prompt = false
+    prompt = false
 [push]
     default = current
     # use simple if you only use git 2.0 (not yet my case)
     # default = simple
 [advice]
-	statusHints = false
-#	pushNonFastForward = false
+    statusHints = false
+    # pushNonFastForward = false
 [branch]
-	autosetupmerge = true
+    autosetupmerge = true
     #autosetuprebase = always
 [rerere]
-	enabled = true
+    enabled = true
 [help]
-	autocorrect = 1
+    autocorrect = 1
 [color "diff"]
-	whitespace = red reverse
+    whitespace = red reverse
 [hub]
-	protocol = https
+    protocol = https
 [pull]
     # make pull preserve merges on rebase
     #rebase = preserve
@@ -179,8 +180,9 @@
     chainreplyto = false
     # smtppass = your_password
 [commit]
-	template = ~/.git_commit_msg.txt
+    template = ~/.git_commit_msg.txt
 [rebase]
-	autostash = true
+    autostash = true
 [pull]
-	rebase = true
+    rebase = true
+
