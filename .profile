@@ -36,12 +36,6 @@ if [ -d "$HOME/jprograms/protoc" ]; then
     export PATH=$PROTOC_HOME/bin:$PATH
 fi
 
-# leiningen path
-if [ -d "$HOME/jprograms/leiningen" ]; then
-    export LEIN_HOME="$HOME/jprograms/leiningen"
-    export PATH=$LEIN_HOME/bin:$PATH
-fi
-
 # golang-go local path if available
 if [ -d "$HOME/go" ]; then
     export GOROOT=$HOME/go
@@ -145,4 +139,7 @@ alias qmvn='mvn --threads 1C --offline'
 
 # modern utils configuration
 export BAT_THEME="DarkNeon"
+
+GPG_TTY=$(tty)
+export GPG_TTY
 

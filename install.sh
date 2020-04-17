@@ -40,12 +40,17 @@ ln -sfv ~/Dropbox/Documents/research-notes ~/research-notes
 ln -s ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
 ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
+
+# update scripts
+mkdir -p ~/.local/bin
 ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
 ln -sfv ~/repositories/dotfiles/update-all-projects.sh ~/.local/bin/update-all-projects.sh
 ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
 ln -sfv ~/repositories/dotfiles/update-env.sh ~/.local/bin/update-env.sh
 ln -sfv ~/repositories/dotfiles/update-projects.sh ~/.local/bin/update-projects.sh
 ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
+
+# tmux plugins
 mkdir -p ~/.tmux/plugins
 ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
 ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
