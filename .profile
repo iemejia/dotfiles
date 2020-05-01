@@ -69,7 +69,7 @@ export PATH="$HOME/.gem/bin:$PATH"
 
 # cuda
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
-export PATH=/usr/local/cuda/bin:$PATH
+#export PATH=/usr/local/cuda/bin:$PATH
 
 # rust
 if [ -d "$HOME/.cargo/bin" ]; then

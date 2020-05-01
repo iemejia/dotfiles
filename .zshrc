@@ -72,10 +72,10 @@ plugins=(
     # jira
     # kops
     kubectl
-    # lein
+    lein
     # macports
     # mercurial
-    # minikube
+    minikube
     # mosh
     mvn
     # mysql
