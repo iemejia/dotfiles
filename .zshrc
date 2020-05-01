@@ -61,7 +61,6 @@ plugins=(
     fzf
     # gem
     git
-    github
     gnu-utils
     golang
     # gradle
