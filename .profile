@@ -115,6 +115,8 @@ alias gui='git reset $(git diff --name-only | fzf --multi | tr "\n" " ")'
 alias guci='git reset HEAD $(git diff --name-only --cached | fzf --multi | tr "\n" " ")'
 # git switch branch interactive
 alias gsb='git checkout $(git branch | fzf)'
+# git switch branch all interactive
+alias gsba='git checkout -t $(git branch -a | fzf)'
 # git find interactive
 alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 # checkout pr
@@ -142,4 +144,7 @@ export BAT_THEME="DarkNeon"
 
 GPG_TTY=$(tty)
 export GPG_TTY
+
+# wayland
+#export MOZ_ENABLE_WAYLAND=1
 
