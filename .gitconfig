@@ -166,8 +166,7 @@
 [hub]
     protocol = https
 [pull]
-    # make pull preserve merges on rebase
-    #rebase = preserve
+    rebase = true
 [commit]
     # always sign commits with gpg
     #gpgsign = true
@@ -183,6 +182,6 @@
     template = ~/.git_commit_msg.txt
 [rebase]
     autostash = true
-[pull]
-    rebase = true
+[init]
+    defaultBranch = main
 
