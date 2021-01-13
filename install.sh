@@ -80,6 +80,9 @@ ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 
 /usr/bin/yarn config set prefix ~/.node --global
 
+# asdf defaults
+ln -sfv ~/repositories/dotfiles/.tool-versions ~/.tool-versions
+
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
 
