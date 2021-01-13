@@ -83,6 +83,10 @@ ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 # asdf defaults
 ln -sfv ~/repositories/dotfiles/.tool-versions ~/.tool-versions
 
+# sdkman configuration
+mkdir -p ~/.sdkman/etc/config
+ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
+
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
 
