@@ -17,6 +17,11 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# load asdf
+if [ -d "$HOME/.asdf" ]; then
+    source $HOME/.asdf/asdf.sh
+fi
+
 # load sdkman ressources if available
 if [ -d "$HOME/.sdkman" ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -31,10 +36,10 @@ if [ -d "$HOME/jprograms/hadoop" ]; then
 fi
 
 # protobuf path
-if [ -d "$HOME/jprograms/protoc" ]; then
-    export PROTOC_HOME="$HOME/jprograms/protoc"
-    export PATH=$PROTOC_HOME/bin:$PATH
-fi
+#if [ -d "$HOME/jprograms/protoc" ]; then
+    #export PROTOC_HOME="$HOME/jprograms/protoc"
+    #export PATH=$PROTOC_HOME/bin:$PATH
+#fi
 
 # golang-go local path if available
 if [ -d "$HOME/go" ]; then
