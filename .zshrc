@@ -50,6 +50,7 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(
     # ant
     # autopep8
+    asdf
     aws
     # bower
     # bundler
