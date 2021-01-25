@@ -87,6 +87,10 @@ ln -sfv ~/repositories/dotfiles/.tool-versions ~/.tool-versions
 mkdir -p ~/.sdkman/etc/config
 ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
 
+# alacritty
+mkdir -p ~/.config/alacritty
+ln -sfv ~/repositories/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
 
