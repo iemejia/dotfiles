@@ -68,6 +68,12 @@ if [ -f "/usr/bin/yarn" ]; then
     export PATH="$PATH:`/usr/bin/yarn global bin --offline`"
 fi
 
+# deno
+if [ -d "$HOME/.deno" ]; then
+    DENO_INSTALL="$HOME/.deno"
+    PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 # ruby
 export GEM_HOME="$HOME/.gem"
 export PATH="$HOME/.gem/bin:$PATH"
