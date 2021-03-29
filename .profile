@@ -41,12 +41,7 @@ fi
     #export PATH=$PROTOC_HOME/bin:$PATH
 #fi
 
-# golang-go local path if available
-if [ -d "$HOME/go" ]; then
-    export GOROOT=$HOME/go
-    export PATH=$GOROOT/bin:$PATH
-fi
-
+# golang
 if [ -d "$HOME/gowork" ]; then
     export GOPATH=$HOME/gowork
     export GOBIN=$GOPATH/bin
@@ -131,8 +126,7 @@ alias gsba='git checkout -t $(git branch -a | fzf)'
 # git find interactive
 alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 # checkout pr
-alias ghco='gh pr checkout $(gh pr list -L 300 | fzf --multi | awk "{print
-$1}")'
+alias ghco='gh pr checkout $(gh pr list -L 300 | fzf --multi | awk '"'"'{print $1}'"'"')'
 
 alias ip='ip --color'
 alias ipb='ip --color --brief'
