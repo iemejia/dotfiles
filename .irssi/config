@@ -29,7 +29,7 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
-    autoconnect = "yes";
+    autoconnect = "no";
   },
   {
     address = "chat.freenode.net";
@@ -39,6 +39,14 @@ servers = (
     ssl_cert = "~/.irssi/iemejia.pem";
     ssl_verify = "yes";
     ssl_cafile = "~/.irssi/UTN-USERFirst-Hardware.pem";
+    autoconnect = "no";
+  },
+  {
+    address = "irc.libera.chat";
+    chatnet = "Libera.Chat";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "yes";
   }
 );
@@ -75,7 +83,7 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  OFTC = { 
+  OFTC = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
@@ -93,7 +101,7 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  Rizon = { 
+  Rizon = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
@@ -113,6 +121,7 @@ chatnets = {
     max_modes = "4";
     max_whois = "1";
   };
+  "Libera.Chat" = { type = "IRC"; };
 };
 
 channels = (
@@ -332,7 +341,5 @@ settings = {
   };
   "perl/core/scripts" = { screen_away_active = "yes"; };
 };
-ignores = (
-  { level = "JOINS PARTS QUITS"; }
-);
+ignores = ( { level = "JOINS PARTS QUITS"; } );
 logs = { };
