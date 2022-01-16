@@ -12,9 +12,16 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # added gnu path as default
 export PATH=/opt/local/libexec/gnubin:$PATH
+
 # home binaries directory
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+# homebrew binaries directory
+export PATH=/opt/homebrew/bin:$PATH
+if [ -d "/opt/homebrew/bin" ]; then
+    PATH="/opt/homebrew/bin:$PATH"
 fi
 
 # load asdf
@@ -78,6 +85,7 @@ export PATH="$HOME/.gem/bin:$PATH"
 #export PATH=/usr/local/cuda/bin:$PATH
 
 # rust
+#. "$HOME/.cargo/env"
 if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
@@ -92,7 +100,7 @@ fi
 alias rirssi='ssh -Y vividores -t .irssi/screen'
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
-alias ls='ls -GF --color=always --human-readable'
+alias ls='ls -GF --color=always'
 alias ll='ls -lF'
 alias la='ls -alF'
 alias x='exit'

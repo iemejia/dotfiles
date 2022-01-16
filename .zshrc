@@ -1,4 +1,4 @@
-# enable to profile zsh
+#aenable to profile zsh
 # zmodload zsh/zprof
 
 # Path to your oh-my-zsh configuration.
@@ -55,11 +55,10 @@ plugins=(
     # bower
     # bundler
     # cabal
-    cargo
     cp
     docker-compose
     docker
-    fzf
+    # fzf
     # gem
     git
     gnu-utils
@@ -72,7 +71,7 @@ plugins=(
     # jira
     # kops
     kubectl
-    lein
+    # lein
     # macports
     # mercurial
     minikube
@@ -103,8 +102,8 @@ plugins=(
     # supervisor
     svn
     systemd
-    # terraform
-    tmux
+    terraform
+    # tmux
     # ubuntu
     # vault
     # vagrant
@@ -142,10 +141,26 @@ export WASMER_DIR="$HOME/.wasmer"
 # Use ripgrep
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
-# Gradle completion
-fpath=($HOME/.gradle-completion $fpath)
+# enable bash completions
+autoload bashcompinit
+bashcompinit
+
+#source <(kubectl completion zsh)
+# alias k too for auto completion
+#echo 'compdef __start_kubectl k' >>~/.zshrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Homebrew completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+[ -f /opt/homebrew/etc/bash_completion.d/az ] && source /opt/homebrew/etc/bash_completion.d/az
 
 prompt_svn() {
     local rev branch
@@ -175,9 +190,4 @@ build_prompt() {
 
 # enable to profile zsh
 # zprof
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
