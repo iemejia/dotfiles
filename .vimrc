@@ -52,6 +52,7 @@ Plugin 'tpope/vim-unimpaired'
 "Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'w0rp/ale'
+Plugin 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
