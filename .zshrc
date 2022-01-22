@@ -58,7 +58,7 @@ plugins=(
     cp
     docker-compose
     docker
-    # fzf
+    fzf
     # gem
     git
     gnu-utils
