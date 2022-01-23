@@ -9,3 +9,6 @@ for d in ~/microsoft/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
 done
 
+for d in ~/repositories/* ; do
+  echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
+done
