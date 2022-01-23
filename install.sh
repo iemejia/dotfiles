@@ -42,11 +42,12 @@ ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
 
 # update scripts
 mkdir -p ~/.local/bin
-ln -sfv ~/repositories/dotfiles/update.sh ~/.local/bin/update.sh
-ln -sfv ~/repositories/dotfiles/update-all-projects.sh ~/.local/bin/update-all-projects.sh
+
 ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
 ln -sfv ~/repositories/dotfiles/update-env.sh ~/.local/bin/update-env.sh
-ln -sfv ~/repositories/dotfiles/update-projects.sh ~/.local/bin/update-projects.sh
+ln -sfv ~/repositories/dotfiles/update-linux.sh ~/.local/bin/update-linux.sh
+ln -sfv ~/repositories/dotfiles/update-mac.sh ~/.local/bin/update-mac.sh
+ln -sfv ~/repositories/dotfiles/update-repositories.sh ~/.local/bin/update-repositories.sh
 ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
 
 # tmux plugins
