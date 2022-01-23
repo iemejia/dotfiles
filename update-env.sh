@@ -2,7 +2,7 @@
 set -x
 
 git -C ~/.oh-my-zsh pull
-git -C ~/.bash_it pull
+#git -C ~/.bash_it pull
 
 for d in ~/.vim/bundle/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd

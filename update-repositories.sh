@@ -1,10 +1,11 @@
 #!/bin/sh
 set -x
 
-for d in ~/upstream/* ; do
+for d in ~/apache/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
 done
 
-for d in ~/upstream-talend/* ; do
+for d in ~/microsoft/* ; do
   echo "$d"; cd "$d"; git fetch -p --all; git pull; cd
 done
+

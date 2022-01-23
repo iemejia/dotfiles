@@ -1,6 +1,7 @@
 #!/bin/sh
-. update.sh
-#. update-docker.sh
-. update-env.sh
-. update-all-projects.sh
+. update-mac.sh
+#. update-linux.sh
+. update-docker.sh
+. update-repositories.sh
+#. update-env.sh
 
