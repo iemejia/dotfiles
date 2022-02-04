@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 ln -sfv ~/repositories/dotfiles/.gitconfig ~/.gitconfig
 ln -sfv ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
