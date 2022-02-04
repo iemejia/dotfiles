@@ -9,7 +9,6 @@ ln -sfv ~/repositories/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sfv ~/repositories/dotfiles/.vim ~/.vim
 ln -sfv ~/repositories/dotfiles/.vimrc ~/.vimrc
 
-
 # subversion
 mkdir -p ~/.subversion
 ln -sfv ~/repositories/dotfiles/.subversion/servers ~/.subversion/servers

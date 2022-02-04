@@ -30,8 +30,8 @@ ln -sfv ~/repositories/dotfiles/.xinitrc ~/.xinitrc
 #cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
 #ln -sfv ~/Dropbox/static-resources/fonts/ .fonts
 ln -sfv ~/repositories/dotfiles/.fonts ~/.fonts
-ln -sfv ~/repositories/dotfiles/.fonts.conf  ~/.fonts.conf
-ln -sfv ~/repositories/dotfiles/.fonts.conf.d  ~/.fonts.conf.d
+ln -sfv ~/repositories/dotfiles/.fonts.conf ~/.fonts.conf
+ln -sfv ~/repositories/dotfiles/.fonts.conf.d ~/.fonts.conf.d
 ln -sfv ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
 ln -sfv ~/repositories/dotfiles/s3.exclude ~/s3.exclude
 ln -sfv ~/repositories/dotfiles/.mplayer ~/.mplayer
@@ -93,4 +93,3 @@ ln -sfv ~/repositories/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacri
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
-
