@@ -21,7 +21,7 @@ for d in ~/.virtualenvs/*; do
 done
 
 #npm outdated -g --depth=0
-npm update -g
+#npm update -g
 
 # this is now done via the deb package
 #gcloud components update -q
