@@ -1,11 +1,11 @@
 #!/bin/sh
 
-. ./update-env.sh
+. update-env.sh
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    . ./update-mac.sh
+    . update-mac.sh
 else
-    . ./update-linux.sh
+    . update-linux.sh
 fi
-. ./update-docker.sh
-. ./update-repositories.sh
+. update-docker.sh
+. update-repositories.sh
 
