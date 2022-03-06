@@ -30,7 +30,10 @@
     ds = diff --stat
     dl = diff HEAD@{1}
     # show the diff of the last commit
-    last = log -1 -p
+    last = log -1 HEAD -p
+
+    tree = log --all --decorate --oneline --graph
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
     type = cat-file -t
     dump = cat-file -p
