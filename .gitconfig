@@ -129,6 +129,7 @@
     autocrlf = input
     safecrlf = true
     pager = less -R
+    # pager = diff-so-fancy | less --tabs=4 -RFX
     whitespace = trailing-space,space-before-tab,blank-at-eol
     # preserve file metadata
     #filemode = true
@@ -189,3 +190,6 @@
     defaultBranch = main
 [http]
 	postBuffer = 1048576000
+# [interactive]
+    # diffFilter = diff-so-fancy --patch
+
