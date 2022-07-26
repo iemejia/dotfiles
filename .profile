@@ -161,3 +161,5 @@ export GPG_TTY
 # wayland
 #export MOZ_ENABLE_WAYLAND=1
 
+unalias mvnd
+
