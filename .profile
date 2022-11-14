@@ -19,10 +19,14 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # homebrew binaries directory
-export PATH=/opt/homebrew/bin:$PATH
 if [ -d "/opt/homebrew/bin" ]; then
-    PATH="/opt/homebrew/bin:$PATH"
+    export PATH="/opt/homebrew/bin:$PATH"
 fi
+
+# homebrew anaconda
+#if [ -d "/opt/homebrew/bin" ]; then
+    #export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+#fi
 
 # load asdf
 if [ -d "$HOME/.asdf" ]; then
