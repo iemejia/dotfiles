@@ -489,3 +489,6 @@ nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 " " Allow netrw buffer to be wiped
 autocmd FileType netrw setl bufhidden=wipe
 
+" Get rid of the annoying netrw view on macvim
+let loaded_netrwPlugin = 1
+
