@@ -15,7 +15,8 @@ ln -sfv ~/repositories/dotfiles/.irssi ~/.irssi
 ln -sfv ~/repositories/dotfiles/.latexmkrc ~/.latexmkrc
 ln -sfv ~/repositories/dotfiles/.profile ~/.profile
 ln -sfv ~/repositories/dotfiles/.screenrc ~/.screenrc
-ln -sfv ~/repositories/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sfv ~/repositories/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
+cp ~/repositories/dotfiles/.tmux/.tmux.conf.local ~/
 ln -sfv ~/repositories/dotfiles/.vim ~/.vim
 ln -sfv ~/repositories/dotfiles/.vimrc ~/.vimrc
 ln -sfv ~/repositories/dotfiles/.gvimrc ~/.gvimrc
