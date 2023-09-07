@@ -15,8 +15,7 @@ set guioptions-=e  "text based tab line
 " endif
 "
 if has("gui_running")
-    "set guifont=Meslo\ LG\ S\ for\ Powerline\ Regular\ 12
-    set guifont=Menlo:h12
+    set guifont=Meslo\ LG\ S\ for\ Powerline\ Regular\ 10
 
 "   if has("gui_gtk2")
 " "    set guifont=Inconsolata\ 12
