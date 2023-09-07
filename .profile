@@ -63,6 +63,11 @@ fi
 if [ -d "$HOME/.cabal/bin" ]; then
     PATH="$HOME/.cabal/bin:$PATH"
 fi
+#
+# .net path
+if [ -d "$HOME/.dotnet/tools" ]; then
+    PATH="$HOME/.dotnet/tools:$PATH"
+fi
 
 # node.js
 export NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
