@@ -58,6 +58,7 @@ plugins=(
     cp
     docker-compose
     docker
+    dotenv
     fzf
     # gem
     git
