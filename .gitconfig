@@ -189,7 +189,14 @@
 [init]
     defaultBranch = main
 [http]
-	postBuffer = 1048576000
+    postBuffer = 2147483648
+    lowSpeedLimit = 0
+    lowSpeedTime = 999999
 # [interactive]
     # diffFilter = diff-so-fancy --patch
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 
