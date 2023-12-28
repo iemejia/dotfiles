@@ -90,7 +90,7 @@ ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
 
 # alacritty
 mkdir -p ~/.config/alacritty
-ln -sfv ~/repositories/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sfv ~/repositories/dotfiles/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
