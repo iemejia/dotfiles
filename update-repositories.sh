@@ -9,7 +9,7 @@ for d in ~/apache/*; do
 	cd || exit
 done
 
-for d in ~/microsoft/*; do
+for d in ~/msrepos/*; do
 	echo "$d"
 	cd "$d"
 	git fetch -p --all
