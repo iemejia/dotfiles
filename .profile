@@ -145,6 +145,14 @@ alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 # checkout pr
 alias ghco='gh pr checkout $(gh pr list -L 300 | fzf --multi | awk '"'"'{print $1}'"'"')'
 
+alias gitls="git ls-files --sparse --full-name -z | \
+  xargs -0 -I FILE -P 20 git log --date=iso-strict-local --format='%ad %>(14) %cr %<(5) %an  %h ./FILE' -- FILE | \
+  sort --general-numeric-sort"
+
+alias gitls1="git ls-files --sparse --full-name -z | \
+  xargs -0 -I FILE -P 20 git log -1 --date=iso-strict-local --format='%ad %>(14) %cr %<(5) %an  %h ./FILE' -- FILE | \
+  sort --general-numeric-sort"
+
 alias ip='ip --color'
 alias ipb='ip --color --brief'
 alias scd='cd $(svn info . | grep -F "Working Copy Root Path:" | cut -c25-)'
