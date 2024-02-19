@@ -9,6 +9,7 @@ ln -sfv ~/repositories/dotfiles/.emacs.d ~/.emacs.d
 ln -sfv ~/repositories/dotfiles/.gdbinit ~/.gdbinit
 ln -sfv ~/repositories/dotfiles/.git-completion.bash ~/.git-completion.bash
 ln -sfv ~/repositories/dotfiles/.gitconfig ~/.gitconfig
+ln -sfv ~/repositories/dotfiles/.gitignore.global ~/.config/git/ignore
 ln -sfv ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.inputrc ~/.inputrc
 ln -sfv ~/repositories/dotfiles/.irssi ~/.irssi
