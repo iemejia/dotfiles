@@ -21,6 +21,9 @@
     df = diff
     d = diff --color-words
     dc = diff --cached
+    dft = difftool
+    dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+
     #list modified files in last commit
     #dl = "!git ll -1"
     #diff last commit
@@ -128,7 +131,7 @@
     editor = vim # emacsclient -t -a=\\\"\\\"
     autocrlf = input
     safecrlf = true
-    pager = less -R
+    # pager = less -R
     # pager = diff-so-fancy | less --tabs=4 -RFX
     whitespace = trailing-space,space-before-tab,blank-at-eol
     # preserve file metadata
@@ -145,7 +148,8 @@
     conflictstyle = zdiff3
 [diff]
     algorithm = histogram
-    tool = vimdiff
+    tool = difftastic
+    #external = difft
     renames = copies
     mnemonicprefix = true
 	submodule = log
@@ -153,6 +157,10 @@
     prompt = false
 [difftool]
     prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+    difftool = true
 [push]
     default = current
     # use simple if you only use git 2.0 (not yet my case)
