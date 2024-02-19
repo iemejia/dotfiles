@@ -142,11 +142,13 @@
 [merge]
     tool = vimdiff
     stat = true
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [diff]
+    algorithm = histogram
     tool = vimdiff
     renames = copies
     mnemonicprefix = true
+	submodule = log
 [mergetool]
     prompt = false
 [difftool]
@@ -171,9 +173,6 @@
     protocol = https
 [pull]
     rebase = true
-[commit]
-    # always sign commits with gpg
-    #gpgsign = true
 [sendemail]
     smtpserver = smtp.gmail.com
     smtpserverport = 587
@@ -183,7 +182,10 @@
     chainreplyto = false
     # smtppass = your_password
 [commit]
+    # always sign commits with gpg
+    #gpgsign = true
     template = ~/.git_commit_msg.txt
+	verbose = true
 [rebase]
     autostash = true
 [init]
@@ -199,4 +201,16 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
+
+[transfer]
+    fsckobjects = true
+[fetch]
+    fsckobjects = true
+[receive]
+    fsckobjects = true
+[status]
+    submoduleSummary = true
+[submodule]
+    recurse = true
+
 
