@@ -1,0 +1,57 @@
+# cloud-config
+users:
+  - name: ismael
+    groups: sudo
+    shell: /bin/zsh
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    #ssh-import-id: lp:iemejia
+package_upgrade: true
+packages:
+
+  # Essential ones
+
+  - bc
+  - git
+  - openssh-server
+  - python
+  - python-pip
+  - tmux
+  - vim
+  - zsh
+
+  # Optional ones
+
+  - bat
+  - curl
+  - fd-find
+  - fdupes
+  - fzf
+  - ncdu
+  - ripgrep
+
+  # # Media
+
+  # - faac
+  # - faad
+  # - ffmpeg
+  # - flac
+  # - imagemagick
+  # - lame
+  # - libfuse2
+
+  # Python
+
+  - python-is-python3
+  - python3
+  - python3-dev
+  - python3-venv
+
+  # # Development
+
+  # - openjdk-21-jdk
+  # - shellcheck
+  # - shfmt
+
+runcmd:
+  - sudo -H -u ismael git clone https://github.com/iemejia/dotfiles.git ~/repositories/dotfiles
+  - sudo -H -u ismael bash ~/repositories/dotfiles/install-minimal.sh
