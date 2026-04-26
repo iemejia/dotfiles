@@ -1,0 +1,5 @@
+theme = catppuccin-mocha
+clipboard-read = allow
+clipboard-write = allow
+
+
