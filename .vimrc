@@ -54,6 +54,9 @@ Plugin 'vim-scripts/closetag.vim'
 Plugin 'w0rp/ale'
 Plugin 'Yggdroot/indentLine'
 
+" Yank over ssh plugin
+"Plugin 'ojroques/vim-oscyank'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -491,4 +494,18 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " Get rid of the annoying netrw view on macvim
 let loaded_netrwPlugin = 1
+
+" OSC 52 clipboard support for SSH/tmux
+" Sends yanked text to local system clipboard via terminal escape sequence
+
+function! s:OscYank(text)
+  let encoded = system('base64 -w0', a:text)
+  let encoded = substitute(encoded, '\n$', '', '')
+  call system('printf "\033]52;c;%s\033\\" ' . shellescape(encoded) . ' > /dev/tty')
+endfunction
+
+augroup osc52_clipboard
+  autocmd!
+  autocmd TextYankPost * if v:event.operator ==# 'y' | call <SID>OscYank(join(v:event.regcontents, "\n")) | endif
+augroup END
 
