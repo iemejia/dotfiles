@@ -3,8 +3,6 @@
 ln -sfv ~/repositories/dotfiles/.gitconfig ~/.gitconfig
 ln -sfv ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.profile ~/.profile
-ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
-ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/repositories/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sfv ~/repositories/dotfiles/.vim ~/.vim
 ln -sfv ~/repositories/dotfiles/.vimrc ~/.vimrc
@@ -19,14 +17,3 @@ ln -sfv ~/repositories/dotfiles/.m2/settings.xml ~/.m2/settings.xml
 mkdir -p ~/.gradle
 ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.properties
 
-mkdir -p ~/.pip
-ln -sfv ~/repositories/dotfiles/.pip/pip.conf ~/.pip/pip.conf
-ln -sfv ~/repositories/dotfiles/.theanorc ~/.theanorc
-ln -sfv ~/repositories/dotfiles/.keras ~/.keras
-
-# sdkman configuration
-mkdir -p ~/.sdkman/etc/config
-ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
-
-# Install fonts
-#~/repositories/dotfiles/.fonts/powerline-fonts/install.sh

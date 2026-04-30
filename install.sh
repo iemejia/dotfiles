@@ -84,17 +84,11 @@ ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.prope
 
 mkdir -p ~/.pip
 ln -sfv ~/repositories/dotfiles/.pip/pip.conf ~/.pip/pip.conf
-ln -sfv ~/repositories/dotfiles/.theanorc ~/.theanorc
-ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 
 /usr/bin/yarn config set prefix ~/.node --global
 
 # asdf defaults
 ln -sfv ~/repositories/dotfiles/.tool-versions ~/.tool-versions
-
-# sdkman configuration
-mkdir -p ~/.sdkman/etc/config
-ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh
