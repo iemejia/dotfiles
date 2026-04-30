@@ -40,11 +40,15 @@ alias rirssi='ssh -Y vividores -t .irssi/screen'
 alias scd='cd $(svn info . | grep -F "Working Copy Root Path:" | cut -c25-)'
 
 # git aliases
+alias g='git'
+alias gap='git add -p'
 alias gau='git add -u'
+alias gca='git commit --amend'
+alias gcd='cd $(git rev-parse --show-cdup)'
 alias gdc='git diff --cached'
+alias gst='git status'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
-alias gcd='cd $(git rev-parse --show-cdup)'
 
 # interactive aliases use fxf
 # git add interactive
