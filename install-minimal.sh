@@ -28,9 +28,5 @@ ln -sfv ~/repositories/dotfiles/.keras ~/.keras
 mkdir -p ~/.sdkman/etc/config
 ln -sfv ~/repositories/dotfiles/.sdkmanconfig ~/.sdkman/etc/config
 
-# alacritty
-mkdir -p ~/.config/alacritty
-ln -sfv ~/repositories/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
-
 # Install fonts
 #~/repositories/dotfiles/.fonts/powerline-fonts/install.sh
