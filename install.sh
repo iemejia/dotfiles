@@ -18,6 +18,7 @@ ln -sfv ~/repositories/dotfiles/.gitconfig ~/.gitconfig
 ln -sfv ~/repositories/dotfiles/.gitignore.global ~/.config/git/ignore
 ln -sfv ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 ln -sfv ~/repositories/dotfiles/.inputrc ~/.inputrc
+ln -sfv ~/repositories/dotfiles/.psqlrc ~/.psqlrc
 ln -sfv ~/repositories/dotfiles/.irssi ~/.irssi
 ln -sfv ~/repositories/dotfiles/.latexmkrc ~/.latexmkrc
 ln -sfv ~/repositories/dotfiles/.profile ~/.profile
