@@ -8,3 +8,5 @@ if test -f /Users/ismael/anaconda3/bin/conda
 end
 # <<< conda initialize <<<
 set HOMEBREW_FORCE_BREWED_CURL 1
+set TERM xterm-256color
+
