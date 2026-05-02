@@ -1,6 +1,9 @@
 # Contains my general enverionment variables and alias
 # Try to keep it minimal
 
+HISTSIZE=50000
+HISTFILESIZE=100000
+
 export TZ=Europe/Paris
 
 export TERM=xterm-256color
@@ -22,12 +25,19 @@ export GPG_TTY
 GPG_TTY=$(tty)
 
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
-alias ll='ls -lF'
-alias la='ls -alF'
+alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias grep='grep --color=auto' # --exclude-dir=\.svn'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias x='exit'
+
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .svn folders.
-alias grep='grep --color=auto' # --exclude-dir=\.svn'
 alias e='emacsclient -t -a=\"\"' # launches emacs server if it's not up
 alias v='vim'
 alias vi='vim'
