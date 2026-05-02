@@ -68,9 +68,9 @@ alias gui='git reset $(git diff --name-only | fzf --multi | tr "\n" " ")'
 # git reset HEAD file interactive (unstage file)
 alias guci='git reset HEAD $(git diff --name-only --cached | fzf --multi | tr "\n" " ")'
 # git switch branch interactive
-alias gsb='git checkout $(git branch | fzf)'
+alias gsb='git switch $(git branch | fzf)'
 # git switch branch all interactive
-alias gsba='git checkout -t $(git branch -a | fzf)'
+alias gsba='git switch -t $(git branch -a | fzf)'
 # git find interactive
 alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 
