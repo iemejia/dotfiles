@@ -21,6 +21,12 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export PROTON_NO_ESYNC=1
+export PROTON_NO_FSYNC=1
+export PROTON_USE_NTSYNC=1
+export PROTON_USE_WOW64=1
+export PROTON_ENABLE_WAYLAND=1
+
 export GPG_TTY
 GPG_TTY=$(tty)
 
@@ -56,6 +62,7 @@ alias gau='git add -u'
 alias gca='git commit --amend'
 alias gcd='cd $(git rev-parse --show-cdup)'
 alias gdc='git diff --cached'
+alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gst='git status'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
@@ -77,7 +84,7 @@ alias gfi='git show $(git log --pretty=oneline | fzf | cut -d=" " -f1)'
 # checkout pr
 ghco() {
     gh pr list -L 300 | fzf --multi | awk '{print $1}' | while IFS= read -r pr; do
-        gh pr checkout "$pr"
+    gh pr checkout "$pr"
     done
 }
 
