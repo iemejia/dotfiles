@@ -69,6 +69,7 @@ alias gap='git add -p'
 alias gau='git add -u'
 alias gca='git commit --amend'
 alias gcd='cd $(git rev-parse --show-cdup)'
+alias gd='git diff'
 alias gdc='git diff --cached'
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gst='git status'
