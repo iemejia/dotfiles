@@ -5,12 +5,17 @@
 ln -sfv ~/repositories/dotfiles/.bash_profile ~/.bash_profile
 ln -sfv ~/repositories/dotfiles/.bash_logout ~/.bash_logout
 ln -sfv ~/repositories/dotfiles/.bashrc ~/.bashrc
-mkdir -p ~/.config/fish
+mkdir -p ~/.config/fish/conf.d ~/.config/fish/functions
 ln -sfv ~/repositories/dotfiles/.config/fish/config.fish ~/.config/fish/
+ln -sfv ~/repositories/dotfiles/.config/fish/conf.d/env.fish ~/.config/fish/conf.d/
+ln -sfv ~/repositories/dotfiles/.config/fish/conf.d/aliases.fish ~/.config/fish/conf.d/
+for f in ~/repositories/dotfiles/.config/fish/functions/*.fish; do
+    ln -sfv "$f" ~/.config/fish/functions/
+done
 mkdir -p ~/.config/nvim
 ln -sfv ~/repositories/dotfiles/.config/nvim/init.lua ~/.config/nvim/
 mkdir -p ~/.config/ghostty
-ln -sfv ~/repositories/dotfiles/.config/ghostty/config ~/.config/nvim/
+ln -sfv ~/repositories/dotfiles/.config/ghostty/config ~/.config/ghostty/
 ln -sfv ~/repositories/dotfiles/.emacs.d ~/.emacs.d
 ln -sfv ~/repositories/dotfiles/.gdbinit ~/.gdbinit
 ln -sfv ~/repositories/dotfiles/.git-completion.bash ~/.git-completion.bash
