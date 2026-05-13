@@ -9,22 +9,22 @@ end
 # Directory listings (fish handles ls --color natively)
 abbr --add ll 'ls -alF'
 abbr --add la 'ls -A'
-abbr --add l 'ls -CF'
+alias l='ls -CF'
 
 # Quick exit
-abbr --add x exit
+alias x='exit'
 
 # Editors
 alias e='emacsclient -t -a=""'
-abbr --add v vim
-abbr --add vi vim
-abbr --add n nvim
+alias v='vim'
+alias vi='vim'
+alias n='nvim'
 
 # Remote irssi
 abbr --add rirssi 'ssh -Y vividores -t .irssi/screen'
 
 # Git - simple aliases as abbreviations
-abbr --add g git
+alias g='git'
 abbr --add gap 'git add -p'
 abbr --add gau 'git add -u'
 abbr --add gca 'git commit --amend'
