@@ -59,14 +59,13 @@ if [ -d "/opt/homebrew/bin" ]; then
     PATH="/opt/homebrew/bin:$PATH"
 fi
 
-# golang
+export PATH="$PATH:$(go env GOPATH)/bin"
 if [ -d "$HOME/gowork" ]; then
     export GOPATH="$HOME/gowork"
     export GOBIN="$GOPATH/bin"
     PATH="$GOBIN:$PATH"
 fi
 
-# rust
 if [ -d "$HOME/.cargo/bin" ]; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
