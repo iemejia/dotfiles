@@ -1,5 +1,7 @@
 # Go
-fish_add_path (go env GOPATH)/bin
+if command -q go
+    fish_add_path (go env GOPATH)/bin
+end
 
 # NVM Node path
 set -gx NVM_DIR "$HOME/.nvm"

@@ -59,11 +59,13 @@ if [ -d "/opt/homebrew/bin" ]; then
     PATH="/opt/homebrew/bin:$PATH"
 fi
 
-export PATH="$PATH:$(go env GOPATH)/bin"
-if [ -d "$HOME/gowork" ]; then
-    export GOPATH="$HOME/gowork"
-    export GOBIN="$GOPATH/bin"
-    PATH="$GOBIN:$PATH"
+if command -v go > /dev/null 2>&1; then
+    export PATH="$PATH:$(go env GOPATH)/bin"
+    if [ -d "$HOME/gowork" ]; then
+        export GOPATH="$HOME/gowork"
+        export GOBIN="$GOPATH/bin"
+        PATH="$GOBIN:$PATH"
+    fi
 fi
 
 if [ -d "$HOME/.cargo/bin" ]; then
