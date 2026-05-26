@@ -75,3 +75,7 @@ fi
 export MAVEN_OPTS="-Xmx2g"
 #export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
 
+if [ -d "$HOME/.pgenv/" ]; then
+    PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
+fi
+
