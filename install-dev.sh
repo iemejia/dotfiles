@@ -20,7 +20,7 @@ ln -sfv "$DOTFILES/.tool-versions" ~/.tool-versions
 ln -sfv "$DOTFILES/.gdbinit" ~/.gdbinit
 ln -sfv "$DOTFILES/.psqlrc" ~/.psqlrc
 ln -sfv "$DOTFILES/.latexmkrc" ~/.latexmkrc
-ln -sfv "$DOTFILES/.hiverc" ~/.hiverc
+
 
 # system aliases
 ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
