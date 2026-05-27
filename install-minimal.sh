@@ -15,8 +15,12 @@ for f in "$DOTFILES"/.config/fish/functions/*.fish; do
     ln -sfv "$f" ~/.config/fish/functions/
 done
 
+ln -sfv "$DOTFILES/.inputrc" ~/.inputrc
+ln -sfv "$DOTFILES/.git-completion.bash" ~/.git-completion.bash
 ln -sfv "$DOTFILES/.git_commit_msg.txt" ~/.git_commit_msg.txt
 ln -sfv "$DOTFILES/.gitconfig" ~/.gitconfig
+mkdir -p ~/.config/git
+ln -sfv "$DOTFILES/.gitignore.global" ~/.config/git/ignore
 ln -sfv "$DOTFILES/.tmux.conf" ~/.tmux.conf
 ln -sfv "$DOTFILES/.vim" ~/.vim
 ln -sfv "$DOTFILES/.vimrc" ~/.vimrc

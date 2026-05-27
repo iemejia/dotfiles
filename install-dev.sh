@@ -13,3 +13,15 @@ ln -sfv "$DOTFILES/update-weekly.sh" ~/.local/bin/update-weekly.sh
 
 ln -sfv "$DOTFILES/.config/opencode/opencode.json" ~/.config/opencode/opencode.json
 
+ln -sfv "$DOTFILES/.fzf" ~/.fzf
+ln -sfv "$DOTFILES/.gradle-completion" ~/.gradle-completion
+ln -sfv "$DOTFILES/.npmrc" ~/.npmrc
+ln -sfv "$DOTFILES/.tool-versions" ~/.tool-versions
+
+mkdir -p ~/.pip
+ln -sfv "$DOTFILES/.pip/pip.conf" ~/.pip/pip.conf
+
+if command -v yarn > /dev/null 2>&1; then
+    yarn config set prefix ~/.node --global
+fi
+
