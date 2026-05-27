@@ -24,6 +24,22 @@ ln -sfv "$DOTFILES/.gitignore.global" ~/.config/git/ignore
 ln -sfv "$DOTFILES/.tmux.conf" ~/.tmux.conf
 ln -sfv "$DOTFILES/.vim" ~/.vim
 ln -sfv "$DOTFILES/.vimrc" ~/.vimrc
+ln -sfv "$DOTFILES/.gvimrc" ~/.gvimrc
+ln -sfv "$DOTFILES/.screenrc" ~/.screenrc
+
+# zsh
+ln -sfv "$DOTFILES/.zprofile" ~/.zprofile
+ln -sfv "$DOTFILES/.zshrc" ~/.zshrc
+ln -sfv "$DOTFILES/.zshenv" ~/.zshenv
+
+# bash-it
+ln -sfv "$DOTFILES/.bash_it" ~/.bash_it
+
+# tmux plugins
+mkdir -p ~/.tmux/plugins
+ln -sfv "$DOTFILES/.tpm" ~/.tmux/plugins/tpm
+ln -sfv "$DOTFILES/.tmuxline.theme" ~/.tmuxline.theme
+ln -sfv "$DOTFILES/.config/base16-shell" ~/.config/base16-shell
 
 # subversion
 mkdir -p ~/.subversion
