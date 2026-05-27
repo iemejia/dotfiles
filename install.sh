@@ -1,99 +1,64 @@
 #!/usr/bin/env bash
 
-#pip install --user powerline-status
+DOTFILES=~/repositories/dotfiles
 
-ln -sfv ~/repositories/dotfiles/.bash_profile ~/.bash_profile
-ln -sfv ~/repositories/dotfiles/.bash_logout ~/.bash_logout
-ln -sfv ~/repositories/dotfiles/.bashrc ~/.bashrc
-mkdir -p ~/.config/fish/conf.d ~/.config/fish/functions
-ln -sfv ~/repositories/dotfiles/.config/fish/config.fish ~/.config/fish/
-ln -sfv ~/repositories/dotfiles/.config/fish/conf.d/env.fish ~/.config/fish/conf.d/
-ln -sfv ~/repositories/dotfiles/.config/fish/conf.d/aliases.fish ~/.config/fish/conf.d/
-for f in ~/repositories/dotfiles/.config/fish/functions/*.fish; do
-    ln -sfv "$f" ~/.config/fish/functions/
-done
+# install minimal and dev scripts
+"$DOTFILES/install-minimal.sh"
+"$DOTFILES/install-dev.sh"
+
 mkdir -p ~/.config/nvim
-ln -sfv ~/repositories/dotfiles/.config/nvim/init.lua ~/.config/nvim/
+ln -sfv "$DOTFILES/.config/nvim/init.lua" ~/.config/nvim/
 mkdir -p ~/.config/ghostty
-ln -sfv ~/repositories/dotfiles/.config/ghostty/config ~/.config/ghostty/
-ln -sfv ~/repositories/dotfiles/.emacs.d ~/.emacs.d
-ln -sfv ~/repositories/dotfiles/.gdbinit ~/.gdbinit
-ln -sfv ~/repositories/dotfiles/.git-completion.bash ~/.git-completion.bash
-ln -sfv ~/repositories/dotfiles/.gitconfig ~/.gitconfig
-ln -sfv ~/repositories/dotfiles/.gitignore.global ~/.config/git/ignore
-ln -sfv ~/repositories/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
-ln -sfv ~/repositories/dotfiles/.inputrc ~/.inputrc
-ln -sfv ~/repositories/dotfiles/.psqlrc ~/.psqlrc
-ln -sfv ~/repositories/dotfiles/.irssi ~/.irssi
-ln -sfv ~/repositories/dotfiles/.latexmkrc ~/.latexmkrc
-ln -sfv ~/repositories/dotfiles/.profile ~/.profile
-ln -sfv ~/repositories/dotfiles/.screenrc ~/.screenrc
-ln -sfv ~/repositories/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
-cp ~/repositories/dotfiles/.tmux/.tmux.conf.local ~/
-ln -sfv ~/repositories/dotfiles/.vim ~/.vim
-ln -sfv ~/repositories/dotfiles/.vimrc ~/.vimrc
-ln -sfv ~/repositories/dotfiles/.gvimrc ~/.gvimrc
-ln -sfv ~/repositories/dotfiles/.zprofile ~/.zprofile
-ln -sfv ~/repositories/dotfiles/.zshrc ~/.zshrc
-ln -sfv ~/repositories/dotfiles/.zshenv ~/.zshenv
-ln -sfv ~/repositories/dotfiles/.oh-my-zsh ~/.oh-my-zsh
-ln -sfv ~/repositories/dotfiles/.zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-ln -sfv ~/repositories/dotfiles/.zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-ln -sfv ~/repositories/dotfiles/.bash_it ~/.bash_it
-ln -sfv ~/repositories/dotfiles/.xinitrc ~/.xinitrc
-#cp -R ~/repositories/dotfiles/.fonts/* ~/.fonts/
-#ln -sfv ~/Dropbox/static-resources/fonts/ .fonts
-ln -sfv ~/repositories/dotfiles/.fonts ~/.fonts
-ln -sfv ~/repositories/dotfiles/.fonts.conf ~/.fonts.conf
-ln -sfv ~/repositories/dotfiles/.fonts.conf.d ~/.fonts.conf.d
-ln -sfv ~/repositories/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
-ln -sfv ~/repositories/dotfiles/s3.exclude ~/s3.exclude
-ln -sfv ~/repositories/dotfiles/.mplayer ~/.mplayer
-ln -sfv ~/repositories/dotfiles/.mpv ~/.mpv
+ln -sfv "$DOTFILES/.config/ghostty/config" ~/.config/ghostty/
+ln -sfv "$DOTFILES/.emacs.d" ~/.emacs.d
+ln -sfv "$DOTFILES/.gdbinit" ~/.gdbinit
+ln -sfv "$DOTFILES/.git-completion.bash" ~/.git-completion.bash
+ln -sfv "$DOTFILES/.gitignore.global" ~/.config/git/ignore
+ln -sfv "$DOTFILES/.inputrc" ~/.inputrc
+ln -sfv "$DOTFILES/.psqlrc" ~/.psqlrc
+ln -sfv "$DOTFILES/.irssi" ~/.irssi
+ln -sfv "$DOTFILES/.latexmkrc" ~/.latexmkrc
+ln -sfv "$DOTFILES/.screenrc" ~/.screenrc
+ln -sfv "$DOTFILES/.gvimrc" ~/.gvimrc
+ln -sfv "$DOTFILES/.zprofile" ~/.zprofile
+ln -sfv "$DOTFILES/.zshrc" ~/.zshrc
+ln -sfv "$DOTFILES/.zshenv" ~/.zshenv
+ln -sfv "$DOTFILES/.oh-my-zsh" ~/.oh-my-zsh
+ln -sfv "$DOTFILES/.zsh-autosuggestions" ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+ln -sfv "$DOTFILES/.zsh-syntax-highlighting" ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+ln -sfv "$DOTFILES/.bash_it" ~/.bash_it
+ln -sfv "$DOTFILES/.xinitrc" ~/.xinitrc
+ln -sfv "$DOTFILES/.fonts" ~/.fonts
+ln -sfv "$DOTFILES/.fonts.conf" ~/.fonts.conf
+ln -sfv "$DOTFILES/.fonts.conf.d" ~/.fonts.conf.d
+ln -sfv "$DOTFILES/.gtkrc-2.0" ~/.gtkrc-2.0
+ln -sfv "$DOTFILES/s3.exclude" ~/s3.exclude
+ln -sfv "$DOTFILES/.mplayer" ~/.mplayer
+ln -sfv "$DOTFILES/.mpv" ~/.mpv
 ln -sfv ~/Dropbox/Documents/research-notes ~/research-notes
-ln -sfv ~/repositories/dotfiles/.hiverc ~/.hiverc
-ln -sfv ~/repositories/dotfiles/.npmrc ~/.npmrc
-
-# update scripts
-mkdir -p ~/.local/bin
-
-ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
-ln -sfv ~/repositories/dotfiles/update-env.sh ~/.local/bin/update-env.sh
-ln -sfv ~/repositories/dotfiles/update-linux.sh ~/.local/bin/update-linux.sh
-ln -sfv ~/repositories/dotfiles/update-mac.sh ~/.local/bin/update-mac.sh
-ln -sfv ~/repositories/dotfiles/update-repositories.sh ~/.local/bin/update-repositories.sh
-ln -sfv ~/repositories/dotfiles/update-weekly.sh ~/.local/bin/update-weekly.sh
+ln -sfv "$DOTFILES/.hiverc" ~/.hiverc
+ln -sfv "$DOTFILES/.npmrc" ~/.npmrc
 
 # tmux plugins
 mkdir -p ~/.tmux/plugins
-ln -sfv ~/repositories/dotfiles/.tpm ~/.tmux/plugins/tpm
-ln -sfv ~/repositories/dotfiles/.tmuxline.theme ~/.tmuxline.theme
-
-# subversion
-mkdir -p ~/.subversion
-ln -sfv ~/repositories/dotfiles/.subversion/servers ~/.subversion/servers
+ln -sfv "$DOTFILES/.tpm" ~/.tmux/plugins/tpm
+ln -sfv "$DOTFILES/.tmuxline.theme" ~/.tmuxline.theme
 
 # note you must run tmux and then do C-a I
-ln -sfv ~/repositories/dotfiles/.config/base16-shell ~/.config/base16-shell
-ln -sfv ~/repositories/dotfiles/.fzf ~/.fzf
-ln -sfv ~/repositories/dotfiles/.gradle-completion ~/.gradle-completion
+ln -sfv "$DOTFILES/.config/base16-shell" ~/.config/base16-shell
+ln -sfv "$DOTFILES/.fzf" ~/.fzf
+ln -sfv "$DOTFILES/.gradle-completion" ~/.gradle-completion
 
 # system aliases
 ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
 
-mkdir -p ~/.m2
-ln -sfv ~/repositories/dotfiles/.m2/settings.xml ~/.m2/settings.xml
-
-mkdir -p ~/.gradle
-ln -sfv ~/repositories/dotfiles/.gradle/gradle.properties ~/.gradle/gradle.properties
-
 mkdir -p ~/.pip
-ln -sfv ~/repositories/dotfiles/.pip/pip.conf ~/.pip/pip.conf
+ln -sfv "$DOTFILES/.pip/pip.conf" ~/.pip/pip.conf
 
 /usr/bin/yarn config set prefix ~/.node --global
 
 # asdf defaults
-ln -sfv ~/repositories/dotfiles/.tool-versions ~/.tool-versions
+ln -sfv "$DOTFILES/.tool-versions" ~/.tool-versions
 
 fc-cache -vf ~/.fonts
 ~/.bash_it/install.sh

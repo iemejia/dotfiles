@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mkdir -p ~/.local/bin
 
 ln -sfv ~/repositories/dotfiles/update-docker.sh ~/.local/bin/update-docker.sh
