@@ -22,5 +22,3 @@ ln -sfv "$DOTFILES/s3.exclude" ~/s3.exclude
 if [ -d ~/Dropbox/Documents ]; then
     ln -sfv ~/Dropbox/Documents/research-notes ~/research-notes
 fi
-
-# bash_it no longer used

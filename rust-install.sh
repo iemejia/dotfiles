@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cargo install bat bingrep cargo-update exa fd-find hyperfine racer ripgrep rustsym skim xsv
+cargo install bat bingrep cargo-update eza fd-find hyperfine ripgrep skim xsv

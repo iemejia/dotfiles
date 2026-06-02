@@ -27,7 +27,7 @@ msanders/snipmate.vim
 nanotech/jellybeans.vim
 plasticboy/vim-markdown
 rbgrouleff/bclose.vim
-terryma/vim-multiple-cursors
+mg979/vim-visual-multi
 tommcdo/vim-exchange
 tomtom/tcomment_vim
 tpope/vim-abolish
@@ -40,7 +40,7 @@ tpope/vim-sensible
 tpope/vim-surround
 tpope/vim-unimpaired
 vim-scripts/closetag.vim
-w0rp/ale
+dense-analysis/ale
 Yggdroot/indentLine
 "
 

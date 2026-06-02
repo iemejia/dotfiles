@@ -1,11 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-. update-env.sh
+. "$HOME/.local/bin/update-env.sh"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    . update-mac.sh
+    . "$HOME/.local/bin/update-mac.sh"
 else
-    . update-linux.sh
+    . "$HOME/.local/bin/update-linux.sh"
 fi
-#. update-docker.sh
-. update-repositories.sh
-
+. "$HOME/.local/bin/update-repositories.sh"

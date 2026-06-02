@@ -3,7 +3,6 @@
 
 set -gx TZ Europe/Paris
 
-set -gx TERM xterm-256color
 set -gx GIT_EDITOR vim
 set -gx SVN_EDITOR vim
 set -gx IRC_CLIENT irssi
@@ -32,12 +31,14 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 
 set -gx FORCE_COLOR 1
 
-# Proton/gaming
-set -gx PROTON_NO_ESYNC 1
-set -gx PROTON_NO_FSYNC 1
-set -gx PROTON_USE_NTSYNC 1
-set -gx PROTON_USE_WOW64 1
-set -gx PROTON_ENABLE_WAYLAND 1
+# Proton/gaming (Linux only)
+if test (uname) = Linux
+    set -gx PROTON_NO_ESYNC 1
+    set -gx PROTON_NO_FSYNC 1
+    set -gx PROTON_USE_NTSYNC 1
+    set -gx PROTON_USE_WOW64 1
+    set -gx PROTON_ENABLE_WAYLAND 1
+end
 
 # GPG
 if status is-interactive

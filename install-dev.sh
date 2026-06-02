@@ -27,7 +27,3 @@ VIM_LESS=$(find /usr/share/vim -name less.sh 2>/dev/null | head -1)
 mkdir -p ~/.pip
 ln -sfv "$DOTFILES/.pip/pip.conf" ~/.pip/pip.conf
 
-if command -v yarn > /dev/null 2>&1; then
-    yarn config set prefix ~/.node --global
-fi
-
