@@ -1,9 +1,49 @@
 " vim configuration file
-" Plugins managed via native packages (~/.vim/pack/plugins/start/)
-" Run install-vim-plugins.sh to install/update plugins
+" No external plugins required
 
 set nocompatible
+syntax on
 filetype plugin indent on
+
+" Sensible defaults (previously provided by vim-sensible plugin)
+set complete-=i
+set smarttab
+set nrformats-=octal
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
+set incsearch
+set laststatus=2
+set wildmenu
+set sidescroll=1
+set sidescrolloff=2
+set display+=lastline
+if has('patch-7.4.2109')
+  set display+=truncate
+endif
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set formatoptions+=j
+set autoread
+set history=1000
+set tabpagemax=50
+set sessionoptions-=options
+set viewoptions-=options
+if has('langmap') && exists('+langremap') && &langremap
+  set nolangremap
+endif
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -119,9 +159,7 @@ nnoremap <leader>wh <c-w>s<c-w>l
 map <leader>bo :only<cr>
 map <leader>o :only<cr>
 " Close the current buffer
-" notice that this requires the Bclose command from
-" http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
-map <leader>bc :Bclose<cr>
+map <leader>bc :bd<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 " close buffer but not split window
@@ -235,9 +273,12 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
-"let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-chalk
 set termguicolors
+try
+  colorscheme base16-chalk
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme zaibatsu
+endtry
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -298,7 +339,7 @@ nmap Q gqap
 
 " Automatically change the colorscheme for diff
 if &diff
-    colorscheme jellybeans
+    colorscheme zaibatsu
 endif
 
 " highlight trailing whitespace
@@ -325,10 +366,6 @@ vnoremap <leader>p "_dP
 
 
 " decent mappings for vimdiff
-
-" rebind C=j from vim-latex to C-g
-imap <C-g> <Plug>IMAP_JumpForward
-nmap <C-g> <Plug>IMAP_JumpForward
 nnoremap <expr> <C-H> &diff ? ':diffget 3<CR> :diffupdate<CR>' : '<C-W>h'
 nnoremap <expr> <C-J> &diff ? ']c' : '<C-W>j'
 nnoremap <expr> <C-K> &diff ? '[c' : '<C-W>k'
@@ -372,58 +409,15 @@ map <leader>d :bd<cr>
 "vmap <C-Down> xp`[V`]
 
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
 
 " Visually select the text that was last edited/pasted
 " remember that gv re selects the last edit
 nmap gV `[v`]
-
-" fzf.vim configuration
-
-"Use a leader instead of the actual named binding
-" mostly from https://github.com/zenbro/dotfiles/blob/master/.nvimrc#L151-L187
-nnoremap <leader>; :Files ~/talend/notes<CR>
-nnoremap <leader>t :Files<CR>
-" nnoremap <leader>t :Files<CR>
-nnoremap <leader>p :History<CR>
-nnoremap <leader>b :Buffers<CR>
-nmap <Leader>r :Tags<CR>
-nnoremap <leader>g :Rg<Cr>
-
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-nnoremap <silent> <leader>. :AgIn
-nnoremap <silent> K :call SearchWordWithAg()<CR>
-vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
-nnoremap <silent> <leader>gl :Commits<CR>
-nnoremap <silent> <leader>ga :BCommits<CR>
-nnoremap <silent> <leader>ft :Filetypes<CR>
-
-imap <C-x><C-f> <plug>(fzf-complete-file-ag)
-imap <C-x><C-l> <plug>(fzf-complete-line)
-
-" lightline config
-  "\   'colorscheme': 'Dracula',
-let g:lightline = {
-  \   'active': {
-  \     'left':[ [ 'mode', 'paste' ],
-  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-  \     ]
-  \   },
-  \   'component': {
-  \     'lineinfo': ' %3l:%-2v',
-  \   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head',
-  \   },
-  \ }
-
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " wrapping and indenting code
 nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
