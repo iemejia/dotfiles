@@ -1,65 +1,9 @@
 " vim configuration file
-" vastly copied from http://amix.dk/vim/vimrc.html
+" Plugins managed via native packages (~/.vim/pack/plugins/start/)
+" Run install-vim-plugins.sh to install/update plugins
 
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'airblade/vim-gitgutter'
-Plugin 'cazador481/vim-nfo'
-Plugin 'chriskempson/base16-vim'
-Bundle 'christoomey/vim-tmux-navigator'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'dbakker/vim-lint'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'godlygeek/tabular'
-"Plugin 'jcf/vim-latex'
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mengelbrecht/lightline-bufferline'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'mileszs/ack.vim'
-Plugin 'msanders/snipmate.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'plasticboy/vim-markdown'
-"Plugin 'python-mode/python-mode'
-Plugin 'rbgrouleff/bclose.vim'
-"Plugin 'scrooloose/nerdtree'
-" disable due to errors on 2021/01/03
-"Plugin 'sheerun/vim-polyglot'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'w0rp/ale'
-Plugin 'Yggdroot/indentLine'
-
-" Yank over ssh plugin
-"Plugin 'ojroques/vim-oscyank'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+set nocompatible
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
