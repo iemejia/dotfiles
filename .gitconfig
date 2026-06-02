@@ -138,10 +138,12 @@
     #filemode = true
 [include]
     path = ~/.github
+[credential "https://github.com"]
+	helper = !gh auth git-credential
 [credential]
-	helper = osxkeychain
-    # helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-    # helper = osxkeychain
+    # On macOS: git config --global credential.helper osxkeychain
+    # On Linux: git config --global credential.helper libsecret
+    # gh auth handles GitHub; for other hosts, configure locally
 [merge]
     tool = vimdiff
     stat = true
