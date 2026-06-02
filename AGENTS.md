@@ -34,10 +34,7 @@ For example, `bash/.bashrc` becomes `~/.bashrc` when stowed.
 ### Non-stow files at root
 
 - `install.sh` / `uninstall.sh` — Stow/unstow packages
-- `cloud-init.yml` — Cloud VM provisioning template
-- `s3.exclude` — S3 sync exclusion list
-- `backups/`, `streaming/` — Misc reference configs
-- `make-firefox-private-again.com.sh` — Firefox privacy script
+- `misc/` — Reference configs (cloud-init, s3 exclude, backups, streaming, Firefox privacy script)
 
 ## Conventions
 
