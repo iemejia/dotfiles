@@ -192,3 +192,44 @@ build_prompt() {
 # enable to profile zsh
 # zprof
 
+
+# >>> conda initialize >>>
+if [ -d "$HOME/mambaforge" ]; then
+    __conda_setup="$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "$HOME/mambaforge/etc/profile.d/conda.sh"
+        else
+            export PATH="$HOME/mambaforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ] && . "$HOME/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+if [ -d "/opt/homebrew/opt/fzf" ]; then
+    export FZF_BASE=/opt/homebrew/opt/fzf/install
+fi
+
+# Airflow Breeze autocomplete
+[ -f ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh ] && \
+    source ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
+
+# >>> mamba initialize >>>
+if [ -x "$HOME/mambaforge/bin/mamba" ]; then
+    export MAMBA_EXE="$HOME/mambaforge/bin/mamba"
+    export MAMBA_ROOT_PREFIX="$HOME/mambaforge"
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias mamba="$MAMBA_EXE"
+    fi
+    unset __mamba_setup
+fi
+# <<< mamba initialize <<<
