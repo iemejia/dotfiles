@@ -319,6 +319,10 @@ inoremap <c-o> <c-o>:w<cr>
 
 " TeX / LaTeX related
 let g:tex_flavor = "latex"
+
+" Markdown syntax
+autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+let g:markdown_fenced_languages = ['python', 'bash=sh', 'javascript', 'vim', 'json']
 " unset title off
 
 if !empty(&viminfo)
@@ -390,6 +394,20 @@ vnoremap < <gv vnoremap=""> >gv
 
 " re-indent whole file
 map <leader>= mzgg=G`z
+
+" Show open buffers in the tabline
+set tabline=%!MyTabLine()
+function! MyTabLine()
+  let s = ''
+  for i in range(1, bufnr('$'))
+    if buflisted(i)
+      let s .= (i == bufnr('%') ? '%#TabLineSel#' : '%#TabLine#')
+      let s .= ' ' . fnamemodify(bufname(i), ':t') . ' '
+    endif
+  endfor
+  let s .= '%#TabLineFill#'
+  return s
+endfunction
 
 " switch to previous file
 nnoremap <leader><leader> <c-^>
