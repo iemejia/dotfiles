@@ -1,7 +1,3 @@
-[submodule ".fonts/powerline-fonts"]
-	path = .fonts/powerline-fonts
-	url = https://github.com/powerline/fonts.git
-	branch = master
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
@@ -18,19 +14,9 @@
 	path = .fzf
 	url = https://github.com/junegunn/fzf
 	branch = master
-[submodule ".gradle-completion"]
-	path = .gradle-completion
-	url = https://github.com/gradle/gradle-completion
-	branch = master
 [submodule ".zsh-autosuggestions"]
 	path = .zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule ".zsh-syntax-highlighting"]
 	path = .zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule ".asdf"]
-	path = .asdf
-	url = https://github.com/asdf-vm/asdf.git
-[submodule ".tmux"]
-	path = .tmux
-	url = https://github.com/gpakosz/.tmux/
