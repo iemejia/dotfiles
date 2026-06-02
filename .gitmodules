@@ -1,14 +1,14 @@
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
+	path = zsh/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 	branch = master
 [submodule ".fzf"]
-	path = .fzf
+	path = tools/.fzf
 	url = https://github.com/junegunn/fzf
 	branch = master
 [submodule ".zsh-autosuggestions"]
-	path = .zsh-autosuggestions
+	path = zsh/.zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule ".zsh-syntax-highlighting"]
-	path = .zsh-syntax-highlighting
+	path = zsh/.zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
