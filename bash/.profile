@@ -4,7 +4,12 @@
 
 export TZ=Europe/Paris
 
-export TERM=xterm-256color
+# Use the terminal's TERM if its terminfo is available, otherwise fall back
+if [ -n "$TERM" ] && infocmp "$TERM" >/dev/null 2>&1; then
+    : # keep current TERM (e.g. xterm-ghostty)
+else
+    export TERM=xterm-256color
+fi
 export GIT_EDITOR=vim
 export SVN_EDITOR=vim
 export IRC_CLIENT='irssi'
