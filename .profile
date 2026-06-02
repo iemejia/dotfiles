@@ -79,3 +79,5 @@ if [ -d "$HOME/.pgenv/" ]; then
     PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

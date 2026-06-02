@@ -81,7 +81,7 @@
 
     # github iemejia based ones
     pi = push iemejia
-    pim = push iemejia master
+    pim = push iemejia main
 
     # stash
     sl = stash list
@@ -139,7 +139,7 @@
 [include]
     path = ~/.github
 [credential]
-    helper = cache --timeout=604800
+	helper = osxkeychain
     # helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
     # helper = osxkeychain
 [merge]
@@ -153,6 +153,7 @@
     renames = copies
     mnemonicprefix = true
 	submodule = log
+	wsErrorHighlight = all
 [mergetool]
     prompt = false
 [difftool]

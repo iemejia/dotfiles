@@ -263,3 +263,5 @@ secring.*
 # LibreOffice locks
 .~lock.*#
 
+.vim/.netrwhist
+.vim/.vim

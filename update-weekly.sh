@@ -6,6 +6,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     . update-linux.sh
 fi
-. update-docker.sh
+#. update-docker.sh
 . update-repositories.sh
 
