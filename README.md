@@ -1,24 +1,73 @@
-dotfiles
-========
+# dotfiles
 
-A repo to keep a copy of my dotfiles
+My dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+
+## Installation
+
+```bash
+# Clone
+git clone https://github.com/iemejia/dotfiles ~/repositories/dotfiles
+cd ~/repositories/dotfiles
+
+# Install stow
+brew install stow        # macOS
+sudo apt install stow    # Debian/Ubuntu
+
+# Stow all packages
+./install.sh
+
+# Or stow only what you need (e.g., on a server)
+./install.sh bash git vim tmux scripts
+```
+
+## Packages
+
+| Package | Contents |
+|---------|----------|
+| `bash` | .bashrc, .bash_aliases, .bash_profile, .profile, .inputrc |
+| `zsh` | .zshrc, .zshenv, .zprofile, oh-my-zsh, zsh-autosuggestions, zsh-syntax-highlighting |
+| `git` | .gitconfig, .config/git/ignore, commit template |
+| `vim` | .vimrc, .gvimrc, .vim/ |
+| `emacs` | .emacs.d/ (optional, install with `./install.sh emacs`) |
+| `tmux` | .tmux.conf, tmuxline theme |
+| `fish` | .config/fish/ (config, env, aliases, functions) |
+| `ghostty` | .config/ghostty/ |
+| `nvim` | .config/nvim/ |
+| `python` | .pip/pip.conf |
+| `node` | .npmrc |
+| `java` | .m2/settings.xml, .gradle/gradle.properties |
+| `media` | .mpv/, .mplayer/ |
+| `tools` | .fzf, .irssi, .psqlrc, .gdbinit, .latexmkrc, .subversion, opencode |
+| `fonts` | .fonts/ (PowerlineSymbols) |
+| `scripts` | .local/bin/ (update-*, git-*, install-vim-plugins, etc.) |
+
+## Uninstalling
+
+```bash
+./uninstall.sh emacs    # Remove a package's symlinks
+./uninstall.sh          # Show available packages
+```
+
+## Vim plugins
+
+Vim uses native packages (vim 8+). Install/update plugins with:
+
+```bash
+~/.local/bin/install-vim-plugins.sh
+```
 
 ## Scripts
 
 | Script | Description |
 |--------|-------------|
-| `install.sh` | Runs sub-install scripts and symlinks dotfiles (nvim, ghostty, emacs, irssi, etc.) into the home directory |
-| `install-dev.sh` | Symlinks development/update scripts and config files into `~/.local/bin` and `~/.config` |
-| `install-linux.sh` | Symlinks Linux-specific dotfiles (xinitrc, fonts, mplayer, mpv) and rebuilds the font cache |
-| `rust-install.sh` | Installs a set of Rust CLI tools (bat, ripgrep, fd, exa, etc.) via cargo |
-| `update-mac.sh` | Runs brew update, upgrade, and cleanup on macOS |
-| `update-linux.sh` | Runs apt update, full-upgrade, autoclean, and autoremove on Debian/Ubuntu |
-| `update-env.sh` | Updates oh-my-zsh, vim bundles, and virtualenvs by pulling latest changes |
-| `update-repositories.sh` | Fetches and pulls all git/svn repositories across multiple workspace directories, reporting what changed |
-| `git-status-all.sh` | Scans subdirectories for uncommitted, unpushed, or diverged repos and reports what needs attention |
-| `git-cherry-picker.sh` | Discovers and applies cherry-picks between two branches (list, analyze, or apply modes) |
-| `git-classify-repos.sh` | Scans subdirectories and classifies repos as public/private using the `gh` CLI |
-| `git-migrate-to-sha256.sh` | Migrates a Git repository from SHA-1 to SHA-256 object format |
-| `tmuxsession.sh` | Creates a tmux grid of configurable columns x rows panes in a session/window |
-| `clean-nvidia.sh` | Clears NVIDIA shader caches and resets GPU state to fix stutters on Quadro M1200 |
-| `make-firefox-private-again.com.sh` | Disables Firefox's privacy-preserving attribution (ad tracking) via user.js |
+| `install-vim-plugins.sh` | Clones/updates vim plugins into ~/.vim/pack/plugins/start/ |
+| `rust-install.sh` | Installs Rust CLI tools (bat, eza, fd, ripgrep, etc.) via cargo |
+| `update-mac.sh` | brew update, upgrade, cleanup |
+| `update-linux.sh` | apt update, full-upgrade, autoclean, autoremove |
+| `update-env.sh` | Updates oh-my-zsh, vim packages, virtualenvs |
+| `update-weekly.sh` | Runs all update scripts (env + OS + repositories) |
+| `update-repositories.sh` | Fetches/pulls all git repos across workspace directories |
+| `git-status-all.sh` | Reports uncommitted, unpushed, or diverged repos |
+| `git-cherry-picker.sh` | Cherry-pick discovery between branches |
+| `git-classify-repos.sh` | Classifies repos as public/private via gh CLI |
+| `tmuxsession.sh` | Creates a tmux grid session with configurable panes |
