@@ -5,7 +5,7 @@ DOTFILES=~/repositories/dotfiles
 # install sub-scripts
 "$DOTFILES/install-minimal.sh"
 "$DOTFILES/install-dev.sh"
-"$DOTFILES/install-linux.sh"
+[[ "$(uname)" == "Linux" ]] && "$DOTFILES/install-linux.sh"
 
 mkdir -p ~/.config/nvim
 ln -sfv "$DOTFILES/.config/nvim/init.lua" ~/.config/nvim/
@@ -23,4 +23,4 @@ if [ -d ~/Dropbox/Documents ]; then
     ln -sfv ~/Dropbox/Documents/research-notes ~/research-notes
 fi
 
-~/.bash_it/install.sh
+# bash_it no longer used

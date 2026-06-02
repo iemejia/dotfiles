@@ -116,4 +116,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # OpenClaw Completion
-[ -f "/home/ismael/.openclaw/completions/openclaw.bash" ] && source "/home/ismael/.openclaw/completions/openclaw.bash"
+[ -f "$HOME/.openclaw/completions/openclaw.bash" ] && source "$HOME/.openclaw/completions/openclaw.bash"

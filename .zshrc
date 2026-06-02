@@ -69,8 +69,8 @@ fi
 [ -f ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh ] && \
     source ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh
 
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="$HOME/.dotnet/tools:$PATH"
+[ -d "/usr/local/opt/libpq/bin" ] && export PATH="/usr/local/opt/libpq/bin:$PATH"
+[ -d "$HOME/.dotnet/tools" ] && export PATH="$HOME/.dotnet/tools:$PATH"
 
 # >>> conda initialize >>>
 if [ -d "$HOME/mambaforge" ]; then

@@ -32,11 +32,14 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export FORCE_COLOR=1
 
-export PROTON_NO_ESYNC=1
-export PROTON_NO_FSYNC=1
-export PROTON_USE_NTSYNC=1
-export PROTON_USE_WOW64=1
-export PROTON_ENABLE_WAYLAND=1
+# Linux gaming (Steam Proton)
+if [ "$(uname)" = "Linux" ]; then
+    export PROTON_NO_ESYNC=1
+    export PROTON_NO_FSYNC=1
+    export PROTON_USE_NTSYNC=1
+    export PROTON_USE_WOW64=1
+    export PROTON_ENABLE_WAYLAND=1
+fi
 
 if [ -t 0 ]; then
     GPG_TTY=$(tty)

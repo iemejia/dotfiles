@@ -442,8 +442,7 @@ let loaded_netrwPlugin = 1
 " Sends yanked text to local system clipboard via terminal escape sequence
 
 function! s:OscYank(text)
-  let encoded = system('base64 -w0', a:text)
-  let encoded = substitute(encoded, '\n$', '', '')
+  let encoded = system('base64 | tr -d "\n"', a:text)
   call system('printf "\033]52;c;%s\033\\" ' . shellescape(encoded) . ' > /dev/tty')
 endfunction
 

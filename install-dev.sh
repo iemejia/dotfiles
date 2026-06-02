@@ -14,16 +14,15 @@ ln -sfv "$DOTFILES/update-weekly.sh" ~/.local/bin/update-weekly.sh
 ln -sfv "$DOTFILES/.config/opencode/opencode.json" ~/.config/opencode/opencode.json
 
 ln -sfv "$DOTFILES/.fzf" ~/.fzf
-ln -sfv "$DOTFILES/.gradle-completion" ~/.gradle-completion
 ln -sfv "$DOTFILES/.npmrc" ~/.npmrc
-ln -sfv "$DOTFILES/.tool-versions" ~/.tool-versions
 ln -sfv "$DOTFILES/.gdbinit" ~/.gdbinit
 ln -sfv "$DOTFILES/.psqlrc" ~/.psqlrc
 ln -sfv "$DOTFILES/.latexmkrc" ~/.latexmkrc
 
 
 # system aliases
-ln -sfv /usr/share/vim/vim80/macros/less.sh ~/.local/bin/vless
+VIM_LESS=$(find /usr/share/vim -name less.sh 2>/dev/null | head -1)
+[ -n "$VIM_LESS" ] && ln -sfv "$VIM_LESS" ~/.local/bin/vless
 
 mkdir -p ~/.pip
 ln -sfv "$DOTFILES/.pip/pip.conf" ~/.pip/pip.conf
