@@ -299,7 +299,7 @@ imap <right> <nop>
 " better escape
 inoremap jk <Esc>
 inoremap kj <Esc>
-inoremap <Esc> <NOP>
+" inoremap <Esc> <NOP>
 
 " save on insert mode
 inoremap <c-o> <c-o>:w<cr>
