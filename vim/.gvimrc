@@ -15,19 +15,14 @@ set guioptions-=e  "text based tab line
 " endif
 "
 if has("gui_running")
-    set guifont=Meslo\ LG\ S\ for\ Powerline\ Regular\ 10
-
-"   if has("gui_gtk2")
-" "    set guifont=Inconsolata\ 12
-"   elseif has("gui_macvim")
-"     " For powerline font in MacVim
-"     "set guifont=Menlo\ Regular:h14
-"     "set guifont=Monaco:h14
-"   elseif has("gui_win32")
-"     set guifont=Consolas:h11:cANSI
-"   endif
+    if has("gui_macvim")
+        set guifont=Menlo\ for\ Powerline:h12
+    else
+        set guifont=Menlo\ for\ Powerline\ 12
+    endif
 endif
 
+set linespace=1
 set lines=90
 set columns=80
 
