@@ -126,11 +126,25 @@ set expandtab
 
 set infercase
 set cursorline
+set number
+set relativenumber
+set colorcolumn=81
+set signcolumn=yes
 
 set encoding=utf-8
-set showmode
+set noshowmode
 set visualbell
 set ttyfast
+
+" Cursor shape: block in normal, beam in insert, underline in replace
+if !has('gui_running')
+  let &t_SI = "\e[6 q"
+  let &t_SR = "\e[4 q"
+  let &t_EI = "\e[2 q"
+endif
+
+" Clean fill characters
+set fillchars=vert:│,fold:─,foldopen:▾,foldclose:▸,foldsep:│
 
 set lazyredraw
 "set foldenable
@@ -274,7 +288,8 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
 set termguicolors
-colorscheme zaibatsu
+set background=dark
+colorscheme catppuccin
 
 " disable arrow keys
 map <up> <nop>
@@ -398,6 +413,15 @@ function! MyTabLine()
   let s .= '%#TabLineFill#'
   return s
 endfunction
+
+" Status line
+set statusline=
+set statusline+=\ %{toupper(mode())}        " mode
+set statusline+=\ │\ %f                      " file path
+set statusline+=%m%r                         " modified/readonly flags
+set statusline+=%=                           " right align
+set statusline+=%y\                          " filetype
+set statusline+=│\ %l:%c\ │\ %p%%\          " line:col | percent
 
 " switch to previous file
 nnoremap <leader><leader> <c-^>
