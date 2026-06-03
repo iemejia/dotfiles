@@ -274,15 +274,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Theme
 set termguicolors
-try
-  colorscheme base16-chalk
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme zaibatsu
-endtry
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+colorscheme zaibatsu
 
 " disable arrow keys
 map <up> <nop>
@@ -320,10 +312,12 @@ inoremap <c-o> <c-o>:w<cr>
 " TeX / LaTeX related
 let g:tex_flavor = "latex"
 
-" Markdown syntax
+" Markdown
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
-let g:markdown_fenced_languages = ['python', 'bash=sh', 'javascript', 'vim', 'json']
-" unset title off
+let g:markdown_fenced_languages = ['python', 'bash=sh', 'javascript', 'vim', 'json', 'go', 'yaml', 'html', 'css']
+let g:markdown_folding = 1
+let g:markdown_minlines = 200
+autocmd FileType markdown setlocal foldlevel=2 conceallevel=0
 
 if !empty(&viminfo)
   set viminfo^=!
@@ -341,10 +335,6 @@ nmap oo o<Esc>k
 vmap Q gq
 nmap Q gqap
 
-" Automatically change the colorscheme for diff
-if &diff
-    colorscheme zaibatsu
-endif
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
