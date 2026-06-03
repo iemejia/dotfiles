@@ -54,7 +54,3 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
-# Install fzf keybindings and completion (not managed by stow)
-if [ -x ~/.fzf/install ]; then
-    ~/.fzf/install --key-bindings --completion --no-update-rc
-fi
