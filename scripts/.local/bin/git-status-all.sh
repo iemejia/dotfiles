@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 # Colors
 RED='\033[0;31m'
@@ -23,6 +23,7 @@ declare -a repos_diverged=()
 declare -a repos_issues=()
 
 for d in */; do
+	[ -d "$d" ] || continue
 	[ -d "$d/.git" ] || continue
 	dir="${d%/}"
 
