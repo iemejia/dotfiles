@@ -112,7 +112,7 @@ set tm=500
 " compatible copy/paste with mac
 "set clipboard=unnamed
 set clipboard=unnamedplus
-if has("mac")
+if has("mac") || system("uname") =~ "Darwin"
     set clipboard=unnamed
 endif
 
