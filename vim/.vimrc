@@ -126,10 +126,10 @@ set expandtab
 
 set infercase
 set cursorline
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 set colorcolumn=81
-set signcolumn=yes
+set signcolumn=no
 
 set encoding=utf-8
 set noshowmode
