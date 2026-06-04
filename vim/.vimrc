@@ -469,6 +469,19 @@ autocmd FileType netrw setl bufhidden=wipe
 " Get rid of the annoying netrw view on macvim
 let loaded_netrwPlugin = 1
 
+" Open URL under cursor with gx (netrw is disabled)
+function! s:OpenURL()
+  let l:url = matchstr(expand('<cWORD>'), 'https\?://[^ >)},;:"'']*')
+  if l:url != ''
+    if has('mac') || system('uname') =~ 'Darwin'
+      call system('open ' . shellescape(l:url))
+    else
+      call system('xdg-open ' . shellescape(l:url))
+    endif
+  endif
+endfunction
+nnoremap gx :call <SID>OpenURL()<CR>
+
 " OSC 52 clipboard support for SSH/tmux
 " Sends yanked text to local system clipboard via terminal escape sequence
 
