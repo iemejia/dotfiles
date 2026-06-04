@@ -292,9 +292,9 @@ set background=dark
 colorscheme catppuccin
 
 " Tabline colors: make inactive buffers readable
-highlight TabLine      guifg=#cdd6f4 guibg=#45475a gui=none
+highlight TabLine      guifg=#cdd6f4 guibg=#45475a gui=NONE
 highlight TabLineSel   guifg=#1e1e2e guibg=#89b4fa gui=bold
-highlight TabLineFill  guifg=none    guibg=#1e1e2e gui=none
+highlight TabLineFill  guifg=NONE    guibg=#1e1e2e gui=NONE
 
 " disable arrow keys
 map <up> <nop>
