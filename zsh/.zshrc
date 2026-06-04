@@ -65,6 +65,9 @@ fi
 
 [ -f /opt/homebrew/etc/bash_completion.d/az ] && source /opt/homebrew/etc/bash_completion.d/az
 
+# Fabio completion
+command -v fabio &>/dev/null && eval "$(fabio completions zsh)"
+
 # Airflow Breeze autocomplete
 [ -f ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh ] && \
     source ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh

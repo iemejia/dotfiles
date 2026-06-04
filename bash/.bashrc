@@ -117,3 +117,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # OpenClaw Completion
 [ -f "$HOME/.openclaw/completions/openclaw.bash" ] && source "$HOME/.openclaw/completions/openclaw.bash"
+
+# Fabio completion
+command -v fabio &>/dev/null && eval "$(fabio completions bash)"

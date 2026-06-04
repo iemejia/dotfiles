@@ -13,4 +13,9 @@ end
 if status is-interactive
     # fzf key bindings and completion (Ctrl+R, Ctrl+T, Alt+C)
     fzf --fish | source
+
+    # Fabio completion
+    if command -q fabio
+        fabio completions fish | source
+    end
 end
