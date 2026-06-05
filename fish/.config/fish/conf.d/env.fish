@@ -62,3 +62,11 @@ end
 fish_add_path ~/.cargo/bin
 
 set -gx MAVEN_OPTS "-Xmx2g"
+
+# SDKMAN
+set -gx SDKMAN_DIR "$HOME/.sdkman"
+if test -d "$SDKMAN_DIR/candidates"
+    for candidate_dir in $SDKMAN_DIR/candidates/*/current
+        test -d "$candidate_dir/bin"; and fish_add_path "$candidate_dir/bin"
+    end
+end
