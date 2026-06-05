@@ -1,18 +1,6 @@
 .DS_Store
-*.github
-.irssi/iemejia.pem
-.irssi/away.log
-.emacs.d/auto-save-list/
-.emacs.d/ido.last
-.emacs.d/session.*
-.fonts/
-oh-my-zsh/
-.tpm/
-.mpv/watch_later
-.mpv/cache
-.vim/.netrwhist
-.vim/colors
 media/.mpv/cache
 media/.mpv/watch_later
 vim/.vim/colors
+tmux/.tpm/
 
