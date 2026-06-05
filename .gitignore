@@ -9,5 +9,10 @@
 oh-my-zsh/
 .tpm/
 .mpv/watch_later
+.mpv/cache
 .vim/.netrwhist
+.vim/colors
+media/.mpv/cache
+media/.mpv/watch_later
+vim/.vim/colors
 
