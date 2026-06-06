@@ -36,6 +36,7 @@ ALL_PACKAGES=(
     media
     fonts
     tools
+    copilot
     scripts
 )
 

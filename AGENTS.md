@@ -27,6 +27,7 @@ For example, `bash/.bashrc` becomes `~/.bashrc` when stowed.
 - `node/` — npm config
 - `java/` — Maven and Gradle settings
 - `media/` — mpv, mplayer configs
+- `copilot/` — GitHub Copilot CLI config (settings, LSP, MCP, instructions)
 - `tools/` — fzf, irssi, psql, gdb, opencode, subversion, fontconfig
 - `fonts/` — Powerline font symbols
 - `scripts/` — Utility scripts installed to ~/.local/bin/

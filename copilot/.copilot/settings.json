@@ -1,0 +1,51 @@
+{
+  // Logging — keep verbose for debugging; set to "default" to reduce noise
+  "logLevel": "all",
+
+  // Audio notification when attention is needed (analogous to opencode tui.json sound)
+  "beep": true,
+
+  // Terminal theme follows system dark/light
+  "theme": "auto",
+
+  // Auto-update from stable channel
+  "autoUpdate": true,
+  "autoUpdatesChannel": "stable",
+
+  // Show banner only on first launch
+  "banner": "once",
+
+  // Allow the agent to ask clarifying questions
+  "askUser": true,
+
+  // Emit OSC 9;4 progress indicators (Ghostty, iTerm2, Windows Terminal)
+  "terminalProgress": true,
+
+  // Update terminal tab title with current intent
+  "updateTerminalTitle": true,
+
+  // Git co-author attribution for agent commits
+  "includeCoAuthoredBy": true,
+
+  // Respect .gitignore in file picker
+  "respectGitignore": true,
+
+  // Prevent sleep while agent is actively working
+  "keepAlive": "busy",
+
+  // Collapse large pastes
+  "compactPaste": true,
+
+  // Render markdown in output
+  "renderMarkdown": true,
+
+  // Status line items
+  "footer": {
+    "showModelEffort": true,
+    "showDirectory": true,
+    "showBranch": true,
+    "showContextWindow": true,
+    "showQuota": true,
+    "showAgent": true
+  }
+}

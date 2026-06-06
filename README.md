@@ -55,9 +55,65 @@ Running `stow <package>` from the repo root creates symlinks in `$HOME` pointing
 | `node` | .npmrc |
 | `java` | .m2/settings.xml, .gradle/gradle.properties |
 | `media` | .mpv/, .mplayer/ |
+| `copilot` | .copilot/ (settings, LSP servers, MCP servers, custom instructions) |
 | `tools` | .fzf, .irssi, .psqlrc, .gdbinit, .latexmkrc, .wgetrc, .vale.ini, .subversion, .config/opencode, .config/fontconfig, .config/gtk-3.0 |
 | `fonts` | .fonts/ (PowerlineSymbols) |
 | `scripts` | .local/bin/ (update-\*, git-\*, tmuxsession, clean-nvidia) |
+
+## Updating
+
+After pulling new changes (`git pull`), symlinks already point to the updated files so most changes take effect immediately. However, there are cases where you need to re-stow:
+
+### When to re-stow
+
+Re-stow a package when files were **added or removed** (not just edited):
+
+```bash
+# Re-stow a single package (removes stale links, creates new ones)
+stow -R <package>
+
+# Re-stow everything
+./install.sh
+```
+
+### Adopting existing files
+
+If a target file already exists (e.g., a tool created a default config before you stowed), use `--adopt` to pull it into the repo and replace it with a symlink:
+
+```bash
+stow --adopt <package>
+# Then review what changed in git
+git diff
+```
+
+This is common with tools that auto-generate config on first run (e.g., `~/.copilot/settings.json`, `~/.config/opencode/`). After adopting, update the file in the repo to your preferred version and commit.
+
+### Handling conflicts
+
+If stow reports a conflict:
+
+```
+WARNING! stowing <pkg> would cause conflicts:
+  * cannot stow ... over existing target ... since neither a link nor a directory
+```
+
+You have three options:
+
+1. **Adopt and review**: `stow --adopt <package>` then `git diff` to see what was pulled in
+2. **Remove the conflicting file**: `rm ~/.<conflicting-file>` then re-stow
+3. **Back up first**: `mv ~/.<file> ~/.<file>.bak` then re-stow
+
+### Packages with mixed ownership
+
+Some packages stow into directories that also contain auto-managed files (e.g., `copilot/.copilot/` coexists with Copilot CLI's `config.json`, `session-state/`, `logs/`). Stow handles this correctly by creating individual symlinks inside the existing directory rather than symlinking the whole directory.
+
+### Submodule updates
+
+After `git pull`, if submodules were updated:
+
+```bash
+git submodule update --init --recursive
+```
 
 ## Uninstalling
 
@@ -69,7 +125,14 @@ Running `stow <package>` from the repo root creates symlinks in `$HOME` pointing
 ## Adding a new dotfile
 
 1. Place the file at the correct path inside a package directory (mirroring `$HOME`)
-2. Re-stow the package: `stow <package>` from the repo root
+2. Re-stow the package: `stow -R <package>` from the repo root
+
+## Adding a new package
+
+1. Create a directory at the repo root (e.g., `myapp/`)
+2. Inside it, mirror the `$HOME` path structure (e.g., `myapp/.config/myapp/config.toml`)
+3. Add the package name to `install.sh`
+4. Stow it: `stow myapp`
 
 ## Scripts (~/.local/bin/)
 
