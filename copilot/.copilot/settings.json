@@ -2,6 +2,26 @@
   // Logging — keep verbose for debugging; set to "default" to reduce noise
   "logLevel": "all",
 
+  // Skills marketplace sources
+  "extraKnownMarketplaces": {
+    "azure-skills": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/azure-skills"
+      }
+    }
+  },
+
+  // Enabled plugins
+  "enabledPlugins": {
+    "azure@azure-skills": true
+  },
+
+  // Custom status line script
+  "statusline": {
+    "script": "~/.copilot/copilot-statusline.js"
+  },
+
   // Audio notification when attention is needed (analogous to opencode tui.json sound)
   "beep": true,
 
