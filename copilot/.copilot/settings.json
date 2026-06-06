@@ -1,4 +1,8 @@
 {
+  // Default model and effort
+  "model": "claude-opus-4.6",
+  "effortLevel": "high",
+
   // Logging — keep verbose for debugging; set to "default" to reduce noise
   "logLevel": "all",
 
