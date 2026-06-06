@@ -3,7 +3,7 @@
   "attention": {
     "enabled": true,
     "notifications": true,
-    "sound": true,
+    "sound": "{env:OPENCODE_SOUND}",
     "volume": 0.4
   }
 }

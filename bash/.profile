@@ -91,5 +91,10 @@ if [ -d "$HOME/.pgenv/" ]; then
     PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
 fi
 
+# Enable opencode notification sound only on machines with audio
+if [ -d /proc/asound ] || command -v pactl > /dev/null 2>&1; then
+    export OPENCODE_SOUND=true
+fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

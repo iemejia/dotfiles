@@ -40,6 +40,11 @@ if test (uname) = Linux
     set -gx PROTON_ENABLE_WAYLAND 1
 end
 
+# Enable opencode notification sound only on machines with audio
+if test -d /proc/asound; or command -q pactl
+    set -gx OPENCODE_SOUND true
+end
+
 # GPG
 if status is-interactive
     set -gx GPG_TTY (tty)
