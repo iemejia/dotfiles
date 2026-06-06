@@ -55,6 +55,35 @@
         ".json": "json",
         ".jsonc": "jsonc"
       }
+    },
+    "java": {
+      "command": "jdtls",
+      "args": [],
+      "fileExtensions": {
+        ".java": "java"
+      }
+    },
+    "scala": {
+      "command": "metals",
+      "args": [],
+      "fileExtensions": {
+        ".scala": "scala",
+        ".sc": "scala",
+        ".sbt": "sbt"
+      }
+    },
+    "cpp": {
+      "command": "clangd",
+      "args": [],
+      "fileExtensions": {
+        ".cpp": "cpp",
+        ".cxx": "cpp",
+        ".cc": "cpp",
+        ".c": "c",
+        ".h": "c",
+        ".hpp": "cpp",
+        ".hxx": "cpp"
+      }
     }
   }
 }
