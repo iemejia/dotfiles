@@ -37,6 +37,7 @@ ALL_PACKAGES=(
     fonts
     tools
     copilot
+    ssh
     scripts
 )
 
