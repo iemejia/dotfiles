@@ -49,7 +49,7 @@ fi
 # SSH is handled separately (stow can't manage ~/.ssh without risking auth keys)
 install_ssh() {
     echo "Installing ssh config..."
-    mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh
+    mkdir -p ~/.ssh/sockets ~/.ssh/config.d && chmod 700 ~/.ssh
     ln -sfv "$DOTFILES/ssh/.ssh/config" ~/.ssh/config
 }
 
