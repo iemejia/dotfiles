@@ -32,8 +32,8 @@
   "autoUpdate": true,
   "autoUpdatesChannel": "stable",
 
-  // Show banner only on first launch
-  "banner": "once",
+  // Suppress the startup banner/animation entirely
+  "banner": "never",
 
   // Allow the agent to ask clarifying questions
   "askUser": true,
