@@ -135,6 +135,10 @@ set encoding=utf-8
 set noshowmode
 set visualbell
 set ttyfast
+set mouse=a
+if !has('nvim') && has('mouse_sgr')
+  set ttymouse=sgr
+endif
 
 " Cursor shape: block in normal, beam in insert, underline in replace
 if !has('gui_running')
