@@ -37,7 +37,6 @@ ALL_PACKAGES=(
     fonts
     tools
     copilot
-    ssh
     scripts
 )
 
@@ -47,7 +46,26 @@ else
     PACKAGES=("${ALL_PACKAGES[@]}")
 fi
 
+# SSH is handled separately (stow can't manage ~/.ssh without risking auth keys)
+install_ssh() {
+    echo "Installing ssh config..."
+    mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh
+    ln -sfv "$DOTFILES/ssh/.ssh/config" ~/.ssh/config
+}
+
+if [ $# -gt 0 ]; then
+    # If ssh was requested explicitly, handle it
+    for arg in "$@"; do
+        if [ "$arg" = "ssh" ]; then
+            install_ssh
+        fi
+    done
+else
+    install_ssh
+fi
+
 for pkg in "${PACKAGES[@]}"; do
+    [ "$pkg" = "ssh" ] && continue
     if [ -d "$pkg" ]; then
         echo "Stowing $pkg..."
         stow -v --target="$HOME" "$pkg"

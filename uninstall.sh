@@ -17,7 +17,10 @@ if [ $# -eq 0 ]; then
 fi
 
 for pkg in "$@"; do
-    if [ -d "$pkg" ]; then
+    if [ "$pkg" = "ssh" ]; then
+        echo "Removing ssh config symlink..."
+        rm -fv ~/.ssh/config
+    elif [ -d "$pkg" ]; then
         echo "Unstowing $pkg..."
         stow -v --target="$HOME" --delete "$pkg"
     else
