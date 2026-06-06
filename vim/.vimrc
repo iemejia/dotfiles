@@ -382,6 +382,10 @@ vnoremap <leader>d "_D
 " without yanking it
 vnoremap <leader>p "_dP
 
+" Force linewise paste from system clipboard (useful for browser URLs)
+nnoremap <leader>P :put! +<CR>
+nnoremap <leader>p :put +<CR>
+
 
 " decent mappings for vimdiff
 nnoremap <expr> <C-H> &diff ? ':diffget 3<CR> :diffupdate<CR>' : '<C-W>h'
