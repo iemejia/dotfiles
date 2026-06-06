@@ -61,6 +61,9 @@ end
 # Rust
 fish_add_path ~/.cargo/bin
 
+# Coursier (Scala)
+fish_add_path ~/.local/share/coursier/bin
+
 set -gx MAVEN_OPTS "-Xmx2g"
 
 # SDKMAN

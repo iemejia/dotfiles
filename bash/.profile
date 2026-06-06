@@ -80,6 +80,10 @@ if [ -d "$HOME/.cargo/bin" ]; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/share/coursier/bin" ]; then
+    PATH="$HOME/.local/share/coursier/bin:$PATH"
+fi
+
 export MAVEN_OPTS="-Xmx2g"
 #export MAVEN_OPTS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
 
