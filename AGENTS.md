@@ -42,7 +42,7 @@ For example, `bash/.bashrc` becomes `~/.bashrc` when stowed.
 - Cross-platform: configs must work on both macOS and Linux
 - Platform-specific code uses guards (`uname`, `[ -d ... ]`, `command -v`)
 - Submodules: oh-my-zsh, fzf, zsh-autosuggestions, zsh-syntax-highlighting
-- Vim plugins are cloned via `scripts/.local/bin/install-vim-plugins.sh` into `~/.vim/pack/plugins/start/`
+- Vim plugins are cloned via `scripts/.local/bin/install-vim-plugins.sh` into `~/.config/vim/pack/plugins/start/`
 - Shell env vars and PATH setup live in `bash/.profile` (sourced by zsh via `.zshrc`)
 
 ## Making changes

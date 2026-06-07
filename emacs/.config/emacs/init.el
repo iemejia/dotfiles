@@ -188,7 +188,7 @@ Emacs buffers are those whose name starts with *."
 ;; remember location in buffer files
 (require 'saveplace)
 (setq-default save-place t)
-(setq save-place-file "~/.emacs.d/saveplace")
+(setq save-place-file "~/.config/emacs/saveplace")
 
 ;; (require 'undo-tree)
 ;; (global-undo-tree-mode 1)
@@ -404,15 +404,15 @@ With argument, do this that many times."
 ;;      (eval-print-last-sexp))))
 ;; ;(el-get 'sync)
 
-;; make aquamacs use the default package directory ~/.emacs.d/elpa
-(setq package-user-dir "~/.emacs.d/elpa")
+;; make aquamacs use the default package directory ~/.config/emacs/elpa
+(setq package-user-dir "~/.config/emacs/elpa")
 
 (setq load-path 
-      (cons "~/.emacs.d/elisp" load-path)) 
+      (cons "~/.config/emacs/elisp" load-path)) 
 
 ;; small hack to add package.el for emacs 23 (for old systems compatibilit)
 (when (= emacs-major-version 23)
-  (add-to-list 'load-path "~/.emacs.d/elisp23/")
+  (add-to-list 'load-path "~/.config/emacs/elisp23/")
   )
 
 (require 'package)

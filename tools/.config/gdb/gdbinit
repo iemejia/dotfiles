@@ -1,0 +1,3 @@
+set history filename ~/.local/share/gdb/history
+set history save
+set unwindonsignal on

@@ -4,7 +4,7 @@ set -x
 git -C ~/.oh-my-zsh pull
 
 # Update vim native packages
-for d in ~/.vim/pack/plugins/start/*; do
+for d in ~/.config/vim/pack/plugins/start/*; do
     [ -d "$d/.git" ] || continue
     echo "$d"
     git -C "$d" pull
