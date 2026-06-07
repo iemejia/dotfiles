@@ -113,6 +113,32 @@ export NVM_DIR="$HOME/.nvm"
 # fzf completion and key-bindings
 eval "$(fzf --bash)"
 
+# Load git completion eagerly (must be after fzf to prevent fzf from
+# overriding it with path completion due to lazy-loading race condition)
+if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+elif [ -f /opt/homebrew/share/bash-completion/completions/git ]; then
+    . /opt/homebrew/share/bash-completion/completions/git
+elif [ -f /usr/local/share/bash-completion/completions/git ]; then
+    . /usr/local/share/bash-completion/completions/git
+fi
+# Completion wrappers for git aliases (br=branch, co=checkout, etc.)
+_git_br() { _git_branch "$@"; }
+_git_co() { _git_checkout "$@"; }
+_git_ci() { _git_commit "$@"; }
+_git_ca() { _git_commit "$@"; }
+_git_cm() { _git_commit "$@"; }
+_git_df() { _git_diff "$@"; }
+_git_d() { _git_diff "$@"; }
+_git_dc() { _git_diff "$@"; }
+_git_a() { _git_add "$@"; }
+_git_ai() { _git_add "$@"; }
+_git_ap() { _git_add "$@"; }
+# Enable completion for the 'g' shell alias
+if type __git_complete &>/dev/null; then
+    __git_complete g __git_main
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
