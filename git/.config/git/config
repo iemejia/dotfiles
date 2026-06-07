@@ -195,7 +195,7 @@
 [commit]
     # always sign commits with gpg
     #gpgsign = true
-    template = ~/.git_commit_msg.txt
+    template = ~/.config/git/message
 	verbose = true
 [rebase]
     autostash = true
@@ -223,5 +223,3 @@
     submoduleSummary = true
 [submodule]
     recurse = true
-
-
