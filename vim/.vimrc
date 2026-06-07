@@ -408,7 +408,8 @@ vnoremap Q :norm @q<cr>
 noremap <leader>a =ip
 
 " visual shifting (does not exit Visual mode)
-vnoremap < <gv vnoremap=""> >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " re-indent whole file
 map <leader>= mzgg=G`z
