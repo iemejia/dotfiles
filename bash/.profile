@@ -2,6 +2,10 @@
 # Try to keep it minimal
 # Aliases and functions live in ~/.bash_aliases
 
+# Guard against being sourced twice (e.g. .zprofile + .zshrc)
+[ -n "$_PROFILE_LOADED" ] && return
+_PROFILE_LOADED=1
+
 export TZ=Europe/Paris
 
 # Use the terminal's TERM if its terminfo is available, otherwise fall back
@@ -67,14 +71,13 @@ if [ -d "/opt/homebrew/bin" ]; then
     PATH="/opt/homebrew/bin:$PATH"
 fi
 
-if command -v go > /dev/null 2>&1; then
-    export PATH="$PATH:$(go env GOPATH)/bin"
-    if [ -d "$HOME/gowork" ]; then
-        export GOPATH="$HOME/gowork"
-        export GOBIN="$GOPATH/bin"
-        PATH="$GOBIN:$PATH"
-    fi
+if [ -d "$HOME/gowork" ]; then
+    export GOPATH="$HOME/gowork"
+    export GOBIN="$GOPATH/bin"
+    PATH="$GOBIN:$PATH"
 fi
+# Add default GOPATH/bin for go-installed binaries
+[ -d "$HOME/go/bin" ] && PATH="$PATH:$HOME/go/bin"
 
 if [ -d "$HOME/.cargo/bin" ]; then
     PATH="$HOME/.cargo/bin:$PATH"
@@ -96,5 +99,15 @@ if [ -d /proc/asound ] || command -v pactl > /dev/null 2>&1; then
     export OPENCODE_SOUND=true
 fi
 
+# Lazy-load nvm: defer sourcing until first use of nvm/node/npm/npx
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    __load_nvm() {
+        unset -f nvm node npm npx 2>/dev/null
+        \. "$NVM_DIR/nvm.sh"
+    }
+    nvm()  { __load_nvm; nvm "$@"; }
+    node() { __load_nvm; node "$@"; }
+    npm()  { __load_nvm; npm "$@"; }
+    npx()  { __load_nvm; npx "$@"; }
+fi

@@ -56,17 +56,23 @@ bashcompinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Homebrew completions
+# Homebrew completions (use HOMEBREW_PREFIX, avoid slow brew --prefix call)
 if type brew &>/dev/null; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    autoload -Uz compinit
-    compinit
+    FPATH="${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions:${FPATH}"
 fi
 
 [ -f /opt/homebrew/etc/bash_completion.d/az ] && source /opt/homebrew/etc/bash_completion.d/az
 
-# Fabio completion
-command -v fabio &>/dev/null && eval "$(fabio completions zsh)"
+# Fabio completion (cached to avoid forking on every startup)
+if command -v fabio &>/dev/null; then
+    _fabio_comp="${XDG_CACHE_HOME:-$HOME/.cache}/fabio-completions.zsh"
+    if [ ! -f "$_fabio_comp" ]; then
+        mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"
+        fabio completions zsh > "$_fabio_comp"
+    fi
+    source "$_fabio_comp"
+    unset _fabio_comp
+fi
 
 # Airflow Breeze autocomplete
 [ -f ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh ] && \
@@ -75,39 +81,37 @@ command -v fabio &>/dev/null && eval "$(fabio completions zsh)"
 [ -d "/usr/local/opt/libpq/bin" ] && export PATH="/usr/local/opt/libpq/bin:$PATH"
 [ -d "$HOME/.dotnet/tools" ] && export PATH="$HOME/.dotnet/tools:$PATH"
 
-# >>> conda initialize >>>
+# >>> conda/mamba initialize (lazy-loaded) >>>
 if [ -d "$HOME/mambaforge" ]; then
-    __conda_setup="$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
-            . "$HOME/mambaforge/etc/profile.d/conda.sh"
+    conda() {
+        unset -f conda mamba 2>/dev/null
+        __conda_setup="$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2>/dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__conda_setup"
         else
-            export PATH="$HOME/mambaforge/bin:$PATH"
+            if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+                . "$HOME/mambaforge/etc/profile.d/conda.sh"
+            else
+                export PATH="$HOME/mambaforge/bin:$PATH"
+            fi
         fi
-    fi
-    unset __conda_setup
-    [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ] && . "$HOME/mambaforge/etc/profile.d/mamba.sh"
+        unset __conda_setup
+        [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ] && . "$HOME/mambaforge/etc/profile.d/mamba.sh"
+        if [ -x "$HOME/mambaforge/bin/mamba" ]; then
+            export MAMBA_EXE="$HOME/mambaforge/bin/mamba"
+            export MAMBA_ROOT_PREFIX="$HOME/mambaforge"
+            __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2>/dev/null)"
+            [ $? -eq 0 ] && eval "$__mamba_setup"
+            unset __mamba_setup
+        fi
+        conda "$@"
+    }
+    mamba() { conda; mamba "$@"; }
 fi
-# <<< conda initialize <<<
+# <<< conda/mamba initialize <<<
 
 if [ -d "/opt/homebrew/opt/fzf" ]; then
     export FZF_BASE=/opt/homebrew/opt/fzf/install
 fi
-
-# >>> mamba initialize >>>
-if [ -x "$HOME/mambaforge/bin/mamba" ]; then
-    export MAMBA_EXE="$HOME/mambaforge/bin/mamba"
-    export MAMBA_ROOT_PREFIX="$HOME/mambaforge"
-    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__mamba_setup"
-    else
-        alias mamba="$MAMBA_EXE"
-    fi
-    unset __mamba_setup
-fi
-# <<< mamba initialize <<<
 
 # zprof
