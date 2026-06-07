@@ -35,6 +35,17 @@ else
     PACKAGES=("${ALL_PACKAGES[@]}")
 fi
 
+# Packages with large submodules that need directory folding (no --no-folding)
+FOLDED_PACKAGES=(zsh)
+
+is_folded_pkg() {
+    local pkg="$1"
+    for p in "${FOLDED_PACKAGES[@]}"; do
+        [ "$p" = "$pkg" ] && return 0
+    done
+    return 1
+}
+
 uninstall_ssh() {
     echo "Removing ssh config symlink..."
     rm -fv ~/.ssh/config
@@ -56,7 +67,13 @@ for pkg in "${PACKAGES[@]}"; do
     [ "$pkg" = "ssh" ] && continue
     if [ -d "$pkg" ]; then
         echo "Unstowing $pkg..."
-        stow -v --no-folding --target="$HOME" --delete "$pkg"
+        if is_folded_pkg "$pkg"; then
+            stow -v --target="$HOME" --delete "$pkg"
+        else
+            # Handle both old-style (folded) and new-style (no-folding) symlinks
+            stow --target="$HOME" --delete "$pkg" 2>/dev/null || true
+            stow -v --no-folding --target="$HOME" --delete "$pkg" 2>/dev/null || true
+        fi
     else
         echo "Warning: package '$pkg' not found"
     fi
