@@ -24,7 +24,7 @@ for pkg in "$@"; do
         rmdir ~/.ssh/config.d 2>/dev/null && echo "Removed empty ~/.ssh/config.d/" || true
     elif [ -d "$pkg" ]; then
         echo "Unstowing $pkg..."
-        stow -v --target="$HOME" --delete "$pkg"
+        stow -v --no-folding --target="$HOME" --delete "$pkg"
     else
         echo "Warning: package '$pkg' not found"
     fi

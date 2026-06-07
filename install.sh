@@ -68,7 +68,7 @@ for pkg in "${PACKAGES[@]}"; do
     [ "$pkg" = "ssh" ] && continue
     if [ -d "$pkg" ]; then
         echo "Stowing $pkg..."
-        stow -v --target="$HOME" "$pkg"
+        stow -v --no-folding --target="$HOME" "$pkg"
     else
         echo "Warning: package '$pkg' not found, skipping"
     fi
