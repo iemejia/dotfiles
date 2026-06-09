@@ -48,7 +48,6 @@ update_git_repo() {
 	local fetch_output
 	if ! fetch_output=$(git -C "$dir" fetch -p --all --quiet 2>&1); then
 		echo -e "${RED}[FAIL]${NC} $dir: fetch failed"
-		echo "$fetch_output" >&2
 		failed_repos+=("$dir (fetch failed)")
 		return 1
 	fi
@@ -68,7 +67,6 @@ update_git_repo() {
 	local pull_output
 	if ! pull_output=$(git -C "$dir" -c advice.diverging=false pull --ff-only --quiet 2>&1); then
 		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
-		echo "$pull_output" >&2
 		pull_failed=true
 		failed_repos+=("$dir (pull failed)")
 	fi
