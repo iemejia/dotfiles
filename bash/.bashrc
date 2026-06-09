@@ -154,11 +154,7 @@ elif [ -f /etc/bash_completion.d/azure-cli ]; then
 fi
 
 # Azure Developer CLI (azd) completion
-if [ -f /opt/homebrew/etc/bash_completion.d/azd ]; then
-    source /opt/homebrew/etc/bash_completion.d/azd
-elif [ -f /etc/bash_completion.d/azd ]; then
-    source /etc/bash_completion.d/azd
-fi
+command -v azd &>/dev/null && eval "$(azd completion bash)"
 
 # Fabio completion
 command -v fabio &>/dev/null && eval "$(fabio completions bash)"
