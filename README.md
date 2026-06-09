@@ -143,7 +143,9 @@ git submodule update --init --recursive
 | `update-mac.sh` | brew update, upgrade, cleanup |
 | `update-linux.sh` | apt update, full-upgrade, autoclean, autoremove |
 | `update-docker.sh` | Prunes docker images and containers |
+| `update-fabio.sh` | Updates Fabio load balancer |
 | `update-repositories.sh` | Fetches/pulls all git repos across workspace directories |
+| `git-amend-commits.sh` | Adds Assisted-by trailers and optionally changes commit author |
 | `git-status-all.sh` | Reports uncommitted, unpushed, or diverged repos |
 | `git-cherry-picker.sh` | Cherry-pick discovery between branches |
 | `git-classify-repos.sh` | Classifies repos as public/private via gh CLI |
