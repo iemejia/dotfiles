@@ -86,34 +86,34 @@ for d in */; do
 	if [ "$has_local_changes" = true ] && [ "$upstream_status" = "diverged" ]; then
 		echo -e "${RED}[DIVERGED+DIRTY]${NC} $dir (ahead $ahead, behind $behind, uncommitted changes)"
 		repos_issues+=("$dir")
-		((issues++))
+		issues=$((issues + 1))
 	elif [ "$upstream_status" = "diverged" ]; then
 		echo -e "${RED}[DIVERGED]${NC} $dir (ahead $ahead, behind $behind)"
 		repos_diverged+=("$dir")
-		((diverged++))
+		diverged=$((diverged + 1))
 	elif [ "$has_local_changes" = true ] && [ "$upstream_status" = "ahead" ]; then
 		echo -e "${YELLOW}[COMMIT+PUSH]${NC} $dir (uncommitted changes + $ahead unpushed)"
 		repos_issues+=("$dir")
-		((issues++))
+		issues=$((issues + 1))
 	elif [ "$has_local_changes" = true ]; then
 		echo -e "${YELLOW}[NEEDS COMMIT]${NC} $dir"
 		repos_commit+=("$dir")
-		((needs_commit++))
+		needs_commit=$((needs_commit + 1))
 	elif [ "$upstream_status" = "ahead" ]; then
 		echo -e "${CYAN}[NEEDS PUSH]${NC} $dir ($ahead commit(s) ahead)"
 		repos_push+=("$dir")
-		((needs_push++))
+		needs_push=$((needs_push + 1))
 	elif [ "$upstream_status" = "behind" ]; then
 		echo -e "${CYAN}[NEEDS PULL]${NC} $dir ($behind commit(s) behind)"
 		repos_pull+=("$dir")
-		((needs_pull++))
+		needs_pull=$((needs_pull + 1))
 	else
 		if [ "$stashes" -gt 0 ]; then
 			echo -e "${GREEN}[CLEAN]${NC} $dir (${YELLOW}$stashes stash(es)${NC})"
 		else
 			echo -e "${GREEN}[CLEAN]${NC} $dir"
 		fi
-		((clean++))
+		clean=$((clean + 1))
 	fi
 done
 
@@ -191,7 +191,7 @@ ff_other_branches() {
 		if git -C "$dir" merge-base --is-ancestor "$local_ref" "$remote_ref" 2>/dev/null; then
 			git -C "$dir" update-ref "refs/heads/$branch" "$remote_ref" "$local_ref"
 			echo -e "    ${GREEN}[FF]${NC} $dir: $branch -> $upstream"
-			((local_ff++))
+			local_ff=$((local_ff + 1))
 		fi
 	done < <(git -C "$dir" for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads/)
 }

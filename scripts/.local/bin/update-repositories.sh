@@ -35,7 +35,7 @@ update_git_repo() {
 	local dir="$1"
 	if [ ! -d "$dir/.git" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (not a git repo)"
-		((skipped++))
+		skipped=$((skipped + 1))
 		return 0
 	fi
 
@@ -68,10 +68,10 @@ update_git_repo() {
 		count=$(git -C "$dir" log --oneline "$head_before".."$head_after" | wc -l | tr -d ' ')
 		echo -e "${CYAN}[UPDATED]${NC} $dir ${GREEN}(+${count} commit(s))${NC}"
 		updated_repos+=("$dir (+${count})")
-		((updated++))
+		updated=$((updated + 1))
 	else
 		echo -e "${BLUE}[OK]${NC} $dir (up to date)"
-		((up_to_date++))
+		up_to_date=$((up_to_date + 1))
 	fi
 }
 
@@ -126,7 +126,7 @@ update_svn_repo() {
 	local dir="$1"
 	if [ ! -d "$dir/.svn" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (not an svn repo)"
-		((skipped++))
+		skipped=$((skipped + 1))
 		return 0
 	fi
 
@@ -144,10 +144,10 @@ update_svn_repo() {
 	if [ "$rev_before" != "$rev_after" ]; then
 		echo -e "${CYAN}[UPDATED]${NC} $dir ${GREEN}(r${rev_before} -> r${rev_after})${NC}"
 		updated_repos+=("$dir (r${rev_before}->r${rev_after})")
-		((updated++))
+		updated=$((updated + 1))
 	else
 		echo -e "${BLUE}[OK]${NC} $dir (up to date)"
-		((up_to_date++))
+		up_to_date=$((up_to_date + 1))
 	fi
 }
 
@@ -155,7 +155,7 @@ for parent in "${GIT_DIRS[@]}"; do
 	[ -d "$parent" ] || continue
 	for d in "$parent"/*/; do
 		[ -d "$d" ] || continue
-		update_git_repo "$d" || ((failures++))
+		update_git_repo "$d" || failures=$((failures + 1))
 	done
 done
 
@@ -163,7 +163,7 @@ for parent in "${SVN_DIRS[@]}"; do
 	[ -d "$parent" ] || continue
 	for d in "$parent"/*/; do
 		[ -d "$d" ] || continue
-		update_svn_repo "$d" || ((failures++))
+		update_svn_repo "$d" || failures=$((failures + 1))
 	done
 done
 
