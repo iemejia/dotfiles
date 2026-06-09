@@ -57,7 +57,7 @@ update_git_repo() {
 		echo -e "${YELLOW}[SKIP]${NC} $dir (no upstream tracking)"
 	else
 		local pull_output
-		if ! pull_output=$(git -C "$dir" pull --ff-only --quiet 2>&1); then
+		if ! pull_output=$(git -C "$dir" -c advice.diverging=false pull --ff-only --quiet 2>&1); then
 			echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
 			echo "$pull_output" >&2
 			pull_failed=true

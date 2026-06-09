@@ -203,7 +203,7 @@ if [ "$do_pull" = true ]; then
 		echo -e "${CYAN}Pulling ${#repos_pull[@]} repo(s)...${NC}"
 		for r in "${repos_pull[@]}"; do
 			echo -n "  $r: "
-			if git -C "$r" pull --ff-only 2>/dev/null; then
+			if git -C "$r" -c advice.diverging=false pull --ff-only 2>/dev/null; then
 				echo -e "${GREEN}done${NC}"
 			else
 				echo -e "${RED}failed (try manual pull/rebase)${NC}"
