@@ -147,6 +147,52 @@ if [ $((needs_commit + needs_push + diverged + issues)) -gt 0 ]; then
 	done
 fi
 
+ff_other_branches() {
+	local dir="$1"
+
+	# Get branches checked out in worktrees (cannot update these)
+	local -a worktree_branches=()
+	while IFS= read -r line; do
+		if [[ "$line" == branch\ * ]]; then
+			worktree_branches+=("${line#branch refs/heads/}")
+		fi
+	done < <(git -C "$dir" worktree list --porcelain 2>/dev/null)
+
+	local current_branch
+	current_branch=$(git -C "$dir" symbolic-ref --short HEAD 2>/dev/null || echo "")
+
+	# Iterate all local branches with their upstream
+	while IFS=' ' read -r branch upstream; do
+		[ -n "$upstream" ] || continue
+		[ "$branch" != "$current_branch" ] || continue
+
+		# Skip branches checked out in worktrees
+		local in_worktree=false
+		for wt_branch in "${worktree_branches[@]+"${worktree_branches[@]}"}"; do
+			if [ "$branch" = "$wt_branch" ]; then
+				in_worktree=true
+				break
+			fi
+		done
+		if [ "$in_worktree" = true ]; then
+			continue
+		fi
+
+		local local_ref remote_ref
+		local_ref=$(git -C "$dir" rev-parse "refs/heads/$branch" 2>/dev/null) || continue
+		remote_ref=$(git -C "$dir" rev-parse "refs/remotes/$upstream" 2>/dev/null) || continue
+
+		# Skip if already up to date
+		[ "$local_ref" != "$remote_ref" ] || continue
+
+		# Only fast-forward: local must be ancestor of remote
+		if git -C "$dir" merge-base --is-ancestor "$local_ref" "$remote_ref" 2>/dev/null; then
+			git -C "$dir" update-ref "refs/heads/$branch" "$remote_ref" "$local_ref"
+			echo -e "    ${GREEN}[FF]${NC} $branch -> $upstream"
+		fi
+	done < <(git -C "$dir" for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads/)
+}
+
 # Auto-pull if requested
 if [ "$do_pull" = true ] && [ ${#repos_pull[@]} -gt 0 ]; then
 	echo ""
@@ -158,6 +204,8 @@ if [ "$do_pull" = true ] && [ ${#repos_pull[@]} -gt 0 ]; then
 		else
 			echo -e "${RED}failed (try manual pull/rebase)${NC}"
 		fi
+		# Fast-forward other local branches
+		ff_other_branches "$r"
 	done
 elif [ "$do_pull" = true ] && [ ${#repos_pull[@]} -eq 0 ]; then
 	echo ""
