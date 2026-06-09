@@ -1,6 +1,26 @@
 #!/bin/bash
 set -uo pipefail
 
+# Options
+do_pull=false
+for arg in "$@"; do
+	case "$arg" in
+		--pull|-p) do_pull=true ;;
+		--help|-h)
+			echo "Usage: $(basename "$0") [OPTIONS]"
+			echo ""
+			echo "Options:"
+			echo "  -p, --pull   Pull repos that are behind their upstream"
+			echo "  -h, --help   Show this help message"
+			exit 0
+			;;
+		*)
+			echo "Unknown option: $arg" >&2
+			exit 1
+			;;
+	esac
+done
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -125,4 +145,21 @@ if [ $((needs_commit + needs_push + diverged + issues)) -gt 0 ]; then
 	for r in "${repos_issues[@]+"${repos_issues[@]}"}"; do
 		echo -e "  ${RED}fix${NC}     $r"
 	done
+fi
+
+# Auto-pull if requested
+if [ "$do_pull" = true ] && [ ${#repos_pull[@]} -gt 0 ]; then
+	echo ""
+	echo -e "${CYAN}Pulling ${#repos_pull[@]} repo(s)...${NC}"
+	for r in "${repos_pull[@]}"; do
+		echo -n "  $r: "
+		if git -C "$r" pull --ff-only 2>/dev/null; then
+			echo -e "${GREEN}done${NC}"
+		else
+			echo -e "${RED}failed (try manual pull/rebase)${NC}"
+		fi
+	done
+elif [ "$do_pull" = true ] && [ ${#repos_pull[@]} -eq 0 ]; then
+	echo ""
+	echo -e "${GREEN}Nothing to pull.${NC}"
 fi
