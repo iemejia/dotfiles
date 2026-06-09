@@ -41,11 +41,13 @@ declare -a repos_push=()
 declare -a repos_pull=()
 declare -a repos_diverged=()
 declare -a repos_issues=()
+declare -a all_repos=()
 
 for d in */; do
 	[ -d "$d" ] || continue
 	[ -d "$d/.git" ] || continue
 	dir="${d%/}"
+	all_repos+=("$dir")
 
 	# Check for uncommitted changes (staged, unstaged, untracked)
 	staged=$(git -C "$dir" diff --cached --quiet 2>/dev/null; echo $?)
@@ -188,26 +190,37 @@ ff_other_branches() {
 		# Only fast-forward: local must be ancestor of remote
 		if git -C "$dir" merge-base --is-ancestor "$local_ref" "$remote_ref" 2>/dev/null; then
 			git -C "$dir" update-ref "refs/heads/$branch" "$remote_ref" "$local_ref"
-			echo -e "    ${GREEN}[FF]${NC} $branch -> $upstream"
+			echo -e "    ${GREEN}[FF]${NC} $dir: $branch -> $upstream"
+			((local_ff++))
 		fi
 	done < <(git -C "$dir" for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads/)
 }
 
 # Auto-pull if requested
-if [ "$do_pull" = true ] && [ ${#repos_pull[@]} -gt 0 ]; then
+if [ "$do_pull" = true ]; then
+	if [ ${#repos_pull[@]} -gt 0 ]; then
+		echo ""
+		echo -e "${CYAN}Pulling ${#repos_pull[@]} repo(s)...${NC}"
+		for r in "${repos_pull[@]}"; do
+			echo -n "  $r: "
+			if git -C "$r" pull --ff-only 2>/dev/null; then
+				echo -e "${GREEN}done${NC}"
+			else
+				echo -e "${RED}failed (try manual pull/rebase)${NC}"
+			fi
+		done
+	fi
+
+	# Fast-forward non-checked-out branches in all repos
 	echo ""
-	echo -e "${CYAN}Pulling ${#repos_pull[@]} repo(s)...${NC}"
-	for r in "${repos_pull[@]}"; do
-		echo -n "  $r: "
-		if git -C "$r" pull --ff-only 2>/dev/null; then
-			echo -e "${GREEN}done${NC}"
-		else
-			echo -e "${RED}failed (try manual pull/rebase)${NC}"
-		fi
-		# Fast-forward other local branches
+	echo -e "${CYAN}Fast-forwarding other local branches...${NC}"
+	local_ff=0
+	for r in "${all_repos[@]}"; do
+		# Fetch to ensure remote-tracking refs are current
+		git -C "$r" fetch --all --quiet 2>/dev/null || true
 		ff_other_branches "$r"
 	done
-elif [ "$do_pull" = true ] && [ ${#repos_pull[@]} -eq 0 ]; then
-	echo ""
-	echo -e "${GREEN}Nothing to pull.${NC}"
+	if [ "$local_ff" -eq 0 ]; then
+		echo -e "  ${GREEN}All branches up to date.${NC}"
+	fi
 fi
