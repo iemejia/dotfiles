@@ -1,4 +1,2 @@
 [auth]
 store-passwords = yes
-store-plaintext-passwords = no
-password-stores = gnome-keyring,keychain
