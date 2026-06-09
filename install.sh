@@ -56,15 +56,31 @@ install_ssh() {
     ln -sfv "$DOTFILES/ssh/.ssh/config" ~/.ssh/config
 }
 
+# VS Code config path differs by OS (can't use stow)
+install_vscode() {
+    echo "Installing vscode config..."
+    case "$(uname -s)" in
+        Darwin) VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User" ;;
+        *)      VSCODE_USER_DIR="$HOME/.config/Code/User" ;;
+    esac
+    mkdir -p "$VSCODE_USER_DIR"
+    for f in "$DOTFILES"/vscode/*; do
+        ln -sfv "$f" "$VSCODE_USER_DIR/$(basename "$f")"
+    done
+}
+
 if [ $# -gt 0 ]; then
-    # If ssh was requested explicitly, handle it
+    # If ssh or vscode was requested explicitly, handle it
     for arg in "$@"; do
         if [ "$arg" = "ssh" ]; then
             install_ssh
+        elif [ "$arg" = "vscode" ]; then
+            install_vscode
         fi
     done
 else
     install_ssh
+    install_vscode
 fi
 
 is_folded_pkg() {
@@ -91,6 +107,7 @@ cleanup_empty_dirs() {
 
 for pkg in "${PACKAGES[@]}"; do
     [ "$pkg" = "ssh" ] && continue
+    [ "$pkg" = "vscode" ] && continue
     if [ -d "$pkg" ]; then
         echo "Stowing $pkg..."
         if is_folded_pkg "$pkg"; then

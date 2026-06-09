@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Local (llama-server)",
+    "vendor": "customendpoint",
+    "apiKey": "no-key-needed",
+    "apiType": "chat-completions",
+    "models": [
+      {
+        "id": "qwen3-coder-30b-a3b",
+        "name": "Qwen3 Coder 30B-A3B (local)",
+        "url": "http://127.0.0.1:8080/v1/chat/completions",
+        "toolCalling": true,
+        "vision": false,
+        "maxInputTokens": 65536,
+        "maxOutputTokens": 16384,
+        "streaming": true
+      }
+    ]
+  }
+]
