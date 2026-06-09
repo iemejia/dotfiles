@@ -30,11 +30,14 @@ up_to_date=0
 skipped=0
 
 updated_repos=()
+skipped_repos=()
+failed_repos=()
 
 update_git_repo() {
 	local dir="$1"
 	if [ ! -e "$dir/.git" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (not a git repo)"
+		skipped_repos+=("$dir (not a git repo)")
 		skipped=$((skipped + 1))
 		return 0
 	fi
@@ -46,6 +49,7 @@ update_git_repo() {
 	if ! fetch_output=$(git -C "$dir" fetch -p --all --quiet 2>&1); then
 		echo -e "${RED}[FAIL]${NC} $dir: fetch failed"
 		echo "$fetch_output" >&2
+		failed_repos+=("$dir (fetch failed)")
 		return 1
 	fi
 
@@ -55,6 +59,7 @@ update_git_repo() {
 
 	if [ -z "$has_upstream" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (no upstream tracking)"
+		skipped_repos+=("$dir (no upstream tracking)")
 		# Still fast-forward other branches that may have tracking
 		ff_other_branches "$dir"
 		return 0
@@ -65,6 +70,7 @@ update_git_repo() {
 		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
 		echo "$pull_output" >&2
 		pull_failed=true
+		failed_repos+=("$dir (pull failed)")
 	fi
 
 	# Fast-forward other local branches that are behind their upstream
@@ -140,6 +146,7 @@ update_svn_repo() {
 	local dir="$1"
 	if [ ! -d "$dir/.svn" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (not an svn repo)"
+		skipped_repos+=("$dir (not an svn repo)")
 		skipped=$((skipped + 1))
 		return 0
 	fi
@@ -149,6 +156,7 @@ update_svn_repo() {
 
 	if ! svn update "$dir" --quiet 2>&1; then
 		echo -e "${RED}[FAIL]${NC} $dir: svn update failed"
+		failed_repos+=("$dir (svn update failed)")
 		return 1
 	fi
 
@@ -194,6 +202,22 @@ if [ ${#updated_repos[@]} -gt 0 ]; then
 	echo ""
 	echo -e "${CYAN}Repos with new changes:${NC}"
 	for repo in "${updated_repos[@]}"; do
+		echo "  • $repo"
+	done
+fi
+
+if [ ${#skipped_repos[@]} -gt 0 ]; then
+	echo ""
+	echo -e "${YELLOW}Skipped repos:${NC}"
+	for repo in "${skipped_repos[@]}"; do
+		echo "  • $repo"
+	done
+fi
+
+if [ ${#failed_repos[@]} -gt 0 ]; then
+	echo ""
+	echo -e "${RED}Failed repos:${NC}"
+	for repo in "${failed_repos[@]}"; do
 		echo "  • $repo"
 	done
 fi
