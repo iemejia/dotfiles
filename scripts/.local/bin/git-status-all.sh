@@ -45,7 +45,7 @@ declare -a all_repos=()
 
 for d in */; do
 	[ -d "$d" ] || continue
-	[ -d "$d/.git" ] || continue
+	[ -e "$d/.git" ] || continue
 	dir="${d%/}"
 	all_repos+=("$dir")
 

@@ -33,7 +33,7 @@ updated_repos=()
 
 update_git_repo() {
 	local dir="$1"
-	if [ ! -d "$dir/.git" ]; then
+	if [ ! -e "$dir/.git" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (not a git repo)"
 		skipped=$((skipped + 1))
 		return 0
