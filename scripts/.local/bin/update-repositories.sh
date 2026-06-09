@@ -152,7 +152,7 @@ update_svn_repo() {
 	local rev_before
 	rev_before=$(svn info "$dir" --show-item revision 2>/dev/null)
 
-	if ! svn update "$dir" --quiet 2>&1; then
+	if ! svn update "$dir" --quiet --non-interactive 2>&1; then
 		echo -e "${RED}[FAIL]${NC} $dir: svn update failed"
 		failed_repos+=("$dir (svn update failed)")
 		return 1

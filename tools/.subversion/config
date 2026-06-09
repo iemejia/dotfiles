@@ -1,0 +1,3 @@
+[auth]
+store-passwords = yes
+store-plaintext-passwords = yes
