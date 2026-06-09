@@ -46,13 +46,19 @@ update_git_repo() {
 		echo -e "${RED}[FAIL]${NC} $dir: fetch failed"
 		return 1
 	fi
+
+	local pull_failed=false
 	if ! git -C "$dir" pull --ff-only --quiet 2>&1; then
-		echo -e "${RED}[FAIL]${NC} $dir: pull failed (local commits or dirty tree?)"
-		return 1
+		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
+		pull_failed=true
 	fi
 
 	# Fast-forward other local branches that are behind their upstream
 	ff_other_branches "$dir"
+
+	if [ "$pull_failed" = true ]; then
+		return 1
+	fi
 
 	local head_after
 	head_after=$(git -C "$dir" rev-parse HEAD 2>/dev/null)
