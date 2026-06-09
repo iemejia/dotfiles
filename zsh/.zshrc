@@ -74,6 +74,14 @@ if command -v fabio &>/dev/null; then
     unset _fabio_comp
 fi
 
+# Hugging Face CLI completion
+if command -v hf &>/dev/null; then
+    _hf_completion() {
+        eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _HF_COMPLETE=complete_zsh hf)
+    }
+    compdef _hf_completion hf
+fi
+
 # Airflow Breeze autocomplete
 [ -f ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh ] && \
     source ~/apache/airflow/dev/breeze/autocomplete/breeze-complete-zsh.sh

@@ -148,3 +148,15 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Fabio completion
 command -v fabio &>/dev/null && eval "$(fabio completions bash)"
+
+# Hugging Face CLI completion
+if command -v hf &>/dev/null; then
+    _hf_completion() {
+        local IFS=$'\n'
+        COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \
+                       COMP_CWORD=$COMP_CWORD \
+                       _HF_COMPLETE=complete_bash $1 ) )
+        return 0
+    }
+    complete -o default -F _hf_completion hf
+fi
