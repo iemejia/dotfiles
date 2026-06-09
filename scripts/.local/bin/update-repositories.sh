@@ -42,14 +42,18 @@ update_git_repo() {
 	local head_before
 	head_before=$(git -C "$dir" rev-parse HEAD 2>/dev/null)
 
-	if ! git -C "$dir" fetch -p --all --quiet 2>&1; then
+	local fetch_output
+	if ! fetch_output=$(git -C "$dir" fetch -p --all --quiet 2>&1); then
 		echo -e "${RED}[FAIL]${NC} $dir: fetch failed"
+		echo "$fetch_output" >&2
 		return 1
 	fi
 
 	local pull_failed=false
-	if ! git -C "$dir" pull --ff-only --quiet 2>&1; then
-		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
+	local pull_output
+	if ! pull_output=$(git -C "$dir" pull --ff-only --quiet 2>&1); then
+		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or no tracking?)"
+		echo "$pull_output" >&2
 		pull_failed=true
 	fi
 
