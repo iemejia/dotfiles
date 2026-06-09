@@ -39,6 +39,11 @@ export SAM_CLI_TELEMETRY=0
 export AZURE_CORE_COLLECT_TELEMETRY=0
 export HOMEBREW_NO_ANALYTICS=1
 
+# Copilot CLI - local model via mlx_lm.server
+export COPILOT_PROVIDER_BASE_URL=http://127.0.0.1:8080/v1
+export COPILOT_PROVIDER_TYPE=openai
+export COPILOT_MODEL=mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit
+
 export FORCE_COLOR=1
 
 # Linux gaming (Steam Proton)
