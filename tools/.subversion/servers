@@ -4,5 +4,4 @@ apache = apache.org
 
 [apache]
 username = iemejia
-store-plaintext-passwords = yes
 
