@@ -50,11 +50,18 @@ update_git_repo() {
 	fi
 
 	local pull_failed=false
-	local pull_output
-	if ! pull_output=$(git -C "$dir" pull --ff-only --quiet 2>&1); then
-		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or no tracking?)"
-		echo "$pull_output" >&2
-		pull_failed=true
+	local has_upstream
+	has_upstream=$(git -C "$dir" rev-parse --abbrev-ref "@{upstream}" 2>/dev/null || echo "")
+
+	if [ -z "$has_upstream" ]; then
+		echo -e "${YELLOW}[SKIP]${NC} $dir (no upstream tracking)"
+	else
+		local pull_output
+		if ! pull_output=$(git -C "$dir" pull --ff-only --quiet 2>&1); then
+			echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
+			echo "$pull_output" >&2
+			pull_failed=true
+		fi
 	fi
 
 	# Fast-forward other local branches that are behind their upstream
