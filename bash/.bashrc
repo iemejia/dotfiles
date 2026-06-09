@@ -146,6 +146,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # OpenClaw Completion
 [ -f "$HOME/.openclaw/completions/openclaw.bash" ] && source "$HOME/.openclaw/completions/openclaw.bash"
 
+# Azure CLI (az) completion
+[ -f /opt/homebrew/etc/bash_completion.d/az ] && source /opt/homebrew/etc/bash_completion.d/az
+
+# Azure Developer CLI (azd) completion
+[ -f /opt/homebrew/etc/bash_completion.d/azd ] && source /opt/homebrew/etc/bash_completion.d/azd
+
 # Fabio completion
 command -v fabio &>/dev/null && eval "$(fabio completions bash)"
 
