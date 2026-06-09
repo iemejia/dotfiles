@@ -55,13 +55,16 @@ update_git_repo() {
 
 	if [ -z "$has_upstream" ]; then
 		echo -e "${YELLOW}[SKIP]${NC} $dir (no upstream tracking)"
-	else
-		local pull_output
-		if ! pull_output=$(git -C "$dir" -c advice.diverging=false pull --ff-only --quiet 2>&1); then
-			echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
-			echo "$pull_output" >&2
-			pull_failed=true
-		fi
+		# Still fast-forward other branches that may have tracking
+		ff_other_branches "$dir"
+		return 0
+	fi
+
+	local pull_output
+	if ! pull_output=$(git -C "$dir" -c advice.diverging=false pull --ff-only --quiet 2>&1); then
+		echo -e "${YELLOW}[WARN]${NC} $dir: pull failed (local commits or dirty tree?)"
+		echo "$pull_output" >&2
+		pull_failed=true
 	fi
 
 	# Fast-forward other local branches that are behind their upstream
