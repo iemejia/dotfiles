@@ -46,8 +46,8 @@ update_git_repo() {
 		echo -e "${RED}[FAIL]${NC} $dir: fetch failed"
 		return 1
 	fi
-	if ! git -C "$dir" pull --quiet 2>&1; then
-		echo -e "${RED}[FAIL]${NC} $dir: pull failed (dirty tree or conflicts?)"
+	if ! git -C "$dir" pull --ff-only --quiet 2>&1; then
+		echo -e "${RED}[FAIL]${NC} $dir: pull failed (local commits or dirty tree?)"
 		return 1
 	fi
 
