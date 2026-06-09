@@ -156,6 +156,9 @@ fi
 # Azure Developer CLI (azd) completion
 command -v azd &>/dev/null && eval "$(azd completion bash)"
 
+# GitHub CLI (gh) completion
+command -v gh &>/dev/null && eval "$(gh completion -s bash)"
+
 # Fabio completion
 command -v fabio &>/dev/null && eval "$(fabio completions bash)"
 
