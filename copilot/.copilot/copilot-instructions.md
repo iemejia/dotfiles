@@ -16,6 +16,24 @@
 - When writing shell scripts: use POSIX sh where possible, bash/zsh only when necessary
 - Commit messages: imperative mood, concise subject line (50 chars), body if needed
 
+## Commit Attribution
+
+When committing on my behalf, use the Linux kernel convention for AI
+coding assistant attribution (see
+https://github.com/torvalds/linux/blob/master/Documentation/process/coding-assistants.rst):
+
+Format: `Assisted-by: AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]`
+
+Where:
+- AGENT_NAME is the AI tool or framework (e.g. Copilot, OpenCode)
+- MODEL_VERSION is the specific model used (e.g. gpt-4o, claude-opus-4.6)
+- [TOOL1] [TOOL2] are optional specialized tools used (e.g. coccinelle, sparse)
+
+Use your actual agent name and model version. Basic development tools
+(git, gcc, make, editors) should not be listed.
+
+Do not use `Co-authored-by:` for AI-assisted work.
+
 ## Communication style
 
 - Be direct and concise; skip pleasantries and filler
