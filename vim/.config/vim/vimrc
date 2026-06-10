@@ -396,7 +396,9 @@ nnoremap <expr> <C-L> &diff ? ':diffget 1<CR> :diffupdate<CR>' : '<C-W>l'
 " Fix spelling with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spelling visuals with <leader>s
-nnoremap <leader>s :s spell!<cr>
+nnoremap <leader>s :set spell!<cr>
+" Open a note file with <leader>n (tab-complete from ~/notes/)
+nnoremap <leader>n :edit ~/notes/
 " enable repetition in normal mode (e.g. for prepending)
 vnoremap . :norm.<CR>
 
