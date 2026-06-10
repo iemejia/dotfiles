@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "instructions": ["~/.copilot/copilot-instructions.md"],
   "lsp": true,
   "provider": {
     "llama": {
