@@ -111,13 +111,31 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# nvm
+# nvm (lazy-loaded: ~3s startup cost deferred until first use)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    _nvm_lazy_load() {
+        unset -f nvm node npm npx corepack
+        \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    }
+    nvm()      { _nvm_lazy_load; nvm "$@"; }
+    node()     { _nvm_lazy_load; node "$@"; }
+    npm()      { _nvm_lazy_load; npm "$@"; }
+    npx()      { _nvm_lazy_load; npx "$@"; }
+    corepack() { _nvm_lazy_load; corepack "$@"; }
+fi
 
-# fzf completion and key-bindings
-eval "$(fzf --bash)"
+# fzf completion and key-bindings (cached)
+if command -v fzf &>/dev/null; then
+    _fzf_comp="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completions/fzf.bash"
+    if [ ! -f "$_fzf_comp" ] || [ "$(command -v fzf)" -nt "$_fzf_comp" ]; then
+        mkdir -p "${_fzf_comp%/*}"
+        fzf --bash > "$_fzf_comp" 2>/dev/null
+    fi
+    . "$_fzf_comp"
+    unset _fzf_comp
+fi
 
 # Load git completion eagerly (must be after fzf to prevent fzf from
 # overriding it with path completion due to lazy-loading race condition)
@@ -159,19 +177,51 @@ elif [ -f /etc/bash_completion.d/azure-cli ]; then
     source /etc/bash_completion.d/azure-cli
 fi
 
-# Azure Developer CLI (azd) completion
-command -v azd &>/dev/null && eval "$(azd completion bash)"
+# Azure Developer CLI (azd) completion (cached)
+if command -v azd &>/dev/null; then
+    _azd_comp="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completions/azd.bash"
+    if [ ! -f "$_azd_comp" ] || [ "$(command -v azd)" -nt "$_azd_comp" ]; then
+        mkdir -p "${_azd_comp%/*}"
+        azd completion bash > "$_azd_comp" 2>/dev/null
+    fi
+    . "$_azd_comp"
+    unset _azd_comp
+fi
 
-# GitHub CLI (gh) completion
-command -v gh &>/dev/null && eval "$(gh completion -s bash)"
+# GitHub CLI (gh) completion (cached)
+if command -v gh &>/dev/null; then
+    _gh_comp="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completions/gh.bash"
+    if [ ! -f "$_gh_comp" ] || [ "$(command -v gh)" -nt "$_gh_comp" ]; then
+        mkdir -p "${_gh_comp%/*}"
+        gh completion -s bash > "$_gh_comp" 2>/dev/null
+    fi
+    . "$_gh_comp"
+    unset _gh_comp
+fi
 
-# Fabio completion
-command -v fabio &>/dev/null && eval "$(fabio completions bash)"
+# Fabio completion (cached)
+if command -v fabio &>/dev/null; then
+    _fabio_comp="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completions/fabio.bash"
+    if [ ! -f "$_fabio_comp" ] || [ "$(command -v fabio)" -nt "$_fabio_comp" ]; then
+        mkdir -p "${_fabio_comp%/*}"
+        fabio completions bash > "$_fabio_comp" 2>/dev/null
+    fi
+    . "$_fabio_comp"
+    unset _fabio_comp
+fi
 
-# kubectl completion
-command -v kubectl &>/dev/null && eval "$(kubectl completion bash)"
-# Also complete the common 'k' alias
-command -v kubectl &>/dev/null && complete -o default -F __start_kubectl k
+# kubectl completion (cached)
+if command -v kubectl &>/dev/null; then
+    _kubectl_comp="${XDG_CACHE_HOME:-$HOME/.cache}/bash-completions/kubectl.bash"
+    if [ ! -f "$_kubectl_comp" ] || [ "$(command -v kubectl)" -nt "$_kubectl_comp" ]; then
+        mkdir -p "${_kubectl_comp%/*}"
+        kubectl completion bash > "$_kubectl_comp" 2>/dev/null
+    fi
+    . "$_kubectl_comp"
+    # Also complete the common 'k' alias
+    complete -o default -F __start_kubectl k
+    unset _kubectl_comp
+fi
 
 # Hugging Face CLI completion
 if command -v hf &>/dev/null; then
