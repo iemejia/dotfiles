@@ -99,15 +99,6 @@ if [ -d /proc/asound ] || command -v pactl > /dev/null 2>&1; then
     export OPENCODE_SOUND=true
 fi
 
-# Lazy-load nvm: defer sourcing until first use of nvm/node/npm/npx
+# nvm
 export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-    __load_nvm() {
-        unset -f nvm node npm npx 2>/dev/null
-        \. "$NVM_DIR/nvm.sh"
-    }
-    nvm()  { __load_nvm; nvm "$@"; }
-    node() { __load_nvm; node "$@"; }
-    npm()  { __load_nvm; npm "$@"; }
-    npx()  { __load_nvm; npx "$@"; }
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
