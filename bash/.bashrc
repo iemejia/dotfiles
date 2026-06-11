@@ -103,6 +103,12 @@ if ! shopt -oq posix; then
   elif [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
     . /usr/local/etc/profile.d/bash_completion.sh
   fi
+  # User completion scripts (stow-managed)
+  if [ -d ~/.bash_completion.d ]; then
+    for f in ~/.bash_completion.d/*; do
+      [ -f "$f" ] && . "$f"
+    done
+  fi
 fi
 
 # nvm
