@@ -23,6 +23,9 @@ alias n='nvim'
 # Remote irssi
 abbr --add rirssi 'ssh -Y vividores -t .irssi/screen'
 
+# kubectl
+abbr --add k kubectl
+
 # Git - simple aliases as abbreviations
 alias g='git'
 abbr --add gap 'git add -p'

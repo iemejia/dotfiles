@@ -51,6 +51,9 @@ scd() {
     [ -n "$root" ] && cd "$root" || echo "Not in an SVN working copy"
 }
 
+# kubectl
+alias k='kubectl'
+
 # git aliases
 alias g='git'
 alias gap='git add -p'
