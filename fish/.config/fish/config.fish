@@ -1,21 +1,36 @@
-# Go
-if command -q go
-    fish_add_path (go env GOPATH)/bin
+# Go - add GOPATH/bin (env.fish sets GOPATH if ~/gowork exists;
+# otherwise use Go's default ~/go without forking `go env`)
+if set -q GOPATH
+    fish_add_path $GOPATH/bin
+else if test -d "$HOME/go/bin"
+    fish_add_path "$HOME/go/bin"
 end
 
-# NVM Node - find latest installed version dynamically
+# NVM Node - add latest installed version to PATH (no forks, uses glob)
 set -gx NVM_DIR "$HOME/.nvm"
 if test -d "$NVM_DIR/versions/node"
-    set -l latest_node (find "$NVM_DIR/versions/node" -maxdepth 1 -type d | sort -V | tail -1)
-    test -n "$latest_node"; and fish_add_path "$latest_node/bin"
+    set -l node_dirs $NVM_DIR/versions/node/v*/bin
+    if test (count $node_dirs) -gt 0
+        fish_add_path $node_dirs[-1]
+    end
 end
 
 if status is-interactive
-    # fzf key bindings and completion (Ctrl+R, Ctrl+T, Alt+C)
-    fzf --fish | source
+    # fzf key bindings and completion (cached to avoid forking on every shell)
+    set -l _fzf_cache "$HOME/.cache/fish/fzf-init.fish"
+    if not test -f "$_fzf_cache"; or test (command -s fzf) -nt "$_fzf_cache"
+        mkdir -p (dirname "$_fzf_cache")
+        fzf --fish > "$_fzf_cache" 2>/dev/null
+    end
+    source "$_fzf_cache"
 
-    # Fabio completion
+    # Fabio completion (cached)
     if command -q fabio
-        fabio completions fish | source
+        set -l _fabio_cache "$HOME/.cache/fish/fabio-completions.fish"
+        if not test -f "$_fabio_cache"; or test (command -s fabio) -nt "$_fabio_cache"
+            mkdir -p (dirname "$_fabio_cache")
+            fabio completions fish > "$_fabio_cache" 2>/dev/null
+        end
+        source "$_fabio_cache"
     end
 end

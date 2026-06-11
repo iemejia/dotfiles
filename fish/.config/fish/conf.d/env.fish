@@ -32,7 +32,7 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx FORCE_COLOR 1
 
 # Proton/gaming (Linux only)
-if test (uname) = Linux
+if test -d /proc/version
     set -gx PROTON_NO_ESYNC 1
     set -gx PROTON_NO_FSYNC 1
     set -gx PROTON_USE_NTSYNC 1
