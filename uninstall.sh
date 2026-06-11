@@ -47,8 +47,13 @@ is_folded_pkg() {
 }
 
 uninstall_ssh() {
-    echo "Removing ssh config symlink..."
+    echo "Removing ssh config symlinks..."
     rm -fv ~/.ssh/config
+    # Remove config.d symlinks managed by this repo
+    for f in "$DOTFILES"/ssh/.ssh/config.d/*.conf; do
+        [ -e "$f" ] || continue
+        rm -fv ~/.ssh/config.d/"$(basename "$f")"
+    done
     # Remove config.d only if empty (preserve user-created host files)
     rmdir ~/.ssh/config.d 2>/dev/null && echo "Removed empty ~/.ssh/config.d/" || true
 }

@@ -54,6 +54,10 @@ install_ssh() {
     echo "Installing ssh config..."
     mkdir -p ~/.ssh/sockets ~/.ssh/config.d && chmod 700 ~/.ssh
     ln -sfv "$DOTFILES/ssh/.ssh/config" ~/.ssh/config
+    for f in "$DOTFILES"/ssh/.ssh/config.d/*.conf; do
+        [ -e "$f" ] || continue
+        ln -sfv "$f" ~/.ssh/config.d/"$(basename "$f")"
+    done
 }
 
 # VS Code config path differs by OS (can't use stow)

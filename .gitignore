@@ -3,4 +3,5 @@ media/.mpv/cache
 media/.mpv/watch_later
 vim/.vim/colors
 tmux/.tpm/
+ssh/.ssh/config.d/linux.work.conf
 
