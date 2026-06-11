@@ -5,6 +5,17 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
+ZSH_DISABLE_COMPFIX="true"  # skip compaudit security check (~60ms)
+
+# Set FZF_BASE before oh-my-zsh so the fzf plugin finds it without searching
+if [ -d "/opt/homebrew/opt/fzf" ]; then
+    export FZF_BASE=/opt/homebrew/opt/fzf
+fi
+
+# Add Homebrew completions to FPATH before oh-my-zsh runs compinit
+if [[ -d "${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions" ]]; then
+    FPATH="${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions:${FPATH}"
+fi
 
 plugins=(
     aws
@@ -44,24 +55,20 @@ bindkey '\O[B' history-beginning-search-forward
 # Fix C-u like in bash
 bindkey \^U backward-kill-line
 
-source "$HOME/.profile"
+# Source .profile only if not already loaded (login shells source it via .zprofile)
+if [[ -z "$_PROFILE_LOADED" ]]; then
+    source "$HOME/.profile"
+fi
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
-# Bash completions compatibility
-autoload bashcompinit
-bashcompinit
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Homebrew completions (use HOMEBREW_PREFIX, avoid slow brew --prefix call)
-if type brew &>/dev/null; then
-    FPATH="${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions:${FPATH}"
+# Azure CLI (az) completion (needs bashcompinit for bash-style 'complete')
+if [ -f /opt/homebrew/etc/bash_completion.d/az ]; then
+    (( $+functions[bashcompinit] )) || { autoload bashcompinit && bashcompinit }
+    source /opt/homebrew/etc/bash_completion.d/az
 fi
-
-[ -f /opt/homebrew/etc/bash_completion.d/az ] && source /opt/homebrew/etc/bash_completion.d/az
 
 # Fabio completion (cached to avoid forking on every startup)
 if command -v fabio &>/dev/null; then
@@ -117,9 +124,5 @@ if [ -d "$HOME/mambaforge" ]; then
     mamba() { conda; mamba "$@"; }
 fi
 # <<< conda/mamba initialize <<<
-
-if [ -d "/opt/homebrew/opt/fzf" ]; then
-    export FZF_BASE=/opt/homebrew/opt/fzf/install
-fi
 
 # zprof
