@@ -25,11 +25,11 @@ https://github.com/torvalds/linux/blob/master/Documentation/process/coding-assis
 Format: `Assisted-by: AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]`
 
 Where:
-- AGENT_NAME is the AI tool or framework (e.g. Copilot, OpenCode)
+- AGENT_NAME is the AI tool or framework; defaults to GitHub Copilot unless specified otherwise
 - MODEL_VERSION is the specific model used (e.g. gpt-4o, claude-opus-4.6)
 - [TOOL1] [TOOL2] are optional specialized tools used (e.g. coccinelle, sparse)
 
-Use your actual agent name and model version. Basic development tools
+Use your actual model version. Basic development tools
 (git, gcc, make, editors) should not be listed.
 
 Do not use `Co-authored-by:` for AI-assisted work.
