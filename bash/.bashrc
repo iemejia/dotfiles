@@ -162,6 +162,11 @@ command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 # Fabio completion
 command -v fabio &>/dev/null && eval "$(fabio completions bash)"
 
+# kubectl completion
+command -v kubectl &>/dev/null && eval "$(kubectl completion bash)"
+# Also complete the common 'k' alias
+command -v kubectl &>/dev/null && complete -o default -F __start_kubectl k
+
 # Hugging Face CLI completion
 if command -v hf &>/dev/null; then
     _hf_completion() {
