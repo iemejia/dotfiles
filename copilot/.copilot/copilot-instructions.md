@@ -47,3 +47,4 @@ Do not use `Co-authored-by:` for AI-assisted work.
 - GNU Make, shell scripts for build automation
 - Docker/Podman for containerized workflows
 - Homebrew (macOS), apt (Debian/Ubuntu) for system packages
+- Test, format, and style tools as defined by the project (e.g. pytest, go test, black, prettier, eslint, shellcheck, scalastyle, clippy, rustfmt, etc)
