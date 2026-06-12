@@ -1,52 +1,113 @@
 # Starship prompt configuration
 # https://starship.rs/config/
 
-# Timeout for commands that starship executes (ms)
 command_timeout = 1000
-
-# Newline between prompts
 add_newline = true
+
+# Two-line prompt: context on line 1, input on line 2
+format = """
+$username$hostname$directory$git_branch$git_status$fill$all$line_break\
+$character"""
+
+# Right prompt: command duration (keeps left side clean)
+right_format = "$cmd_duration"
+
+[fill]
+symbol = " "
 
 [character]
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
 
+# Show username only when SSH or root (not on local sessions)
+[username]
+show_always = false
+format = "[$user]($style)@"
+
+# Show hostname only on SSH
+[hostname]
+ssh_only = true
+format = "[$hostname]($style):"
+
 [directory]
-truncation_length = 5
+truncation_length = 4
 truncate_to_repo = true
+# Highlight repo name in path
+repo_root_style = "bold cyan"
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
-symbol = " "
+symbol = ""
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
+# Show count for actionable items
+ahead = ">"
+behind = "<"
+diverged = "<>"
+conflicted = "!"
+modified = "~"
+untracked = "?"
+staged = "+"
+stashed = "*"
 
 [cmd_duration]
 min_time = 2000
-format = "took [$duration]($style) "
+format = "[$duration]($style)"
 
-# Disable modules you don't need to keep the prompt fast
+# -- Languages (shown only when project detected) --
+
+[python]
+format = '[py $version( \($virtualenv\))]($style) '
+detect_extensions = []  # avoid false positives on random .py files
+
+[nodejs]
+format = '[node $version]($style) '
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+detect_extensions = []  # skip detection by .js/.mjs alone
+
+[rust]
+format = '[rs $version]($style) '
+
+[golang]
+format = '[go $version]($style) '
+
+[java]
+format = '[java $version]($style) '
+detect_files = ["pom.xml", "build.gradle", "build.gradle.kts", ".java-version"]
+
+# -- Infra/Cloud (only when context is active) --
+
+[kubernetes]
+disabled = false
+format = '[k8s $context(/$namespace)]($style) '
+# Show only when explicitly set (avoids clutter for local dev)
+detect_files = []
+detect_folders = []
+
+[aws]
+format = '[aws $profile( $region)]($style) '
+
+[azure]
+disabled = false
+format = '[az $subscription]($style) '
+
+[terraform]
+format = '[tf $version $workspace]($style) '
+
+[docker_context]
+format = '[docker $context]($style) '
+# Only show non-default contexts
+only_with_files = false
+
+[conda]
+format = '[conda $environment]($style) '
+
+# -- Disabled (noisy or slow) --
+
 [package]
 disabled = true
 
-[nodejs]
+[line_break]
 disabled = false
-detect_files = ["package.json", ".node-version"]
-
-[python]
-disabled = false
-
-[rust]
-disabled = false
-
-[golang]
-disabled = false
-
-[java]
-disabled = false
-
-[docker_context]
-disabled = true
-
-[kubernetes]
-disabled = true
