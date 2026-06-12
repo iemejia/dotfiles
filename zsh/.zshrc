@@ -49,6 +49,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
+# open file in vi via fzf
+vf() {
+    local file
+    file=$(fzf --height=40% --reverse) || return
+    vi "$file"
+}
+
 # History search with arrow keys
 bindkey '\eOA' history-beginning-search-backward
 bindkey '\e[A' history-beginning-search-backward

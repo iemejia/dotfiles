@@ -41,6 +41,9 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export FORCE_COLOR=1
 
+# fzf: Ctrl-O inside Ctrl-T picker opens selection in vi
+export FZF_CTRL_T_OPTS="--bind 'ctrl-o:execute(vi {})+abort'"
+
 # Linux gaming (Steam Proton)
 if [ "$(uname)" = "Linux" ]; then
     export PROTON_NO_ESYNC=1

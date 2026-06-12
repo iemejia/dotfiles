@@ -117,6 +117,13 @@ ghco() {
     done
 }
 
+# open file in vi via fzf
+vf() {
+    local file
+    file=$(fzf --height=40% --reverse) || return
+    vi "$file"
+}
+
 alias gitls="git ls-files --sparse --full-name -z | \
   xargs -0 -I FILE -P 20 git log --date=iso-strict-local --format='%ad %>(14) %cr %<(5) %an  %h ./FILE' -- FILE | \
   sort -g"

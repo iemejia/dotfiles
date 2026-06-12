@@ -16,6 +16,9 @@ if test -d "$NVM_DIR/versions/node"
 end
 
 if status is-interactive
+    # fzf: Ctrl-O inside Ctrl-T picker opens selection in vi
+    set -gx FZF_CTRL_T_OPTS "--bind 'ctrl-o:execute(vi {})+abort'"
+
     # fzf key bindings and completion (cached to avoid forking on every shell)
     set -l _fzf_cache "$HOME/.cache/fish/fzf-init.fish"
     if not test -f "$_fzf_cache"; or test (command -s fzf) -nt "$_fzf_cache"
