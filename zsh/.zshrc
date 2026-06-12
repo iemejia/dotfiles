@@ -49,6 +49,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
+# Quick exit
+alias x='exit'
+
 # open file in vi via fzf
 vf() {
     local file
