@@ -1,0 +1,52 @@
+# Starship prompt configuration
+# https://starship.rs/config/
+
+# Timeout for commands that starship executes (ms)
+command_timeout = 1000
+
+# Newline between prompts
+add_newline = true
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[cmd_duration]
+min_time = 2000
+format = "took [$duration]($style) "
+
+# Disable modules you don't need to keep the prompt fast
+[package]
+disabled = true
+
+[nodejs]
+disabled = false
+detect_files = ["package.json", ".node-version"]
+
+[python]
+disabled = false
+
+[rust]
+disabled = false
+
+[golang]
+disabled = false
+
+[java]
+disabled = false
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = true

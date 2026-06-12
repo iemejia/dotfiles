@@ -224,3 +224,8 @@ if command -v hf &>/dev/null; then
     }
     complete -o default -F _hf_completion hf
 fi
+
+# Starship prompt (overrides PS1 and PROMPT_COMMAND above)
+if command -v starship &>/dev/null; then
+    eval "$(starship init bash)"
+fi

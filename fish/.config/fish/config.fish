@@ -33,4 +33,9 @@ if status is-interactive
         end
         source "$_fabio_cache"
     end
+
+    # Starship prompt
+    if command -q starship
+        starship init fish | source
+    end
 end

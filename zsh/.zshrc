@@ -2,7 +2,12 @@
 # zmodload zsh/zprof
 
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster"
+# Use starship prompt if available, otherwise fall back to agnoster
+if command -v starship &>/dev/null; then
+    ZSH_THEME=""
+else
+    ZSH_THEME="agnoster"
+fi
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 ZSH_DISABLE_COMPFIX="true"  # skip compaudit security check (~60ms)
@@ -124,5 +129,10 @@ if [ -d "$HOME/mambaforge" ]; then
     mamba() { conda; mamba "$@"; }
 fi
 # <<< conda/mamba initialize <<<
+
+# Starship prompt
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
 
 # zprof
