@@ -121,12 +121,7 @@
     # email = iemejia@apache.org
     signingkey = 0A9DAF6713B86349
 [color]
-    diff = auto
-    status = auto
-
-    branch = auto
     ui = auto
-    interactive = auto
 [core]
     editor = vim # emacsclient -t -a=\\\"\\\"
     autocrlf = input
