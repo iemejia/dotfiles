@@ -66,6 +66,15 @@ end
 # Rust
 fish_add_path ~/.cargo/bin
 
+# uv-managed Python (latest installed version)
+set -l _uv_py_base "$HOME/.local/share/uv/python"
+if test -d "$_uv_py_base"
+    set -l _uv_dirs $_uv_py_base/cpython-*/bin
+    if test (count $_uv_dirs) -gt 0
+        fish_add_path $_uv_dirs[-1]
+    end
+end
+
 # Coursier (Scala)
 fish_add_path ~/.local/share/coursier/bin
 
