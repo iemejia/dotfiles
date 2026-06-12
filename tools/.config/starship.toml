@@ -52,6 +52,11 @@ untracked = "?"
 staged = "+"
 stashed = "*"
 
+[status]
+disabled = false
+format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+
 [cmd_duration]
 min_time = 2000
 format = "[$duration]($style)"
