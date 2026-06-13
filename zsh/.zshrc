@@ -145,4 +145,9 @@ if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
 fi
 
+# Television fuzzy finder shell integration
+if command -v tv &>/dev/null; then
+    eval "$(tv init zsh)"
+fi
+
 # zprof

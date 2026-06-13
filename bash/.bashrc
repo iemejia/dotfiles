@@ -229,3 +229,8 @@ fi
 if command -v starship &>/dev/null; then
     eval "$(starship init bash)"
 fi
+
+# Television fuzzy finder shell integration
+if command -v tv &>/dev/null; then
+    eval "$(tv init bash)"
+fi
