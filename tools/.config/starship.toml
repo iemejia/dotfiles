@@ -19,14 +19,14 @@ symbol = " "
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
 
-# Show username only when SSH or root (not on local sessions)
+# Show username always (not only for SSH or root)
 [username]
-show_always = false
+show_always = true
 format = "[$user]($style)@"
 
-# Show hostname only on SSH
+# Show hostname always (not only on SSH)
 [hostname]
-ssh_only = true
+ssh_only = false
 format = "[$hostname]($style):"
 
 [directory]
