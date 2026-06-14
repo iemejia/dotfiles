@@ -46,4 +46,11 @@ if status is-interactive
     if command -q tv
         tv init fish | source
     end
+
+    # Carapace multi-shell completion
+    if command -q carapace
+        set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense'
+        set -Ux CARAPACE_MATCH 1
+        carapace _carapace fish | source
+    end
 end

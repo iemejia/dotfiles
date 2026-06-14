@@ -234,3 +234,10 @@ fi
 if command -v tv &>/dev/null; then
     eval "$(tv init bash)"
 fi
+
+# Carapace multi-shell completion
+if command -v carapace &>/dev/null; then
+    export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+    export CARAPACE_MATCH=1
+    source <(carapace _carapace bash)
+fi

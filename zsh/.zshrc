@@ -150,4 +150,12 @@ if command -v tv &>/dev/null; then
     eval "$(tv init zsh)"
 fi
 
+# Carapace multi-shell completion
+if command -v carapace &>/dev/null; then
+    export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+    export CARAPACE_MATCH=1
+    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+    source <(carapace _carapace zsh)
+fi
+
 # zprof
