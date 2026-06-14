@@ -52,9 +52,12 @@ end
 
 # PATH additions (fish_add_path is idempotent and checks for duplicates)
 fish_add_path ~/.local/bin
-fish_add_path /opt/local/bin
-fish_add_path /opt/local/libexec/gnubin
 fish_add_path /opt/homebrew/bin
+
+# Prefer GNU versions over BSD (coreutils, findutils, gnu-sed, etc.)
+for _gnubin in /opt/homebrew/opt/*/libexec/gnubin
+    test -d "$_gnubin"; and fish_add_path "$_gnubin"
+end
 
 # Go
 if test -d "$HOME/gowork"

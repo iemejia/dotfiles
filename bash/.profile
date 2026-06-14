@@ -62,16 +62,13 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "/opt/local/bin" ]; then
-    PATH="/opt/local/bin:$PATH"
-fi
-
-if [ -d "/opt/local/libexec/gnubin" ]; then
-    PATH="/opt/local/libexec/gnubin:$PATH"
-fi
-
 if [ -d "/opt/homebrew/bin" ]; then
     PATH="/opt/homebrew/bin:$PATH"
+    # Prefer GNU versions over BSD (coreutils, findutils, gnu-sed, etc.)
+    for _gnubin in /opt/homebrew/opt/*/libexec/gnubin; do
+        [ -d "$_gnubin" ] && PATH="$_gnubin:$PATH"
+    done
+    unset _gnubin
 fi
 
 if [ -d "$HOME/gowork" ]; then
