@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Ensure PATH and env vars from .profile are available in non-login shells
+if [ -z "$_PROFILE_LOADED" ] && [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

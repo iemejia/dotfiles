@@ -83,14 +83,13 @@ if [ -d "$HOME/.cargo/bin" ]; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# uv-managed Python (latest installed version)
-if [ -d "$HOME/.local/share/uv/python" ]; then
-    _uv_py_bin=""
-    for _d in "$HOME/.local/share/uv/python"/cpython-*/bin; do
-        [ -d "$_d" ] && _uv_py_bin="$_d"
-    done
-    [ -n "$_uv_py_bin" ] && PATH="$_uv_py_bin:$PATH"
-    unset _d _uv_py_bin
+# uv-managed Python (respects global pin / latest)
+if command -v uv >/dev/null 2>&1; then
+    _uv_py=$(uv python find --no-project 2>/dev/null)
+    if [ -n "$_uv_py" ]; then
+        PATH="$(dirname "$_uv_py"):$PATH"
+    fi
+    unset _uv_py
 fi
 
 if [ -d "$HOME/.local/share/coursier/bin" ]; then
