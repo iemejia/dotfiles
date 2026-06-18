@@ -1,9 +1,3 @@
 {
-  "mcpServers": {
-    "github": {
-      "command": "gh",
-      "args": ["copilot", "mcp-server"],
-      "env": {}
-    }
-  }
+  "mcpServers": {}
 }
