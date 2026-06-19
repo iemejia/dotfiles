@@ -186,10 +186,11 @@
     chainreplyto = false
     # smtppass = your_password
 [commit]
-    # always sign commits with gpg
-    #gpgsign = true
+    # gpgsign = true
     template = ~/.config/git/message
 	verbose = true
+[gpg]
+    program = gpg
 [rebase]
     autostash = true
 [init]

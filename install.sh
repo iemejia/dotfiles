@@ -27,6 +27,7 @@ ALL_PACKAGES=(
     bash
     zsh
     git
+    gnupg
     vim
     tmux
     fish
