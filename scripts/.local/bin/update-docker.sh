@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-docker images | awk '(NR>1)' | awk '{print $1":"$2}' | xargs -L1 docker pull
-docker rm "$(docker ps -qa --no-trunc --filter "status=exited")"
-docker rmi "$(docker images --filter "dangling=true" -q --no-trunc)"
+# Pull latest version of all tagged images
+docker images --format '{{.Repository}}:{{.Tag}}' | grep -v '<none>' | sort -u | xargs -L1 docker pull
+
+# Remove exited containers
+docker ps -qa --no-trunc --filter "status=exited" | xargs -r docker rm
+
+# Remove dangling images
+docker images --filter "dangling=true" -q --no-trunc | xargs -r docker rmi
+
+# Clean up remaining build cache, networks, etc.
 docker system prune -f
