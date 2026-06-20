@@ -3,6 +3,12 @@
 
 set -gx TZ Europe/Paris
 
+# Use the terminal's TERM if its terminfo is available, otherwise fall back
+# (mirrors bash/.profile; matters for remote login shells lacking xterm-ghostty)
+if test -n "$TERM"; and not infocmp "$TERM" >/dev/null 2>&1
+    set -gx TERM xterm-256color
+end
+
 set -gx GIT_EDITOR vim
 set -gx SVN_EDITOR vim
 set -gx IRC_CLIENT irssi
