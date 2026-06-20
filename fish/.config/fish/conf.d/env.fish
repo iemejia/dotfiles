@@ -75,11 +75,12 @@ end
 # Rust
 fish_add_path ~/.cargo/bin
 
-# uv-managed Python (respects global pin / latest)
+# uv-managed Python (initial PATH; auto-switch hook in uv-python.fish)
 if command -q uv
     set -l _uv_py (uv python find --no-project 2>/dev/null)
     if test -n "$_uv_py"
-        fish_add_path (path dirname $_uv_py)
+        set -g _uv_python_dir (path dirname $_uv_py)
+        fish_add_path $_uv_python_dir
     end
 end
 

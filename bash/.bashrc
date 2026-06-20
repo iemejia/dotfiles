@@ -235,6 +235,18 @@ if command -v starship &>/dev/null; then
     eval "$(starship init bash)"
 fi
 
+# Auto-switch uv-managed Python on directory change
+if declare -f _uv_hook >/dev/null 2>&1; then
+    _uv_prev_pwd="$PWD"
+    _uv_prompt_hook() {
+        if [ "$PWD" != "$_uv_prev_pwd" ]; then
+            _uv_prev_pwd="$PWD"
+            _uv_hook
+        fi
+    }
+    PROMPT_COMMAND="_uv_prompt_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+fi
+
 # Television fuzzy finder shell integration
 if command -v tv &>/dev/null; then
     eval "$(tv init bash)"

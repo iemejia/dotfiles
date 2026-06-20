@@ -75,6 +75,11 @@ if [[ -z "$_PROFILE_LOADED" ]]; then
     source "$HOME/.profile"
 fi
 
+# Auto-switch uv-managed Python on directory change
+if (( $+functions[_uv_hook] )); then
+    chpwd_functions+=(_uv_hook)
+fi
+
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

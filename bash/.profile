@@ -83,13 +83,33 @@ if [ -d "$HOME/.cargo/bin" ]; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# uv-managed Python (respects global pin / latest)
+# uv-managed Python (auto-switches per .python-version on directory change)
 if command -v uv >/dev/null 2>&1; then
     _uv_py=$(uv python find --no-project 2>/dev/null)
     if [ -n "$_uv_py" ]; then
-        PATH="$(dirname "$_uv_py"):$PATH"
+        _UV_PYTHON_DIR="$(dirname "$_uv_py")"
+        PATH="$_UV_PYTHON_DIR:$PATH"
     fi
     unset _uv_py
+
+    # Re-resolve uv python when cwd changes; called by shell-specific hooks
+    _uv_hook() {
+        _uv_new=$(uv python find 2>/dev/null) || return 0
+        _uv_new_dir=$(dirname "$_uv_new")
+        unset _uv_new
+        [ "$_uv_new_dir" = "${_UV_PYTHON_DIR:-}" ] && { unset _uv_new_dir; return 0; }
+        # Remove old uv python dir from PATH
+        if [ -n "${_UV_PYTHON_DIR:-}" ]; then
+            _uv_tmp=":$PATH:"
+            _uv_tmp="${_uv_tmp//:$_UV_PYTHON_DIR:/:}"
+            PATH="${_uv_tmp#:}"
+            PATH="${PATH%:}"
+            unset _uv_tmp
+        fi
+        PATH="$_uv_new_dir:$PATH"
+        _UV_PYTHON_DIR="$_uv_new_dir"
+        unset _uv_new_dir
+    }
 fi
 
 if [ -d "$HOME/.local/share/coursier/bin" ]; then
