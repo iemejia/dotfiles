@@ -71,7 +71,7 @@ copy-on-select = clipboard
 
 # Shell integration
 shell-integration = detect
-shell-integration-features = cursor,sudo,title
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
 
 # Scrollback
 scrollback-limit = 100000
