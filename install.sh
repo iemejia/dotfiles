@@ -135,8 +135,9 @@ done
 for arg in "${PACKAGES[@]}"; do
     if [ "$arg" = "zsh" ]; then
         echo "Linking zsh plugin symlinks..."
-        ln -sfn "$HOME/.zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-        ln -sfn "$HOME/.zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+        mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
+        ln -sfnv "$HOME/.zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+        ln -sfnv "$HOME/.zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
         break
     fi
 done
