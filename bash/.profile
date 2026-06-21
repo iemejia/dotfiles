@@ -88,6 +88,15 @@ if command -v uv >/dev/null 2>&1; then
     _uv_py=$(uv python find --no-project 2>/dev/null)
     if [ -n "$_uv_py" ]; then
         _UV_PYTHON_DIR="$(dirname "$_uv_py")"
+        # Remove any inherited/stale uv python dirs before adding ours
+        _uv_tmp=":$PATH:"
+        while case "$_uv_tmp" in *:*uv/python/cpython-*) true;; *) false;; esac; do
+            _uv_tmp=$(printf '%s' "$_uv_tmp" | sed 's|:[^:]*uv/python/cpython-[^:]*:||')
+            _uv_tmp=":${_uv_tmp#:}"
+        done
+        PATH="${_uv_tmp#:}"
+        PATH="${PATH%:}"
+        unset _uv_tmp
         PATH="$_UV_PYTHON_DIR:$PATH"
     fi
     unset _uv_py
@@ -98,14 +107,15 @@ if command -v uv >/dev/null 2>&1; then
         _uv_new_dir=$(dirname "$_uv_new")
         unset _uv_new
         [ "$_uv_new_dir" = "${_UV_PYTHON_DIR:-}" ] && { unset _uv_new_dir; return 0; }
-        # Remove old uv python dir from PATH
-        if [ -n "${_UV_PYTHON_DIR:-}" ]; then
-            _uv_tmp=":$PATH:"
-            _uv_tmp="${_uv_tmp//:$_UV_PYTHON_DIR:/:}"
-            PATH="${_uv_tmp#:}"
-            PATH="${PATH%:}"
-            unset _uv_tmp
-        fi
+        # Remove all uv python dirs from PATH (handles stale inherited entries)
+        _uv_tmp=":$PATH:"
+        while case "$_uv_tmp" in *:*uv/python/cpython-*) true;; *) false;; esac; do
+            _uv_tmp=$(printf '%s' "$_uv_tmp" | sed 's|:[^:]*uv/python/cpython-[^:]*:||')
+            _uv_tmp=":${_uv_tmp#:}"
+        done
+        PATH="${_uv_tmp#:}"
+        PATH="${PATH%:}"
+        unset _uv_tmp
         PATH="$_uv_new_dir:$PATH"
         _UV_PYTHON_DIR="$_uv_new_dir"
         unset _uv_new_dir

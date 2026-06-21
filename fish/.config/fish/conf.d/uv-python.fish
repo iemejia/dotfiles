@@ -5,9 +5,11 @@ if command -q uv
         or return
         set -l new_dir (path dirname $new_py)
         test "$new_dir" = "$_uv_python_dir"; and return
-        # Remove old uv python dir from PATH
-        if set -q _uv_python_dir; and set -l idx (contains -i -- $_uv_python_dir $PATH)
-            set -e PATH[$idx]
+        # Remove all uv python dirs from PATH (handles stale inherited entries)
+        for i in (seq (count $PATH) -1 1)
+            if string match -q '*/uv/python/cpython-*' $PATH[$i]
+                set -e PATH[$i]
+            end
         end
         set -gp PATH $new_dir
         set -g _uv_python_dir $new_dir

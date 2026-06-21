@@ -80,7 +80,13 @@ if command -q uv
     set -l _uv_py (uv python find --no-project 2>/dev/null)
     if test -n "$_uv_py"
         set -g _uv_python_dir (path dirname $_uv_py)
-        fish_add_path $_uv_python_dir
+        # Remove any inherited uv python dirs from PATH before adding ours
+        for i in (seq (count $PATH) -1 1)
+            if string match -q '*/uv/python/cpython-*' $PATH[$i]
+                set -e PATH[$i]
+            end
+        end
+        set -gp PATH $_uv_python_dir
     end
 end
 
