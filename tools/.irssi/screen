@@ -1,9 +1,0 @@
-#!/bin/bash
-# Thx to Serge van Ginderachter for sharing this script :p
-if screen -list | grep "\.irssi" > /dev/null
-then
-  screen -Rx irssi
-else
-  screen -S irssi irssi
-fi
-exit 0

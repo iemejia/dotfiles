@@ -1,0 +1,7 @@
+#!/bin/sh
+# Attach to existing irssi tmux session or create a new one
+if tmux has-session -t irssi 2>/dev/null; then
+  exec tmux attach-session -t irssi
+else
+  exec tmux new-session -s irssi irssi
+fi

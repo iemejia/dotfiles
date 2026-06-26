@@ -20,8 +20,8 @@ alias v='vim'
 alias vi='vim'
 alias n='nvim'
 
-# Remote irssi
-abbr --add rirssi 'ssh -Y vividores -t .irssi/screen'
+# Remote irssi via tmux
+abbr --add rirssi 'ssh -t vm-imejiauseche-dev-001 .irssi/tmux'
 
 # kubectl
 abbr --add k kubectl

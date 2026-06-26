@@ -1,95 +1,29 @@
 servers = (
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  {
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  {
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
-  {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
-    port = "6667";
-  },
-  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-  {
-    address = "irc.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "no";
-  },
-  {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
-    port = "6697";
-    use_ssl = "yes";
-    ssl_cert = "~/.irssi/iemejia.pem";
-    ssl_verify = "yes";
-    ssl_cafile = "~/.irssi/UTN-USERFirst-Hardware.pem";
-    autoconnect = "no";
-  },
   {
     address = "irc.libera.chat";
     chatnet = "Libera.Chat";
     port = "6697";
-    use_ssl = "yes";
-    ssl_verify = "yes";
+    use_tls = "yes";
+    tls_verify = "yes";
     autoconnect = "yes";
   },
   {
     address = "irc.oftc.net";
-    chatnet = "oftc";
+    chatnet = "OFTC";
     port = "6697";
-    use_ssl = "yes";
-    ssl_verify = "yes";
+    use_tls = "yes";
+    tls_verify = "yes";
     autoconnect = "no";
   }
-));
+);
 
 chatnets = {
-  IRCnet = {
+  "Libera.Chat" = {
     type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  EFNet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
-  Undernet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  DALnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "iemejia";
+    # Set password at runtime: /network modify -sasl_password <pass> Libera.Chat
+    sasl_password = "";
   };
   OFTC = {
     type = "IRC";
@@ -97,82 +31,9 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  GameSurge = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  WebChat = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  Rizon = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  LinkNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  SILC = { type = "SILC"; };
-  Freenode = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_modes = "4";
-    max_whois = "1";
-  };
-  "Libera.Chat" = { type = "IRC"; };
 };
 
-channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "emn-info"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##aws"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#haskell"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#scheme"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#scala"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#libcloud"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#apache-camel"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#apache-karaf"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#apache-activemq"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#apache-kafka"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#apache-spark"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#samza"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#flink"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#hadoop"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##linux"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#python"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#bitcoin"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#Node.js"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#ubuntu"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#debian"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#android"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#git"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#puppet"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#emacs"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#vim"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##javascript"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#RubyOnRails"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##math"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#jquery"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#security"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#machinelearning"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#nlp"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#algorithms"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#polymath"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "##c"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#youtube-dl"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; }
-);
+channels = ( );
 
 aliases = {
   J = "join";
@@ -347,7 +208,7 @@ settings = {
     autolog = "yes";
     autolog_path = "~/irclogs/%Y/$tag/$0.%m-%d.log";
   };
-  "perl/core/scripts" = { screen_away_active = "yes"; };
+  "perl/core/scripts" = { tmux_away_active = "yes"; };
 };
 ignores = ( { level = "JOINS PARTS QUITS"; } );
 logs = { };

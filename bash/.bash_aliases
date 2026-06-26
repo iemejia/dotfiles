@@ -41,8 +41,8 @@ else
 fi
 alias n='nvim'
 
-# TODO alias for remote irssi
-alias rirssi='ssh -Y vividores -t .irssi/screen'
+# Remote irssi via tmux
+alias rirssi='ssh -t vm-imejiauseche-dev-001 .irssi/tmux'
 
 # SVN
 scd() {
