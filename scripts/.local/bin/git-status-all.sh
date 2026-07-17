@@ -3,15 +3,18 @@ set -uo pipefail
 
 # Options
 do_pull=false
+backup_remote="iemejia"
 for arg in "$@"; do
 	case "$arg" in
 		--pull|-p) do_pull=true ;;
+		--remote=*) backup_remote="${arg#--remote=}" ;;
 		--help|-h)
 			echo "Usage: $(basename "$0") [OPTIONS]"
 			echo ""
 			echo "Options:"
-			echo "  -p, --pull   Pull repos that are behind their upstream"
-			echo "  -h, --help   Show this help message"
+			echo "  -p, --pull        Pull repos that are behind their upstream"
+			echo "      --remote=NAME  Backup remote to check local branches against (default: iemejia)"
+			echo "  -h, --help        Show this help message"
 			exit 0
 			;;
 		*)
@@ -26,6 +29,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
+MAGENTA='\033[0;35m'
 NC='\033[0m'
 
 # Counters
@@ -35,6 +39,7 @@ needs_push=0
 needs_pull=0
 diverged=0
 issues=0
+unbacked=0
 
 declare -a repos_commit=()
 declare -a repos_push=()
@@ -42,6 +47,7 @@ declare -a repos_pull=()
 declare -a repos_diverged=()
 declare -a repos_issues=()
 declare -a all_repos=()
+declare -a repos_unbacked=()
 
 for d in */; do
 	[ -d "$d" ] || continue
@@ -115,6 +121,23 @@ for d in */; do
 		fi
 		clean=$((clean + 1))
 	fi
+
+	# Detect local branches not present on the backup remote
+	if git -C "$dir" remote get-url "$backup_remote" >/dev/null 2>&1; then
+		unbacked_branches=""
+		while IFS= read -r lbranch; do
+			[ -n "$lbranch" ] || continue
+			if ! git -C "$dir" show-ref --verify --quiet "refs/remotes/$backup_remote/$lbranch"; then
+				unbacked_branches+="${unbacked_branches:+, }$lbranch"
+			fi
+		done < <(git -C "$dir" for-each-ref --format='%(refname:short)' refs/heads/)
+
+		if [ -n "$unbacked_branches" ]; then
+			echo -e "  ${MAGENTA}[NO BACKUP]${NC} $dir: $unbacked_branches (not on '$backup_remote')"
+			repos_unbacked+=("$dir: $unbacked_branches")
+			unbacked=$((unbacked + 1))
+		fi
+	fi
 done
 
 # Summary
@@ -126,6 +149,7 @@ echo -e " ${CYAN}Needs push:${NC}   $needs_push"
 echo -e " ${CYAN}Needs pull:${NC}   $needs_pull"
 echo -e " ${RED}Diverged:${NC}     $diverged"
 echo -e " ${RED}Issues:${NC}       $issues"
+echo -e " ${MAGENTA}No backup:${NC}    $unbacked"
 echo "─────────────────────────────────"
 
 # Action items
@@ -146,6 +170,15 @@ if [ $((needs_commit + needs_push + diverged + issues)) -gt 0 ]; then
 	done
 	for r in "${repos_issues[@]+"${repos_issues[@]}"}"; do
 		echo -e "  ${RED}fix${NC}     $r"
+	done
+fi
+
+# Branches missing from the backup remote
+if [ "$unbacked" -gt 0 ]; then
+	echo ""
+	echo -e "${MAGENTA}Local branches not on '$backup_remote' (consider backing up):${NC}"
+	for r in "${repos_unbacked[@]+"${repos_unbacked[@]}"}"; do
+		echo -e "  ${MAGENTA}backup${NC}  $r"
 	done
 fi
 
