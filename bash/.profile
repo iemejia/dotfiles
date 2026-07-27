@@ -140,4 +140,11 @@ fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
+# Add latest nvm node bin to PATH statically (ensures npm globals like opencode
+# are reachable even when nvm.sh fails to set a default).
+if [ -d "$NVM_DIR/versions/node" ]; then
+    _nvm_latest=$(ls -d "$NVM_DIR/versions/node"/v*/bin 2>/dev/null | sort -V | tail -1)
+    [ -d "$_nvm_latest" ] && PATH="$_nvm_latest:$PATH"
+    unset _nvm_latest
+fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
