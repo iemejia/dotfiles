@@ -7,5 +7,7 @@
       "apiKey": "no-key-needed",
       "contextLength": 65536
     }
-  ]
+  ],
+  "python.terminal.useEnvFile": true,
+  "editor.minimap.enabled": false
 }
