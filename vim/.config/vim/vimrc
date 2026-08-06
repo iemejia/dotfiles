@@ -145,8 +145,6 @@ if !has('gui_running')
   let &t_SI = "\e[6 q"
   let &t_SR = "\e[4 q"
   let &t_EI = "\e[2 q"
-  " Shift-Enter: CSI u format (tmux extended-keys csi-u)
-  execute "set <S-CR>=\e[13;2u"
 endif
 
 " Clean fill characters
