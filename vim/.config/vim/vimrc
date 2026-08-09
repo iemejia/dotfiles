@@ -5,6 +5,11 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
+" Enable extended key protocol in tmux (CSI-u / kitty)
+if &term =~# 'tmux'
+  set keyprotocol+=tmux-256color:kitty
+endif
+
 " Sensible defaults (previously provided by vim-sensible plugin)
 set complete-=i
 set smarttab
@@ -349,7 +354,7 @@ endif
 
 " shortcuts for new lines without the annoying change to insert mode
 nnoremap <CR> o<Esc>k
-nnoremap <S-CR> O<Esc>j
+nnoremap <S-CR> O<Esc>
 "nnoremap ^M O<Esc>j "makes it work in CLI
 " notice that impaired mode allows [<CR> and ]<CR>
 
