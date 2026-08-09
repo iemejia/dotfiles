@@ -12,8 +12,9 @@
     caa = commit --all --amend --no-edit
     cis = commit -S
 
-    st = status
     br = branch
+    st = status
+    sw = switch
 
     ec = config --global -e
 
