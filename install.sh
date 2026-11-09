@@ -116,6 +116,16 @@ for pkg in "${PACKAGES[@]}"; do
     if [ -d "$pkg" ]; then
         echo "Stowing $pkg..."
         if is_folded_pkg "$pkg"; then
+            # Our plugin links can keep an old, unfolded oh-my-zsh tree alive.
+            # Remove only links we created, so Stow can fold the checkout again.
+            if [ "$pkg" = "zsh" ] && [ ! -L "$HOME/.oh-my-zsh" ]; then
+                for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
+                    link="$HOME/.oh-my-zsh/custom/plugins/$plugin"
+                    if [ -L "$link" ] && [ "$(readlink "$link")" = "$HOME/.$plugin" ]; then
+                        rm -v "$link"
+                    fi
+                done
+            fi
             # Clean up any prior state (both old and --no-folding styles)
             stow --target="$HOME" --delete "$pkg" 2>/dev/null || true
             stow --no-folding --target="$HOME" --delete "$pkg" 2>/dev/null || true
@@ -131,7 +141,7 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
-# Create oh-my-zsh custom plugin symlinks (can't live in the submodule)
+# Create ignored runtime plugin links after Stow has folded the checkout.
 for arg in "${PACKAGES[@]}"; do
     if [ "$arg" = "zsh" ]; then
         echo "Linking zsh plugin symlinks..."
@@ -141,4 +151,3 @@ for arg in "${PACKAGES[@]}"; do
         break
     fi
 done
-
